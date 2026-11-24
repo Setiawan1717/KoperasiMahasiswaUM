@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOPMA UM | Koperasi Mahasiswa Universitas Negeri Malang</title>
+<meta name="description" content="Koperasi Mahasiswa Universitas Negeri Malang: belanja kebutuhan kuliah lebih hemat, promo mingguan, dan ruang belajar berwirausaha. Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.">
+<meta property="og:title" content="KOPMA UM | Koperasi Mahasiswa Universitas Negeri Malang">
+<meta property="og:description" content="Belanja hemat, promo mingguan, dan belajar berwirausaha bareng Koperasi Mahasiswa UM.">
+<meta property="og:image" content="assets/logo-kopma-um.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#00873A">
+<link rel="icon" href="assets/logo-kopma-um.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hijau:#00873A;        /* hijau logo, digelapkan sedikit agar kontras teks putih lolos AA */
+  --hijau-logo:#009C3C;
+  --hijau-tua:#0A3D24;
+  --hijau-gelap:#062716;
+  --biru:#0090D8;
+  --biru-tua:#006FA8;
+  --kuning:#FFC629;
+  --latar:#F4F8F5;
+  --putih:#FFFFFF;
+  --teks:#16241C;
+  --teks-2:#4D5E55;
+  --garis:#DCE7E0;
+  --radius:16px;
+  --bayang:0 1px 2px rgba(6,39,22,.06),0 8px 24px -8px rgba(6,39,22,.14);
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--teks);background:var(--putih);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--biru);outline-offset:3px;border-radius:6px}
+.wadah{width:min(1180px,100% - 32px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ===== Topbar ===== */
+.topbar{background:var(--hijau-gelap);color:#CFE3D6;font-size:.8rem}
+.topbar .wadah{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:38px}
+.topbar a:hover{color:#fff}
+.topbar .info{display:flex;gap:20px;flex-wrap:wrap}
+.topbar .info span{display:inline-flex;align-items:center;gap:6px}
+.topbar .sosmed{display:flex;gap:14px}
+.topbar svg{width:14px;height:14px}
+
+/* ===== Navbar ===== */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.nav.scrolled{border-color:var(--garis);box-shadow:0 6px 20px -12px rgba(6,39,22,.25)}
+.nav .wadah{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;border-radius:50%}
+.brand b{display:block;font-size:1.1rem;font-weight:800;letter-spacing:.02em;color:var(--hijau-tua);line-height:1.1}
+.brand small{display:block;font-size:.72rem;color:var(--teks-2);font-weight:500}
+.menu{display:flex;align-items:center;gap:4px;list-style:none}
+.menu a{display:block;padding:8px 12px;font-size:.92rem;font-weight:600;color:var(--teks-2);border-radius:8px;position:relative;transition:color .15s}
+.menu a::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;background:var(--hijau-logo);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.menu a:hover,.menu a.aktif{color:var(--hijau)}
+.menu a.aktif::after{transform:scaleX(1)}
+@media (hover:hover){.menu a:hover::after{transform:scaleX(1)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .16s var(--ease),background-color .2s,box-shadow .2s}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px}
+.btn-utama{background:var(--hijau);color:#fff;box-shadow:0 6px 16px -6px rgba(0,135,58,.6)}
+.btn-utama:hover{background:#00702F}
+.btn-garis{border:2px solid rgba(255,255,255,.85);color:#fff}
+.btn-garis:hover{background:rgba(255,255,255,.14)}
+.btn-kuning{background:var(--kuning);color:var(--hijau-gelap)}
+.btn-kuning:hover{background:#FFD45C}
+.burger{display:none;width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:2px;background:var(--hijau-tua);border-radius:2px;position:relative;transition:transform .25s var(--ease),opacity .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.nav.buka .burger span{background:transparent}
+.nav.buka .burger span::before{transform:translateY(7px) rotate(45deg)}
+.nav.buka .burger span::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* ===== Hero slider ===== */
+.hero{position:relative;min-height:min(86vh,720px);color:#fff;overflow:hidden;background:var(--hijau-gelap)}
+.slide{position:absolute;inset:0;display:flex;align-items:center;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+.slide.aktif{opacity:1;visibility:visible;transition:opacity .9s ease}
+.slide .latar{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);transition:transform 7s linear}
+.slide.aktif .latar{transform:scale(1)}
+.slide .latar::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,39,22,.94) 0%,rgba(6,39,22,.78) 45%,rgba(0,111,168,.35) 100%)}
+.slide .latar.kosong{background:
+  radial-gradient(circle at 85% 30%,rgba(0,144,216,.55),transparent 45%),
+  radial-gradient(circle at 70% 90%,rgba(0,156,60,.55),transparent 50%),
+  var(--hijau-gelap)}
+.slide .isi{position:relative;max-width:640px;padding-block:96px}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.hero .label{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.hero .label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--kuning)}
+.hero h1,.hero h2{font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:18px;text-wrap:balance}
+.hero h1 em,.hero h2 em{font-style:normal;color:var(--kuning)}
+.hero p{font-size:clamp(1rem,1.6vw,1.15rem);color:#DCEBE2;max-width:540px;margin-bottom:32px}
+.hero .aksi{display:flex;gap:12px;flex-wrap:wrap}
+.slide .isi>*{opacity:0;transform:translateY(16px)}
+.slide.aktif .isi>*{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.slide.aktif .isi>*:nth-child(2){transition-delay:.08s}
+.slide.aktif .isi>*:nth-child(3){transition-delay:.16s}
+.slide.aktif .isi>*:nth-child(4){transition-delay:.24s}
+.hero-logo{position:absolute;right:max(16px,calc((100% - 1180px)/2));top:50%;transform:translateY(-50%);width:min(34vw,380px);aspect-ratio:1;border-radius:50%;background:#fff;padding:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.55),0 0 0 14px rgba(255,255,255,.08),0 0 0 30px rgba(255,255,255,.04);z-index:2}
+.hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.kontrol{position:absolute;bottom:28px;left:0;right:0;z-index:3}
+.kontrol .wadah{display:flex;align-items:center;gap:16px}
+.titik{display:flex;gap:8px}
+.titik button{width:28px;height:28px;display:grid;place-items:center}
+.titik button::before{content:"";width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .3s var(--ease),background-color .3s}
+.titik button[aria-current="true"]::before{width:28px;background:#fff}
+.panah{display:flex;gap:8px;margin-left:auto;margin-right:64px}
+.panah button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;transition:background-color .2s,transform .16s var(--ease)}
+.panah button:hover{background:rgba(255,255,255,.15)}
+.panah button:active{transform:scale(.94)}
+.panah svg{width:18px;height:18px}
+
+/* ===== Statistik strip ===== */
+.strip{position:relative;z-index:4;margin-top:-1px;background:var(--hijau)}
+.strip .wadah{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip div.item{padding:26px 20px;color:#fff;border-right:1px solid rgba(255,255,255,.18);display:flex;gap:14px;align-items:center}
+.strip div.item:last-child{border-right:0}
+.strip svg{width:34px;height:34px;flex:none;opacity:.9}
+.strip b{display:block;font-size:1.02rem}
+.strip small{color:#D6EEDD;font-size:.84rem;line-height:1.4;display:block}
+
+/* ===== Section umum ===== */
+section.blok{padding-block:clamp(64px,9vw,104px)}
+.blok.abu{background:var(--latar)}
+.kepala{max-width:640px;margin-bottom:44px}
+.kepala.tengah{text-align:center;margin-inline:auto}
+.kepala .label{color:var(--hijau);margin-bottom:12px}
+.kepala .label::before{content:"";width:22px;height:3px;border-radius:3px;background:var(--biru)}
+.kepala h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.18;font-weight:800;letter-spacing:-.015em;color:var(--hijau-tua);text-wrap:balance}
+.kepala p{color:var(--teks-2);margin-top:12px;font-size:1.03rem}
+
+/* ===== Tentang ===== */
+.tentang{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.tentang-foto{position:relative}
+.tentang-foto .bingkai{aspect-ratio:4/4.4;border-radius:24px;overflow:hidden;background:linear-gradient(150deg,#E5F3EA,#DDF0FA)}
+.tentang-foto .lencana{position:absolute;right:-18px;bottom:28px;background:#fff;border-radius:18px;padding:16px 20px;box-shadow:var(--bayang);display:flex;gap:12px;align-items:center;max-width:250px}
+.tentang-foto .lencana img{width:52px;height:52px;border-radius:50%}
+.tentang-foto .lencana b{display:block;font-size:.95rem;color:var(--hijau-tua);line-height:1.3}
+.tentang-foto .lencana small{font-size:.8rem;color:var(--teks-2)}
+.tentang-teks p{color:var(--teks-2);margin-bottom:16px}
+.nilai{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 30px}
+.nilai div{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--garis);border-radius:14px;background:#fff}
+.nilai .ikon{width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;background:#E3F3E9;color:var(--hijau)}
+.nilai div:nth-child(even) .ikon{background:#DFF0FA;color:var(--biru-tua)}
+.nilai svg{width:20px;height:20px}
+.nilai b{display:block;font-size:.95rem;color:var(--hijau-tua)}
+.nilai small{font-size:.84rem;color:var(--teks-2);line-height:1.45;display:block}
+
+/* Placeholder foto */
+.foto-kosong{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5E8B70;font-size:.8rem;font-weight:600;text-align:center;padding:16px;background:
+  repeating-linear-gradient(135deg,rgba(0,135,58,.05) 0 12px,transparent 12px 24px),linear-gradient(150deg,#E8F5EC,#E1F1FA)}
+.foto-kosong svg{width:34px;height:34px;opacity:.7}
+.foto-isi{width:100%;height:100%;object-fit:cover}
+
+/* ===== Unit usaha ===== */
+.grid-unit{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kartu{background:#fff;border:1px solid var(--garis);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+@media (hover:hover){.kartu:hover{transform:translateY(-4px);box-shadow:var(--bayang);border-color:transparent}}
+.kartu .gambar{aspect-ratio:4/3;overflow:hidden;position:relative}
+.kartu .gambar img{transition:transform .6s var(--ease)}
+@media (hover:hover){.kartu:hover .gambar img{transform:scale(1.05)}}
+.kartu .badan{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kartu h3{font-size:1.08rem;color:var(--hijau-tua);line-height:1.3}
+.kartu p{font-size:.9rem;color:var(--teks-2)}
+.kartu .meta{margin-top:auto;padding-top:10px;font-size:.8rem;color:var(--hijau);font-weight:700;display:flex;align-items:center;gap:6px}
+.kartu .meta svg{width:15px;height:15px}
+
+/* ===== Promo ===== */
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin:-16px 0 32px}
+.filter button{padding:9px 18px;border-radius:999px;border:1px solid var(--garis);background:#fff;font-weight:600;font-size:.88rem;color:var(--teks-2);transition:background-color .2s,color .2s,border-color .2s,transform .16s var(--ease)}
+.filter button:active{transform:scale(.96)}
+.filter button[aria-pressed="true"]{background:var(--hijau-tua);border-color:var(--hijau-tua);color:#fff}
+.grid-promo{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.promo .gambar{aspect-ratio:1}
+.diskon{position:absolute;top:12px;left:12px;background:var(--kuning);color:var(--hijau-gelap);font-weight:800;font-size:.78rem;padding:5px 10px;border-radius:999px;z-index:1}
+.harga{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.harga b{font-size:1.15rem;color:var(--hijau)}
+.harga s{font-size:.85rem;color:#8A9A90}
+.promo .kat{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--biru-tua)}
+.promo .badan{gap:6px}
+.catatan{margin-top:22px;font-size:.84rem;color:var(--teks-2)}
+.promo.sembunyi{display:none}
+
+/* ===== Keanggotaan ===== */
+.anggota{background:linear-gradient(120deg,var(--hijau-gelap) 0%,#0A4A2A 55%,#05507A 100%);color:#fff;border-radius:28px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);position:relative;overflow:hidden}
+.anggota::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:60px solid rgba(255,255,255,.04);right:-140px;top:-160px}
+.anggota .kepala{margin-bottom:24px}
+.anggota .kepala h2{color:#fff}
+.anggota .kepala p{color:#CFE3D6}
+.anggota .kepala .label{color:var(--kuning)}
+.anggota .kepala .label::before{background:var(--kuning)}
+.untung{list-style:none;display:grid;gap:12px;margin-bottom:30px}
+.untung li{display:flex;gap:12px;align-items:flex-start;color:#E6F2EA}
+.untung svg{width:22px;height:22px;flex:none;color:var(--kuning);margin-top:2px}
+.langkah{display:grid;gap:14px;align-content:center;position:relative}
+.langkah div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+.langkah .no{width:40px;height:40px;flex:none;border-radius:12px;background:#fff;color:var(--hijau-tua);font-weight:800;display:grid;place-items:center}
+.langkah b{display:block;margin-bottom:2px}
+.langkah small{color:#C7DCCF;font-size:.88rem;display:block;line-height:1.5}
+
+/* ===== Kegiatan ===== */
+.grid-berita{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
+.berita-samping{display:grid;gap:20px}
+.berita .gambar{aspect-ratio:16/10;position:relative}
+.berita-samping .berita{flex-direction:row}
+.berita-samping .berita .gambar{aspect-ratio:auto;width:42%;flex:none}
+.tanggal{position:absolute;top:14px;left:14px;background:#fff;border-radius:12px;padding:6px 12px;text-align:center;line-height:1.1;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.tanggal b{display:block;font-size:1.25rem;color:var(--hijau)}
+.tanggal small{font-size:.7rem;font-weight:700;color:var(--teks-2);text-transform:uppercase}
+.berita .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--biru-tua)}
+.berita-utama h3{font-size:1.35rem}
+
+/* ===== FAQ ===== */
+.faq{max-width:820px;margin-inline:auto;display:grid;gap:12px}
+.faq details{background:#fff;border:1px solid var(--garis);border-radius:14px;overflow:hidden}
+.faq summary{list-style:none;padding:18px 22px;font-weight:700;color:var(--hijau-tua);display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:12px;height:12px;flex:none;border-right:2.5px solid var(--hijau);border-bottom:2.5px solid var(--hijau);transform:rotate(45deg) translateY(-3px);transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+.faq details p{padding:0 22px 20px;color:var(--teks-2)}
+
+/* ===== Kontak ===== */
+.kontak{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:stretch}
+.kontak-list{display:grid;gap:14px;align-content:start}
+.kontak-list a,.kontak-list div{display:flex;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--garis);border-radius:16px;background:#fff;transition:border-color .2s,transform .2s var(--ease)}
+@media (hover:hover){.kontak-list a:hover{border-color:var(--hijau);transform:translateX(4px)}}
+.kontak-list .ikon{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;background:#E3F3E9;color:var(--hijau)}
+.kontak-list svg{width:22px;height:22px}
+.kontak-list small{display:block;font-size:.78rem;color:var(--teks-2);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.kontak-list b{color:var(--hijau-tua);font-size:.98rem;word-break:break-word}
+.peta{border-radius:20px;overflow:hidden;border:1px solid var(--garis);min-height:360px;background:var(--latar)}
+.peta iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+
+/* ===== CTA & Footer ===== */
+.cta{background:var(--biru-tua);color:#fff;background-image:radial-gradient(circle at 10% 120%,rgba(0,156,60,.55),transparent 45%),radial-gradient(circle at 95% -20%,rgba(255,255,255,.18),transparent 40%)}
+.cta .wadah{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:48px;flex-wrap:wrap}
+.cta h2{font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;line-height:1.2;max-width:620px;text-wrap:balance}
+footer{background:var(--hijau-gelap);color:#B5CDBE;font-size:.92rem}
+.kaki{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-block:64px 40px}
+footer h4{color:#fff;font-size:1rem;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:#fff}
+footer .brand b{color:#fff}
+footer .brand small{color:#9DB8A7}
+footer .brand img{background:#fff}
+.kaki p{margin-top:16px;line-height:1.7}
+.sos{display:flex;gap:10px;margin-top:18px}
+.sos a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:background-color .2s}
+.sos a:hover{background:var(--hijau)}
+.sos svg{width:18px;height:18px}
+.hak{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;font-size:.84rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Tombol WA mengambang */
+.wa-melayang{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -6px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
+.wa-melayang:hover{transform:scale(1.06)}
+.wa-melayang:active{transform:scale(.95)}
+.wa-melayang svg{width:28px;height:28px}
+
+/* Muncul saat scroll */
+.muncul{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.muncul.tampak{opacity:1;transform:none}
+
+/* ===== Responsif ===== */
+@media (max-width:1024px){
+  .grid-unit,.grid-promo{grid-template-columns:repeat(2,1fr)}
+  .kaki{grid-template-columns:1fr 1fr}
+  .hero-logo{width:min(30vw,300px)}
+}
+@media (max-width:900px){
+  .burger{display:flex}
+  .nav .btn-daftar{display:none}
+  .menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:8px 16px 18px;border-bottom:1px solid var(--garis);box-shadow:0 16px 30px -18px rgba(0,0,0,.3);gap:2px;
+    clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .3s var(--ease),visibility 0s .3s}
+  .nav.buka .menu{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path .3s var(--ease)}
+  .menu a{padding:12px 8px;font-size:1rem}
+  .menu a::after{display:none}
+  .menu .btn{margin-top:8px;color:#fff}
+  .tentang,.anggota,.kontak,.grid-berita{grid-template-columns:1fr}
+  .tentang-foto{max-width:520px}
+  .strip .wadah{grid-template-columns:1fr 1fr}
+  .strip div.item:nth-child(2){border-right:0}
+  .strip div.item:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.18)}
+  .hero-logo{display:none}
+}
+@media (min-width:901px){.menu .btn{display:none}}
+@media (max-width:600px){
+  .topbar .info span:nth-child(2){display:none}
+  .topbar .info{min-width:0}
+  .topbar .info>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62vw;display:block}
+  .brand small{display:none}
+  .strip svg{display:none}
+  .grid-unit{grid-template-columns:1fr}
+  .grid-promo{grid-template-columns:1fr 1fr;gap:12px}
+  .promo .badan{padding:14px}
+  .promo h3{font-size:.95rem}
+  .nilai{grid-template-columns:1fr}
+  .kaki{grid-template-columns:1fr}
+  .strip div.item{padding:18px 14px;gap:10px}
+  .strip svg{width:26px;height:26px}
+  .berita-samping .berita{flex-direction:column}
+  .berita-samping .berita .gambar{width:100%;aspect-ratio:16/10}
+  .tentang-foto .lencana{right:10px}
+  .panah{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}
+  .muncul{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<a href="#utama" class="sr">Lewati ke konten utama</a>
+
+<div class="topbar">
+  <div class="wadah">
+    <div class="info">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Universitas Negeri Malang, Jl. Semarang 5, Malang</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-isi="jam">[Jam buka]</span></span>
+    </div>
+    <div class="sosmed" aria-label="Media sosial">
+      <a data-link="instagram" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a data-link="tiktok" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></a>
+      <a data-link="email" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wadah">
+    <a href="#beranda" class="brand" aria-label="KOPMA UM, ke beranda">
+      <img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="48" height="48">
+      <span><b>KOPMA UM</b><small>Koperasi Mahasiswa Universitas Negeri Malang</small></span>
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu" id="menu">
+        <li><a href="#beranda" class="aktif">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#unit">Unit Usaha</a></li>
+        <li><a href="#promo">Promo</a></li>
+        <li><a href="#anggota">Keanggotaan</a></li>
+        <li><a href="#kegiatan">Kegiatan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#anggota" class="btn btn-utama">Gabung Anggota</a></li>
+      </ul>
+    </nav>
+    <a href="#anggota" class="btn btn-utama btn-daftar">Gabung Anggota</a>
+    <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+  </div>
+</header>
+
+<main id="utama">
+
+<!-- ===== HERO SLIDER ===== -->
+<section class="hero" id="beranda" aria-roledescription="carousel" aria-label="Sorotan KOPMA UM">
+  <div id="slides"></div>
+  <div class="hero-logo" aria-hidden="true"><img src="assets/logo-kopma-um.webp" alt=""></div>
+  <div class="kontrol">
+    <div class="wadah">
+      <div class="titik" id="titik" role="tablist" aria-label="Pilih slide"></div>
+      <div class="panah">
+        <button id="sebelum" aria-label="Slide sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button id="sesudah" aria-label="Slide berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wadah">
+    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-2 11H5z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg><span><b>Harga Mahasiswa</b><small>Kebutuhan kuliah lebih hemat</small></span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Promo Mingguan</b><small>Diskon khusus anggota</small></span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.3a5 5 0 0 1 6 4.7"/></svg><span><b>Milik Bersama</b><small>Anggota ikut menentukan arah</small></span></div>
+    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg><span><b>Belajar Bisnis</b><small>Praktik wirausaha nyata</small></span></div>
+  </div>
+</div>
+
+<!-- ===== TENTANG ===== -->
+<section class="blok" id="tentang">
+  <div class="wadah tentang">
+    <div class="tentang-foto muncul">
+      <div class="bingkai" id="foto-tentang"></div>
+      <div class="lencana">
+        <img src="assets/logo-kopma-um.webp" alt="" width="52" height="52">
+        <span><b>Dari, oleh, dan untuk mahasiswa</b><small>Unit Kegiatan Mahasiswa UM</small></span>
+      </div>
+    </div>
+    <div class="tentang-teks muncul">
+      <div class="kepala" style="margin-bottom:20px">
+        <span class="label">Tentang Kami</span>
+        <h2>Koperasi milik mahasiswa, tempat belanja sekaligus belajar usaha</h2>
+      </div>
+      <p>KOPMA UM adalah Koperasi Mahasiswa Universitas Negeri Malang. Kami menyediakan kebutuhan harian dan perkuliahan dengan harga bersahabat, sambil menjadi ruang bagi mahasiswa untuk belajar mengelola usaha secara langsung.</p>
+      <p>Sebagai koperasi, setiap anggota adalah pemilik. Keuntungan usaha kembali ke anggota dalam bentuk Sisa Hasil Usaha (SHU), dan keputusan penting diambil bersama lewat Rapat Anggota.</p>
+      <div class="nilai">
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/></svg></span><span><b>Kekeluargaan</b><small>Usaha dijalankan bersama, untuk kesejahteraan bersama.</small></span></div>
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><b>Ekonomi Mahasiswa</b><small>Harga terjangkau untuk kantong mahasiswa.</small></span></div>
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l3-8 6 16 3-8h4"/></svg></span><span><b>Kewirausahaan</b><small>Pengurus belajar ritel, keuangan, dan pemasaran.</small></span></div>
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Demokratis</b><small>Satu anggota, satu suara dalam Rapat Anggota.</small></span></div>
+      </div>
+      <a href="#anggota" class="btn btn-utama">Jadi Anggota Sekarang <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UNIT USAHA ===== -->
+<section class="blok abu" id="unit">
+  <div class="wadah">
+    <div class="kepala tengah muncul">
+      <span class="label">Unit Usaha</span>
+      <h2>Semua kebutuhan kuliah, di satu tempat</h2>
+      <p>Mampir ke unit usaha KOPMA UM di area kampus. Anggota mendapat harga khusus di setiap unit.</p>
+    </div>
+    <div class="grid-unit" id="grid-unit"></div>
+  </div>
+</section>
+
+<!-- ===== PROMO ===== -->
+<section class="blok" id="promo">
+  <div class="wadah">
+    <div class="kepala muncul">
+      <span class="label">Promo Pekan Ini</span>
+      <h2>Lagi hemat-hematnya, sayang dilewatkan</h2>
+      <p>Pilih kategori, lalu pesan lewat WhatsApp atau ambil langsung di toko.</p>
+    </div>
+    <div class="filter" id="filter" role="group" aria-label="Filter kategori promo"></div>
+    <div class="grid-promo" id="grid-promo"></div>
+    <p class="catatan" id="catatan-promo">* Harga dan stok dapat berubah. Tunjukkan kartu anggota untuk harga anggota.</p>
+  </div>
+</section>
+
+<!-- ===== KEANGGOTAAN ===== -->
+<section class="blok abu" id="anggota">
+  <div class="wadah">
+    <div class="anggota muncul">
+      <div>
+        <div class="kepala">
+          <span class="label">Keanggotaan</span>
+          <h2>Jadi anggota, jadi pemilik</h2>
+          <p>Terbuka untuk seluruh mahasiswa aktif Universitas Negeri Malang dari semua fakultas dan angkatan.</p>
+        </div>
+        <ul class="untung">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Harga anggota dan promo khusus di semua unit usaha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Pembagian Sisa Hasil Usaha (SHU) setiap tahun buku</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Pelatihan perkoperasian, kewirausahaan, dan manajemen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Relasi lintas fakultas dan jaringan Kopma se-Indonesia</li>
+        </ul>
+        <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota. Nama: ... NIM: ... Fakultas: ..." class="btn btn-kuning">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+          Daftar via WhatsApp
+        </a>
+      </div>
+      <div class="langkah">
+        <div><span class="no">1</span><span><b>Isi formulir pendaftaran</b><small>Lewat WhatsApp atau datang langsung ke sekretariat KOPMA UM.</small></span></div>
+        <div><span class="no">2</span><span><b>Bayar simpanan pokok &amp; wajib</b><small><span data-isi="simpanan">[Isi nominal simpanan pokok dan simpanan wajib]</span></small></span></div>
+        <div><span class="no">3</span><span><b>Ikuti pendidikan dasar anggota</b><small>Kenalan dengan koperasi, pengurus, dan teman-teman anggota.</small></span></div>
+        <div><span class="no">4</span><span><b>Terima kartu anggota</b><small>Nikmati harga anggota dan hak suara di Rapat Anggota.</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEGIATAN ===== -->
+<section class="blok" id="kegiatan">
+  <div class="wadah">
+    <div class="kepala muncul">
+      <span class="label">Kabar &amp; Kegiatan</span>
+      <h2>Yang sedang terjadi di KOPMA UM</h2>
+    </div>
+    <div class="grid-berita" id="grid-berita"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="blok abu" id="faq">
+  <div class="wadah">
+    <div class="kepala tengah muncul">
+      <span class="label">Tanya Jawab</span>
+      <h2>Pertanyaan yang sering muncul</h2>
+    </div>
+    <div class="faq" id="daftar-faq"></div>
+  </div>
+</section>
+
+<!-- ===== KONTAK ===== -->
+<section class="blok" id="kontak">
+  <div class="wadah">
+    <div class="kepala muncul">
+      <span class="label">Kontak</span>
+      <h2>Mampir, chat, atau follow kami</h2>
+    </div>
+    <div class="kontak">
+      <div class="kontak-list muncul">
+        <a href="#" data-wa="Halo KOPMA UM, saya mau tanya."><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></span><span><small>WhatsApp</small><b data-isi="wa-tampil">[Nomor WhatsApp]</b></span></a>
+        <a data-link="instagram" href="#"><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span><span><small>Instagram</small><b data-isi="ig-tampil">[@akun_instagram]</b></span></a>
+        <a data-link="email" href="#"><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>Email</small><b data-isi="email-tampil">[email@kopma]</b></span></a>
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Alamat</small><b data-isi="alamat">[Gedung/lokasi sekretariat], Universitas Negeri Malang, Jl. Semarang No. 5, Malang</b></span></div>
+      </div>
+      <div class="peta muncul">
+        <iframe title="Peta lokasi Universitas Negeri Malang" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Universitas%20Negeri%20Malang&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-label="Ajakan bergabung">
+  <div class="wadah">
+    <h2>Belanja hemat sambil belajar usaha? Gabung KOPMA UM sekarang.</h2>
+    <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota." class="btn btn-kuning">Daftar Jadi Anggota</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wadah kaki">
+    <div>
+      <a href="#beranda" class="brand"><img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="48" height="48"><span><b>KOPMA UM</b><small>Koperasi Mahasiswa UM</small></span></a>
+      <p>Koperasi Mahasiswa Universitas Negeri Malang. Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</p>
+      <div class="sos">
+        <a data-link="instagram" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a data-link="tiktok" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></a>
+        <a href="#" data-wa="Halo KOPMA UM" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Jelajahi</h4>
+      <ul><li><a href="#tentang">Tentang Kami</a></li><li><a href="#unit">Unit Usaha</a></li><li><a href="#promo">Promo</a></li><li><a href="#kegiatan">Kegiatan</a></li></ul>
+    </div>
+    <div>
+      <h4>Anggota</h4>
+      <ul><li><a href="#anggota">Cara Daftar</a></li><li><a href="#anggota">Keuntungan</a></li><li><a href="#faq">Tanya Jawab</a></li><li><a href="#kontak">Hubungi Kami</a></li></ul>
+    </div>
+    <div>
+      <h4>Jam Layanan</h4>
+      <ul><li data-isi="jam">[Jam buka]</li><li data-isi="alamat-singkat">Area kampus Universitas Negeri Malang</li></ul>
+    </div>
+  </div>
+  <div class="wadah hak">
+    <span>&copy; <span id="tahun"></span> KOPMA Universitas Negeri Malang</span>
+    <span>Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</span>
+  </div>
+</footer>
+
+<a href="#" class="wa-melayang" data-wa="Halo KOPMA UM, saya mau tanya." aria-label="Chat WhatsApp KOPMA UM">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+</a>
+
+<script>
+/* =====================================================================
+   DATA WEBSITE — EDIT DI SINI SAJA
+   - Kolom "foto": isi dengan path file (mis. "assets/minimarket.jpg")
+     atau URL gambar. Kalau kosong, tampil kotak "Foto menyusul".
+   - Semua teks bertanda [ ... ] adalah placeholder yang wajib diganti.
+   ===================================================================== */
+const KONTAK = {
+  wa: "",                       // contoh: "6281234567890" (tanpa + dan spasi)
+  waTampil: "[Nomor WhatsApp]",
+  instagram: "",                // contoh: "https://instagram.com/akun_kopma"
+  igTampil: "[@akun_instagram]",
+  tiktok: "",                   // contoh: "https://tiktok.com/@akun_kopma"
+  email: "",                    // contoh: "kopma@um.ac.id"
+  emailTampil: "[email@kopma]",
+  jam: "[Jam buka, mis. Senin–Jumat 08.00–16.00]",
+  alamat: "[Gedung/lokasi sekretariat], Universitas Negeri Malang, Jl. Semarang No. 5, Malang",
+  simpanan: "[Isi nominal simpanan pokok dan simpanan wajib]"
+};
+
+const SLIDES = [
+  { label:"Koperasi Mahasiswa UM", judul:"Belanja hemat, <em>belajar</em> berwirausaha.", teks:"Kebutuhan kuliah dan harian dengan harga mahasiswa, dikelola langsung oleh mahasiswa Universitas Negeri Malang.", tombol:["Lihat Promo","#promo"], tombol2:["Tentang Kami","#tentang"], foto:"" },
+  { label:"Promo Pekan Ini", judul:"Diskon khusus <em>anggota</em> setiap minggu.", teks:"Alat tulis, camilan, minuman, sampai merchandise kampus. Cek promonya sebelum kehabisan.", tombol:["Cek Promo","#promo"], tombol2:["Unit Usaha","#unit"], foto:"" },
+  { label:"Pendaftaran Anggota", judul:"Jadi anggota, jadi <em>pemilik</em>.", teks:"Dapat harga anggota, SHU tahunan, dan pengalaman organisasi yang nyata. Terbuka untuk semua mahasiswa UM.", tombol:["Gabung Sekarang","#anggota"], tombol2:["Tanya Dulu","#kontak"], foto:"" }
+];
+
+const FOTO_TENTANG = "";  // foto pengurus/toko untuk bagian Tentang
+
+// Unit usaha: SESUAIKAN dengan unit yang benar-benar dimiliki KOPMA UM
+const UNIT = [
+  { nama:"Toko Kopma", teks:"Kebutuhan harian, camilan, dan minuman dengan harga mahasiswa.", lokasi:"[Lokasi unit]", foto:"" },
+  { nama:"ATK & Fotokopi", teks:"Alat tulis, print, fotokopi, jilid, dan perlengkapan tugas kuliah.", lokasi:"[Lokasi unit]", foto:"" },
+  { nama:"Kantin Kopma", teks:"Tempat makan dan nongkrong dengan menu ramah kantong.", lokasi:"[Lokasi unit]", foto:"" },
+  { nama:"Merchandise UM", teks:"Kaos, jaket, totebag, dan suvenir khas Universitas Negeri Malang.", lokasi:"[Lokasi unit]", foto:"" }
+];
+
+// Promo: CONTOH — ganti nama, harga, dan foto sesuai promo asli
+const PROMO = [
+  { nama:"[Contoh] Buku Tulis 38 Lembar (pak isi 10)", kategori:"ATK", harga:32000, hargaAwal:38000, foto:"" },
+  { nama:"[Contoh] Pulpen Gel Hitam", kategori:"ATK", harga:3500, hargaAwal:4500, foto:"" },
+  { nama:"[Contoh] Air Mineral 600 ml", kategori:"Minuman", harga:3000, hargaAwal:4000, foto:"" },
+  { nama:"[Contoh] Kopi Susu Botol", kategori:"Minuman", harga:7000, hargaAwal:9000, foto:"" },
+  { nama:"[Contoh] Roti Isi Cokelat", kategori:"Makanan", harga:5000, hargaAwal:6500, foto:"" },
+  { nama:"[Contoh] Mi Instan Goreng", kategori:"Makanan", harga:3000, hargaAwal:3500, foto:"" },
+  { nama:"[Contoh] Kaos Logo UM", kategori:"Merchandise", harga:75000, hargaAwal:90000, foto:"" },
+  { nama:"[Contoh] Totebag Kanvas KOPMA", kategori:"Merchandise", harga:35000, hargaAwal:45000, foto:"" }
+];
+
+// Kegiatan: CONTOH — ganti dengan kegiatan/berita asli
+const BERITA = [
+  { judul:"[Contoh] Pendidikan Dasar Anggota Baru", tag:"Kegiatan", tanggal:"2026-11-10", ringkas:"Pengenalan nilai koperasi, unit usaha, dan kepengurusan bagi anggota baru KOPMA UM.", foto:"" },
+  { judul:"[Contoh] Bazar Wirausaha Mahasiswa", tag:"Event", tanggal:"2026-10-24", ringkas:"Lapak produk UMKM mahasiswa di area kampus.", foto:"" },
+  { judul:"[Contoh] Rapat Anggota Tahunan", tag:"Organisasi", tanggal:"2026-09-15", ringkas:"Laporan pertanggungjawaban pengurus dan pembagian SHU.", foto:"" }
+];
+
+const FAQ = [
+  { t:"Siapa saja yang boleh jadi anggota KOPMA UM?", j:"Mahasiswa aktif Universitas Negeri Malang dari semua fakultas dan angkatan." },
+  { t:"Apa bedanya belanja sebagai anggota dan bukan anggota?", j:"Semua orang boleh belanja di unit usaha KOPMA UM. Anggota mendapat harga anggota, promo khusus, dan pembagian SHU di akhir tahun buku." },
+  { t:"Apa itu SHU?", j:"Sisa Hasil Usaha adalah keuntungan koperasi selama satu tahun buku yang dibagikan kembali ke anggota sesuai keputusan Rapat Anggota." },
+  { t:"Bagaimana kalau saya sudah lulus?", j:"[Isi aturan keanggotaan setelah lulus, misalnya pengembalian simpanan pokok dan wajib.]" }
+];
+
+/* ======================= LOGIKA (tidak perlu diubah) ======================= */
+const $ = s => document.querySelector(s);
+const rupiah = n => "Rp" + n.toLocaleString("id-ID");
+const ikonFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>';
+const gambar = (src, alt) => src
+  ? `<img class="foto-isi" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\\'foto-kosong\\'>${ikonFoto.replace(/"/g,"&quot;")}Foto menyusul</div>'">`
+  : `<div class="foto-kosong">${ikonFoto}Foto menyusul</div>`;
+const waLink = pesan => KONTAK.wa ? `https://wa.me/${KONTAK.wa}?text=${encodeURIComponent(pesan)}` : "#kontak";
+
+// Kontak & tautan
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = waLink(a.dataset.wa);
+  if (KONTAK.wa) { a.target = "_blank"; a.rel = "noopener"; }
+});
+const tautan = { instagram: KONTAK.instagram, tiktok: KONTAK.tiktok, email: KONTAK.email ? "mailto:" + KONTAK.email : "" };
+document.querySelectorAll("[data-link]").forEach(a => {
+  const url = tautan[a.dataset.link];
+  if (url) { a.href = url; if (!url.startsWith("mailto")) { a.target = "_blank"; a.rel = "noopener"; } }
+  else a.href = "#kontak";
+});
+const isiTeks = { jam: KONTAK.jam, alamat: KONTAK.alamat, simpanan: KONTAK.simpanan, "wa-tampil": KONTAK.waTampil, "ig-tampil": KONTAK.igTampil, "email-tampil": KONTAK.emailTampil };
+document.querySelectorAll("[data-isi]").forEach(el => { if (isiTeks[el.dataset.isi]) el.textContent = isiTeks[el.dataset.isi]; });
+$("#tahun").textContent = new Date().getFullYear();
+
+// Hero slider
+const wadahSlide = $("#slides"), wadahTitik = $("#titik");
+SLIDES.forEach((s, i) => {
+  const el = document.createElement("div");
+  el.className = "slide" + (i === 0 ? " aktif" : "");
+  el.setAttribute("role", "group");
+  el.setAttribute("aria-roledescription", "slide");
+  el.setAttribute("aria-label", `${i + 1} dari ${SLIDES.length}`);
+  const Tag = i === 0 ? "h1" : "h2";
+  el.innerHTML = `<div class="latar ${s.foto ? "" : "kosong"}" ${s.foto ? `style="background-image:url('${s.foto}')"` : ""}></div>
+    <div class="wadah"><div class="isi">
+      <span class="label">${s.label}</span>
+      <${Tag}>${s.judul}</${Tag}>
+      <p>${s.teks}</p>
+      <div class="aksi"><a href="${s.tombol[1]}" class="btn btn-kuning">${s.tombol[0]}</a><a href="${s.tombol2[1]}" class="btn btn-garis">${s.tombol2[0]}</a></div>
+    </div></div>`;
+  if (i !== 0) el.setAttribute("aria-hidden", "true");
+  wadahSlide.appendChild(el);
+  const b = document.createElement("button");
+  b.setAttribute("aria-label", `Slide ${i + 1}`);
+  b.setAttribute("aria-current", i === 0 ? "true" : "false");
+  b.onclick = () => { ke(i); mulai(); };
+  wadahTitik.appendChild(b);
+});
+let sekarang = 0, timer;
+const semuaSlide = [...document.querySelectorAll(".slide")], semuaTitik = [...wadahTitik.children];
+function ke(i) {
+  sekarang = (i + SLIDES.length) % SLIDES.length;
+  semuaSlide.forEach((s, j) => { s.classList.toggle("aktif", j === sekarang); s.setAttribute("aria-hidden", j === sekarang ? "false" : "true"); s.inert = j !== sekarang; });
+  semuaTitik.forEach((t, j) => t.setAttribute("aria-current", j === sekarang ? "true" : "false"));
+}
+const kurangGerak = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function mulai() { clearInterval(timer); if (!kurangGerak) timer = setInterval(() => ke(sekarang + 1), 6500); }
+$("#sebelum").onclick = () => { ke(sekarang - 1); mulai(); };
+$("#sesudah").onclick = () => { ke(sekarang + 1); mulai(); };
+$(".hero").addEventListener("mouseenter", () => clearInterval(timer));
+$(".hero").addEventListener("mouseleave", mulai);
+ke(0); mulai();
+
+// Tentang
+$("#foto-tentang").innerHTML = gambar(FOTO_TENTANG, "Pengurus dan toko KOPMA UM");
+
+// Unit usaha
+const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+$("#grid-unit").innerHTML = UNIT.map(u => `<article class="kartu muncul">
+  <div class="gambar">${gambar(u.foto, u.nama)}</div>
+  <div class="badan"><h3>${u.nama}</h3><p>${u.teks}</p><span class="meta">${ikonLokasi}${u.lokasi}</span></div></article>`).join("");
+
+// Promo + filter
+const kategori = ["Semua", ...new Set(PROMO.map(p => p.kategori))];
+$("#filter").innerHTML = kategori.map((k, i) => `<button type="button" aria-pressed="${i === 0}" data-kat="${k}">${k}</button>`).join("");
+$("#grid-promo").innerHTML = PROMO.map(p => {
+  const persen = p.hargaAwal ? Math.round((1 - p.harga / p.hargaAwal) * 100) : 0;
+  return `<article class="kartu promo muncul" data-kat="${p.kategori}">
+    <div class="gambar">${persen ? `<span class="diskon">-${persen}%</span>` : ""}${gambar(p.foto, p.nama)}</div>
+    <div class="badan"><span class="kat">${p.kategori}</span><h3>${p.nama}</h3>
+    <div class="harga"><b>${rupiah(p.harga)}</b>${p.hargaAwal ? `<s>${rupiah(p.hargaAwal)}</s>` : ""}</div></div></article>`;
+}).join("");
+$("#filter").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  $("#filter").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll(".promo").forEach(k => k.classList.toggle("sembunyi", b.dataset.kat !== "Semua" && k.dataset.kat !== b.dataset.kat));
+});
+
+// Berita
+const fmtTgl = s => { const d = new Date(s + "T00:00:00"); return { h: d.getDate(), b: d.toLocaleString("id-ID", { month: "short" }), lengkap: d.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) }; };
+const kartuBerita = (b, utama) => { const t = fmtTgl(b.tanggal); return `<article class="kartu berita ${utama ? "berita-utama" : ""} muncul">
+  <div class="gambar"><span class="tanggal"><b>${t.h}</b><small>${t.b}</small></span>${gambar(b.foto, b.judul)}</div>
+  <div class="badan"><span class="tag">${b.tag}</span><h3>${b.judul}</h3><p>${b.ringkas}</p><span class="meta"><time datetime="${b.tanggal}">${t.lengkap}</time></span></div></article>`; };
+$("#grid-berita").innerHTML = kartuBerita(BERITA[0], true) + `<div class="berita-samping">${BERITA.slice(1).map(b => kartuBerita(b)).join("")}</div>`;
+
+// FAQ
+$("#daftar-faq").innerHTML = FAQ.map((f, i) => `<details class="muncul" ${i === 0 ? "open" : ""}><summary>${f.t}</summary><p>${f.j}</p></details>`).join("");
+
+// Navbar: scroll, burger, menu aktif
+const nav = $("#nav"), burger = $("#burger");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
+burger.onclick = () => { const b = nav.classList.toggle("buka"); burger.setAttribute("aria-expanded", b); burger.setAttribute("aria-label", b ? "Tutup menu" : "Buka menu"); };
+document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("buka"); burger.setAttribute("aria-expanded", "false"); }));
+const linkMenu = [...document.querySelectorAll('.menu a:not(.btn)')];
+const pantauSection = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) linkMenu.forEach(a => a.classList.toggle("aktif", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll("main section[id]").forEach(s => pantauSection.observe(s));
+
+// Animasi muncul saat scroll
+const pantauMuncul = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("tampak"); pantauMuncul.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll(".muncul").forEach(el => pantauMuncul.observe(el));
+</script>
+</body>
+</html>
