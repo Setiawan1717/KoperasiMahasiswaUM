@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | KOPMA UM</title>
+<meta name="theme-color" content="#FFF6E6">
+<link rel="icon" href="../assets/logo-kopma-um.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,700..900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gaya.css?v=20261127-7">
+<link rel="stylesheet" href="admin.css?v=20261127-7">
+</head>
+<body class="admin">
+
+<!-- ===== MASUK ===== -->
+<main class="layar-masuk" id="layar-masuk">
+  <form class="kartu-masuk" id="form-masuk" autocomplete="off">
+    <img src="../assets/adit.svg" alt="" class="masuk-adit" width="120" height="136">
+    <h1>Admin KOPMA UM</h1>
+    <p>Masukkan sandi admin untuk mengubah isi website.</p>
+    <label for="sandi" class="sr">Sandi admin</label>
+    <div class="isian-sandi">
+      <input type="password" id="sandi" placeholder="Sandi admin" required autocomplete="current-password">
+      <button type="button" id="lihat-sandi" aria-label="Tampilkan sandi">👁</button>
+    </div>
+    <button type="submit" class="btn btn-biru" id="tombol-masuk">Masuk</button>
+    <p class="pesan-galat" id="galat-masuk" role="alert"></p>
+    <a href="../index.html" class="kembali-situs">← Kembali ke website</a>
+  </form>
+</main>
+
+<!-- ===== EDITOR ===== -->
+<div class="layar-editor" id="layar-editor" hidden>
+  <header class="atas-admin">
+    <a href="../index.html" class="brand" target="_blank" rel="noopener"><img src="../assets/logo-kopma-um.webp" alt="" width="40" height="40"><span><b>Admin</b><small>KOPMA UM</small></span></a>
+    <div class="aksi-atas">
+      <span class="status-simpan" id="status-simpan" aria-live="polite"></span>
+      <button type="button" class="btn btn-putih" id="tombol-riwayat">Riwayat</button>
+      <a class="btn btn-putih" href="../index.html" target="_blank" rel="noopener">Lihat website ↗</a>
+      <button type="button" class="btn btn-oranye" id="tombol-simpan">Simpan perubahan</button>
+      <button type="button" class="btn btn-putih" id="tombol-keluar">Keluar</button>
+    </div>
+  </header>
+  <div class="badan-admin">
+    <nav class="tab-admin" id="tab-admin" aria-label="Bagian yang diubah"></nav>
+    <main class="isi-admin" id="isi-admin"></main>
+  </div>
+</div>
+
+<!-- ===== RIWAYAT ===== -->
+<dialog class="dialog-admin" id="dialog-riwayat">
+  <h2>Riwayat versi</h2>
+  <p>Setiap kali disimpan, versi sebelumnya disimpan di sini (50 terakhir). Pilih <b>Buka</b> untuk memuat versi itu ke editor, periksa, lalu klik <b>Simpan perubahan</b>.</p>
+  <div id="daftar-riwayat" class="daftar-riwayat"></div>
+  <div class="aksi-dialog">
+    <button type="button" class="btn btn-putih" id="tombol-bawaan">Pakai isi bawaan dari kode</button>
+    <button type="button" class="btn btn-biru" id="tutup-riwayat">Tutup</button>
+  </div>
+</dialog>
+
+<script src="../assets/data.js?v=20261127-7"></script>
+<script src="../assets/konten.js?v=20261127-7"></script>
+<script src="admin.js?v=20261127-7"></script>
+</body>
+</html>
