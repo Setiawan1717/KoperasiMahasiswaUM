@@ -9,311 +9,306 @@
 <meta property="og:description" content="Belanja hemat, promo mingguan, dan belajar berwirausaha bareng Koperasi Mahasiswa UM.">
 <meta property="og:image" content="assets/logo-kopma-um.png">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#00873A">
+<meta name="theme-color" content="#FFF6E6">
 <link rel="icon" href="assets/logo-kopma-um.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,700..900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --hijau:#00873A;        /* hijau logo, digelapkan sedikit agar kontras teks putih lolos AA */
-  --hijau-logo:#009C3C;
-  --hijau-tua:#0A3D24;
-  --hijau-gelap:#062716;
-  --biru:#0090D8;
-  --biru-tua:#006FA8;
-  --kuning:#FFC629;
-  --latar:#F4F8F5;
+  --krem:#FFF6E6;
+  --krem-2:#FFEEDA;
+  --peach:#FFDCCB;
+  --peach-2:#FFCFC4;
+  --pink:#FF9CA8;
+  --pink-tua:#FF8091;
+  --koral:#FF6B6B;
+  --oranye:#F9B867;
+  --oranye-tua:#F2913D;
+  --biru:#13489B;
+  --biru-tua:#0C3271;
+  --biru-muda:#8DB7E8;
   --putih:#FFFFFF;
-  --teks:#16241C;
-  --teks-2:#4D5E55;
-  --garis:#DCE7E0;
-  --radius:16px;
-  --bayang:0 1px 2px rgba(6,39,22,.06),0 8px 24px -8px rgba(6,39,22,.14);
+  --font-tampil:"Archivo",system-ui,sans-serif;
+  --font-poster:"Anton",Impact,sans-serif;
   --ease:cubic-bezier(.23,1,.32,1);
+  --bayang:0 14px 30px -14px rgba(140,60,30,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--teks);background:var(--putih);line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:96px;overflow-x:clip}
+body{font-family:"Inter",system-ui,sans-serif;font-weight:600;color:var(--biru);background:var(--krem);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
-:focus-visible{outline:3px solid var(--biru);outline-offset:3px;border-radius:6px}
-.wadah{width:min(1180px,100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--biru);outline-offset:3px;border-radius:8px}
+.wadah{width:min(1080px,100% - 32px);margin-inline:auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* ===== Topbar ===== */
-.topbar{background:var(--hijau-gelap);color:#CFE3D6;font-size:.8rem}
-.topbar .wadah{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:38px}
-.topbar a:hover{color:#fff}
-.topbar .info{display:flex;gap:20px;flex-wrap:wrap}
-.topbar .info span{display:inline-flex;align-items:center;gap:6px}
-.topbar .sosmed{display:flex;gap:14px}
-.topbar svg{width:14px;height:14px}
+/* ===== Judul tampilan ===== */
+.judul-besar{font-family:var(--font-tampil);font-stretch:125%;font-weight:900;color:var(--biru);line-height:1;letter-spacing:-.01em;text-align:center;font-size:clamp(2.1rem,7vw,5.2rem);text-transform:uppercase;
+  text-shadow:1.5px 1.5px 0 var(--oranye),-1.5px -1.5px 0 var(--oranye),1.5px -1.5px 0 var(--oranye),-1.5px 1.5px 0 var(--oranye),0 10px 18px rgba(19,72,155,.22);
+  margin-bottom:clamp(28px,4vw,48px);text-wrap:balance}
+.judul-besar.kecil{text-transform:none;font-size:clamp(2rem,4.6vw,3.4rem);text-shadow:0 6px 14px rgba(19,72,155,.15)}
+.sub{text-align:center;max-width:620px;margin:-20px auto 40px;font-size:1.02rem;color:var(--biru)}
 
-/* ===== Navbar ===== */
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
-.nav.scrolled{border-color:var(--garis);box-shadow:0 6px 20px -12px rgba(6,39,22,.25)}
-.nav .wadah{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:20px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:48px;height:48px;border-radius:50%}
-.brand b{display:block;font-size:1.1rem;font-weight:800;letter-spacing:.02em;color:var(--hijau-tua);line-height:1.1}
-.brand small{display:block;font-size:.72rem;color:var(--teks-2);font-weight:500}
-.menu{display:flex;align-items:center;gap:4px;list-style:none}
-.menu a{display:block;padding:8px 12px;font-size:.92rem;font-weight:600;color:var(--teks-2);border-radius:8px;position:relative;transition:color .15s}
-.menu a::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;background:var(--hijau-logo);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
-.menu a:hover,.menu a.aktif{color:var(--hijau)}
-.menu a.aktif::after{transform:scaleX(1)}
-@media (hover:hover){.menu a:hover::after{transform:scaleX(1)}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .16s var(--ease),background-color .2s,box-shadow .2s}
+/* ===== Header ===== */
+.nav{position:sticky;top:0;z-index:50;transition:background-color .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(255,242,222,.94);backdrop-filter:blur(10px);box-shadow:0 8px 22px -14px rgba(140,70,20,.45)}
+.nav .wadah{width:min(1320px,100% - 32px);display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.brand{display:flex;align-items:center;gap:12px;flex:none}
+.brand img{width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:0 4px 10px -4px rgba(0,0,0,.25)}
+.brand b{display:block;font-family:var(--font-tampil);font-stretch:118%;font-weight:900;font-size:1.25rem;color:var(--oranye);line-height:1.05}
+.brand small{display:block;font-family:var(--font-tampil);font-stretch:110%;font-weight:800;font-size:.68rem;letter-spacing:.04em;color:var(--pink-tua);text-transform:uppercase}
+.menu{display:flex;align-items:center;gap:2px;list-style:none;background:var(--oranye);padding:6px;border-radius:999px;box-shadow:0 6px 16px -8px rgba(242,145,61,.7)}
+.menu a{display:block;padding:9px 16px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#fff;transition:background-color .2s,color .2s,box-shadow .2s}
+@media (hover:hover){.menu a:not(.aktif):hover{background:rgba(255,255,255,.22)}}
+.menu a.aktif{background:#FFE9CF;color:var(--biru);box-shadow:0 0 0 2px rgba(255,255,255,.75),0 0 14px 2px rgba(255,255,255,.8)}
+.burger{display:none;width:48px;height:48px;border-radius:50%;background:var(--oranye);align-items:center;justify-content:center;box-shadow:0 6px 14px -6px rgba(242,145,61,.8)}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2.5px;background:#fff;border-radius:2px;position:relative;transition:transform .25s var(--ease),background-color .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.nav.buka .burger span{background:transparent}
+.nav.buka .burger span::before{transform:translateY(6px) rotate(45deg)}
+.nav.buka .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* ===== Tombol ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:800;font-size:.9rem;letter-spacing:.02em;transition:transform .16s var(--ease),background-color .2s,box-shadow .2s}
 .btn:active{transform:scale(.97)}
 .btn svg{width:18px;height:18px}
-.btn-utama{background:var(--hijau);color:#fff;box-shadow:0 6px 16px -6px rgba(0,135,58,.6)}
-.btn-utama:hover{background:#00702F}
-.btn-garis{border:2px solid rgba(255,255,255,.85);color:#fff}
-.btn-garis:hover{background:rgba(255,255,255,.14)}
-.btn-kuning{background:var(--kuning);color:var(--hijau-gelap)}
-.btn-kuning:hover{background:#FFD45C}
-.burger{display:none;width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center}
-.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:2px;background:var(--hijau-tua);border-radius:2px;position:relative;transition:transform .25s var(--ease),opacity .2s}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0}
-.burger span::before{top:-7px}.burger span::after{top:7px}
-.nav.buka .burger span{background:transparent}
-.nav.buka .burger span::before{transform:translateY(7px) rotate(45deg)}
-.nav.buka .burger span::after{transform:translateY(-7px) rotate(-45deg)}
+.btn-biru{background:var(--biru);color:#fff;box-shadow:0 8px 18px -8px rgba(19,72,155,.7)}
+.btn-biru:hover{background:var(--biru-tua)}
+.btn-oranye{background:var(--oranye);color:#fff;box-shadow:0 8px 18px -8px rgba(242,145,61,.8)}
+.btn-oranye:hover{background:var(--oranye-tua)}
+.btn-putih{background:#fff;color:var(--biru);box-shadow:0 8px 18px -10px rgba(0,0,0,.35)}
 
-/* ===== Hero slider ===== */
-.hero{position:relative;min-height:min(86vh,720px);color:#fff;overflow:hidden;background:var(--hijau-gelap)}
-.slide{position:absolute;inset:0;display:flex;align-items:center;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
-.slide.aktif{opacity:1;visibility:visible;transition:opacity .9s ease}
-.slide .latar{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);transition:transform 7s linear}
-.slide.aktif .latar{transform:scale(1)}
-.slide .latar::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,39,22,.94) 0%,rgba(6,39,22,.78) 45%,rgba(0,111,168,.35) 100%)}
-.slide .latar.kosong{background:
-  radial-gradient(circle at 85% 30%,rgba(0,144,216,.55),transparent 45%),
-  radial-gradient(circle at 70% 90%,rgba(0,156,60,.55),transparent 50%),
-  var(--hijau-gelap)}
-.slide .isi{position:relative;max-width:640px;padding-block:96px}
-.label{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.hero .label{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 14px;border-radius:999px;margin-bottom:22px}
-.hero .label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--kuning)}
-.hero h1,.hero h2{font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:18px;text-wrap:balance}
-.hero h1 em,.hero h2 em{font-style:normal;color:var(--kuning)}
-.hero p{font-size:clamp(1rem,1.6vw,1.15rem);color:#DCEBE2;max-width:540px;margin-bottom:32px}
-.hero .aksi{display:flex;gap:12px;flex-wrap:wrap}
-.slide .isi>*{opacity:0;transform:translateY(16px)}
-.slide.aktif .isi>*{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.slide.aktif .isi>*:nth-child(2){transition-delay:.08s}
-.slide.aktif .isi>*:nth-child(3){transition-delay:.16s}
-.slide.aktif .isi>*:nth-child(4){transition-delay:.24s}
-.hero-logo{position:absolute;right:max(16px,calc((100% - 1180px)/2));top:50%;transform:translateY(-50%);width:min(34vw,380px);aspect-ratio:1;border-radius:50%;background:#fff;padding:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.55),0 0 0 14px rgba(255,255,255,.08),0 0 0 30px rgba(255,255,255,.04);z-index:2}
-.hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
-.kontrol{position:absolute;bottom:28px;left:0;right:0;z-index:3}
-.kontrol .wadah{display:flex;align-items:center;gap:16px}
-.titik{display:flex;gap:8px}
-.titik button{width:28px;height:28px;display:grid;place-items:center}
-.titik button::before{content:"";width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .3s var(--ease),background-color .3s}
-.titik button[aria-current="true"]::before{width:28px;background:#fff}
-.panah{display:flex;gap:8px;margin-left:auto;margin-right:64px}
-.panah button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;transition:background-color .2s,transform .16s var(--ease)}
-.panah button:hover{background:rgba(255,255,255,.15)}
-.panah button:active{transform:scale(.94)}
-.panah svg{width:18px;height:18px}
+/* ===== Dekorasi: bola kaca, gumpal blur, batang gradasi ===== */
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:3;
+  background:radial-gradient(circle at 34% 28%,#fff 0 18%,#FFF0F2 38%,#FFC3CB 72%,#FF9FAD 100%);
+  box-shadow:0 12px 30px -4px rgba(255,120,140,.55),inset -6px -8px 14px rgba(255,140,160,.35);animation:melayang 7s ease-in-out infinite}
+.orb.biru{background:radial-gradient(circle at 34% 28%,#fff 0 18%,#EEF3FB 40%,#AFC6EA 75%,#7FA2D8 100%);box-shadow:0 12px 30px -4px rgba(19,72,155,.35),inset -6px -8px 14px rgba(19,72,155,.25)}
+.gumpal{position:absolute;border-radius:50%;pointer-events:none;filter:blur(18px);z-index:0}
+.gumpal.pink{background:radial-gradient(circle,rgba(255,110,130,.55),transparent 70%)}
+.gumpal.biru{background:radial-gradient(circle,rgba(70,110,200,.45),transparent 70%)}
+.batang{position:absolute;height:28px;border-radius:999px;pointer-events:none;z-index:1}
+.batang.ke-kanan{background:linear-gradient(90deg,rgba(255,255,255,0),#fff 12%,#FFD6DC 45%,#FF8F9E 100%);border-radius:999px 0 0 999px}
+.batang.ke-kiri{background:linear-gradient(90deg,#fff 0%,#FFD6DC 45%,#FF8F9E 100%)}
+@keyframes melayang{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* ===== Statistik strip ===== */
-.strip{position:relative;z-index:4;margin-top:-1px;background:var(--hijau)}
-.strip .wadah{display:grid;grid-template-columns:repeat(4,1fr)}
-.strip div.item{padding:26px 20px;color:#fff;border-right:1px solid rgba(255,255,255,.18);display:flex;gap:14px;align-items:center}
-.strip div.item:last-child{border-right:0}
-.strip svg{width:34px;height:34px;flex:none;opacity:.9}
-.strip b{display:block;font-size:1.02rem}
-.strip small{color:#D6EEDD;font-size:.84rem;line-height:1.4;display:block}
+/* ===== Sudut "tergigit" ===== */
+.takik{position:relative}
+.takik::before,.takik::after{content:"";position:absolute;width:var(--t,72px);height:var(--t,72px);border-radius:50%;background:var(--bg-takik,var(--krem));box-shadow:inset 0 3px 6px -2px rgba(140,60,30,.22);z-index:2;pointer-events:none}
+.takik::before{top:calc(var(--t,72px) / -2);left:14%}
+.takik::after{bottom:14%;right:calc(var(--t,72px) / -2)}
+.takik.kanan-atas::before{left:auto;right:calc(var(--t,72px) / -2);top:-8%}
+.takik.kanan-atas::after{display:none}
+.takik.kanan-bawah::before{display:none}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:28px 0 72px}
+.hero-kartu{position:relative;width:min(960px,100% - 32px);margin-inline:auto;aspect-ratio:16/9.6;border-radius:44px;
+  background:linear-gradient(160deg,#FFFBF3 0%,#FFF4E3 100%);border:5px solid rgba(255,255,255,.95);
+  box-shadow:0 26px 50px -24px rgba(140,70,20,.45),0 2px 0 rgba(255,255,255,.9) inset;container-type:inline-size}
+.hero-kartu > .kata{position:absolute;z-index:4;color:var(--biru);font-family:var(--font-poster);line-height:.8;letter-spacing:-.005em}
+.kata-kopma{left:11.5%;top:9%;font-size:22cqw;text-shadow:0 8px 18px rgba(19,72,155,.18)}
+.kata-um{right:7%;bottom:7%;font-size:31cqw;text-shadow:0 8px 18px rgba(19,72,155,.18)}
+.kata-vertikal{position:absolute;z-index:4;left:4.6%;top:11%;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--font-tampil);font-stretch:125%;font-weight:900;font-size:3.3cqw;letter-spacing:.02em;color:var(--biru)}
+.hero-teks{position:absolute;z-index:4;left:11.5%;bottom:9%;width:41%}
+.hero-teks h1{font-family:"Inter",sans-serif;font-weight:800;font-size:max(15px,2.7cqw);line-height:1.3;color:var(--biru);margin-bottom:2.4cqw}
+.hero-teks h1 .p{color:var(--pink-tua)}
+.hero-teks h1 .o{color:var(--oranye-tua)}
+.hero-teks h1 i{font-style:italic}
+.hero-teks .aksi{display:flex;gap:10px;flex-wrap:wrap}
+.hero .batang.ke-kanan{top:20%;left:calc(50% + 40px);right:0}
+.hero .batang.ke-kiri{bottom:13%;left:-30px;width:calc(50% - 260px)}
 
 /* ===== Section umum ===== */
-section.blok{padding-block:clamp(64px,9vw,104px)}
-.blok.abu{background:var(--latar)}
-.kepala{max-width:640px;margin-bottom:44px}
-.kepala.tengah{text-align:center;margin-inline:auto}
-.kepala .label{color:var(--hijau);margin-bottom:12px}
-.kepala .label::before{content:"";width:22px;height:3px;border-radius:3px;background:var(--biru)}
-.kepala h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.18;font-weight:800;letter-spacing:-.015em;color:var(--hijau-tua);text-wrap:balance}
-.kepala p{color:var(--teks-2);margin-top:12px;font-size:1.03rem}
+section.blok{position:relative;padding-block:clamp(56px,8vw,96px)}
+.blok.peach{background:linear-gradient(180deg,#FFE7DC 0%,#FFD3CA 100%);--bg-takik:#FFDDD3}
+.blok.gradasi{background:linear-gradient(180deg,var(--krem) 0%,#FFE8DA 100%)}
 
-/* ===== Tentang ===== */
-.tentang{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
-.tentang-foto{position:relative}
-.tentang-foto .bingkai{aspect-ratio:4/4.4;border-radius:24px;overflow:hidden;background:linear-gradient(150deg,#E5F3EA,#DDF0FA)}
-.tentang-foto .lencana{position:absolute;right:-18px;bottom:28px;background:#fff;border-radius:18px;padding:16px 20px;box-shadow:var(--bayang);display:flex;gap:12px;align-items:center;max-width:250px}
-.tentang-foto .lencana img{width:52px;height:52px;border-radius:50%}
-.tentang-foto .lencana b{display:block;font-size:.95rem;color:var(--hijau-tua);line-height:1.3}
-.tentang-foto .lencana small{font-size:.8rem;color:var(--teks-2)}
-.tentang-teks p{color:var(--teks-2);margin-bottom:16px}
-.nilai{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 30px}
-.nilai div{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--garis);border-radius:14px;background:#fff}
-.nilai .ikon{width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;background:#E3F3E9;color:var(--hijau)}
-.nilai div:nth-child(even) .ikon{background:#DFF0FA;color:var(--biru-tua)}
-.nilai svg{width:20px;height:20px}
-.nilai b{display:block;font-size:.95rem;color:var(--hijau-tua)}
-.nilai small{font-size:.84rem;color:var(--teks-2);line-height:1.45;display:block}
+/* ===== Kenalan ===== */
+.kenalan{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.kartu-peach{position:relative;background:var(--peach);border-radius:16px;padding:clamp(24px,3.4vw,34px);box-shadow:0 10px 24px -18px rgba(140,60,30,.5)}
+.kartu-peach p{font-size:1.02rem;line-height:1.55}
+.kartu-peach p+p{margin-top:14px}
+.kenalan .orb{width:62px;height:62px;left:calc(50% - 31px);bottom:-30px}
+.kenalan .gumpal{width:180px;height:180px;left:calc(50% - 40px);bottom:-90px}
+.pita-tumpuk{display:flex;flex-direction:column;align-items:flex-end;margin-bottom:26px}
+.pita{display:inline-block;font-family:var(--font-tampil);font-stretch:125%;font-weight:900;line-height:1;text-transform:uppercase;padding:.12em .3em;font-size:clamp(2rem,5vw,3.6rem)}
+.pita.biru{background:var(--biru);color:var(--pink);transform:rotate(-3deg);-webkit-text-stroke:1.5px var(--biru-tua);box-shadow:0 8px 18px -10px rgba(19,72,155,.6)}
+.pita.peach{background:#FFD3C1;color:var(--biru);transform:rotate(-3deg) translate(-10px,-6px);margin-right:4%}
+.bingkai{--t:76px;position:relative;aspect-ratio:1/.95;border-radius:34px;background:linear-gradient(180deg,#FFD9CF 0%,#FFEDE2 100%);border:3px solid rgba(255,255,255,.85);box-shadow:var(--bayang);overflow:visible}
+.bingkai .isi-bingkai{position:absolute;inset:0;border-radius:31px;overflow:hidden;display:grid;place-items:center}
+.bingkai .isi-bingkai .logo-besar{width:62%;border-radius:50%;background:#fff;padding:14px;box-shadow:0 18px 40px -14px rgba(19,72,155,.45)}
+.bingkai .isi-bingkai img.foto-isi{width:100%;height:100%;object-fit:cover}
+.bingkai .label-bingkai{position:absolute;right:8%;bottom:6%;z-index:3;background:#FFD3D9;color:var(--biru);font-family:var(--font-tampil);font-stretch:125%;font-weight:900;font-size:1.25rem;padding:6px 14px;border-radius:6px;box-shadow:0 0 0 3px #fff,0 6px 14px -6px rgba(0,0,0,.3)}
 
-/* Placeholder foto */
-.foto-kosong{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5E8B70;font-size:.8rem;font-weight:600;text-align:center;padding:16px;background:
-  repeating-linear-gradient(135deg,rgba(0,135,58,.05) 0 12px,transparent 12px 24px),linear-gradient(150deg,#E8F5EC,#E1F1FA)}
-.foto-kosong svg{width:34px;height:34px;opacity:.7}
+/* ===== Papan (gaya Visi/Misi) — Keanggotaan ===== */
+.baris-papan{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,8vw,100px);align-items:center}
+.baris-papan + .baris-papan{margin-top:clamp(40px,6vw,64px)}
+.papan{position:relative;border-radius:12px;border:2px solid rgba(255,255,255,.85);padding:clamp(22px,3vw,30px) 20px;text-align:center;font-family:var(--font-tampil);font-stretch:125%;font-weight:900;font-size:clamp(2.6rem,7vw,5rem);line-height:1;color:var(--biru)}
+.papan.pink{background:linear-gradient(90deg,#FFE6DF,#FFC4BE);box-shadow:0 30px 50px -14px rgba(255,110,120,.55),-30px -20px 50px -20px rgba(255,90,110,.4),10px 30px 40px -20px rgba(70,110,200,.45)}
+.papan.biru{background:linear-gradient(90deg,#F6F0E8 0%,#E6EAF2 45%,#8DB7E8 100%);box-shadow:0 30px 50px -14px rgba(70,120,210,.55),-30px 10px 50px -20px rgba(255,110,130,.4)}
+.papan small{display:block;font-family:"Inter";font-weight:700;font-size:.95rem;margin-top:10px;font-stretch:100%;letter-spacing:0}
+.kartu-koral{--t:60px;position:relative;border-radius:18px;padding:clamp(22px,3vw,34px);color:var(--biru);
+  background:radial-gradient(ellipse at 45% 70%,#FFEDE8 0%,#FFB4AA 45%,#FF6E6E 100%);box-shadow:0 14px 28px -16px rgba(200,60,60,.6)}
+.kartu-koral ul,.kartu-koral ol{padding-left:1.3em;display:grid;gap:8px;font-size:1.02rem;line-height:1.45}
+.kartu-koral li::marker{font-weight:800}
+.kartu-koral li b{display:block}
+.kartu-koral li small{display:block;font-size:.9rem;font-weight:600;opacity:.9}
+.kartu-koral .btn{margin-top:18px}
+.blok-anggota .orb{width:64px;height:64px}
+.blok-anggota .gumpal{width:220px;height:220px}
+
+/* ===== Nilai (gaya Core Value) ===== */
+.grid-nilai{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2.6vw,30px)}
+.nilai{width:min(240px,calc(25% - 23px));aspect-ratio:1.24/1;border-radius:10px;border:2px solid rgba(255,255,255,.85);background:linear-gradient(180deg,#FFD8D0 0%,#FF9C95 100%);box-shadow:0 12px 22px -12px rgba(180,60,50,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;text-align:center;transition:transform .3s var(--ease)}
+@media (hover:hover){.nilai:hover{transform:translateY(-6px) rotate(-1deg)}}
+.nilai svg{width:clamp(64px,8vw,104px);height:auto;color:var(--biru)}
+.nilai b{font-family:var(--font-tampil);font-stretch:125%;font-weight:900;font-size:clamp(.85rem,1.6vw,1.2rem);text-transform:uppercase;line-height:1.1}
+.nilai small{font-size:.82rem;line-height:1.35;font-weight:600;max-width:24ch}
+
+/* ===== Placeholder foto ===== */
+.foto-kosong{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--biru);opacity:.75;font-size:.8rem;font-weight:700;text-align:center;padding:16px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 12px,transparent 12px 24px),linear-gradient(160deg,#FFE3D8,#FFCFC6)}
+.foto-kosong svg{width:34px;height:34px}
 .foto-isi{width:100%;height:100%;object-fit:cover}
 
-/* ===== Unit usaha ===== */
-.grid-unit{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.kartu{background:#fff;border:1px solid var(--garis);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
-@media (hover:hover){.kartu:hover{transform:translateY(-4px);box-shadow:var(--bayang);border-color:transparent}}
-.kartu .gambar{aspect-ratio:4/3;overflow:hidden;position:relative}
-.kartu .gambar img{transition:transform .6s var(--ease)}
-@media (hover:hover){.kartu:hover .gambar img{transform:scale(1.05)}}
-.kartu .badan{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
-.kartu h3{font-size:1.08rem;color:var(--hijau-tua);line-height:1.3}
-.kartu p{font-size:.9rem;color:var(--teks-2)}
-.kartu .meta{margin-top:auto;padding-top:10px;font-size:.8rem;color:var(--hijau);font-weight:700;display:flex;align-items:center;gap:6px}
-.kartu .meta svg{width:15px;height:15px}
+/* ===== Kartu umum (unit, promo, berita) ===== */
+.grid-unit{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.kartu{--t:46px;position:relative;background:var(--peach);border-radius:20px;border:2px solid rgba(255,255,255,.8);display:flex;flex-direction:column;box-shadow:0 12px 26px -18px rgba(140,60,30,.55);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+@media (hover:hover){.kartu:hover{transform:translateY(-5px);box-shadow:0 20px 34px -18px rgba(140,60,30,.6)}}
+.kartu .gambar{aspect-ratio:4/3;overflow:hidden;position:relative;margin:10px 10px 0;border-radius:14px}
+.kartu .badan{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kartu h3{font-family:var(--font-tampil);font-stretch:115%;font-weight:900;font-size:1.08rem;line-height:1.2}
+.kartu p{font-size:.92rem;font-weight:600;line-height:1.5}
+.kartu .meta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--biru);font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px}
+.kartu .meta svg{width:14px;height:14px}
 
-/* ===== Promo ===== */
-.filter{display:flex;gap:8px;flex-wrap:wrap;margin:-16px 0 32px}
-.filter button{padding:9px 18px;border-radius:999px;border:1px solid var(--garis);background:#fff;font-weight:600;font-size:.88rem;color:var(--teks-2);transition:background-color .2s,color .2s,border-color .2s,transform .16s var(--ease)}
-.filter button:active{transform:scale(.96)}
-.filter button[aria-pressed="true"]{background:var(--hijau-tua);border-color:var(--hijau-tua);color:#fff}
-.grid-promo{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* Promo */
+.filter{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;width:max-content;max-width:100%;margin:0 auto 36px;background:var(--oranye);padding:6px;border-radius:999px;box-shadow:0 6px 16px -8px rgba(242,145,61,.7)}
+.filter button{padding:9px 18px;border-radius:999px;font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.02em;color:#fff;transition:background-color .2s,color .2s,box-shadow .2s}
+.filter button[aria-pressed="true"]{background:#FFE9CF;color:var(--biru);box-shadow:0 0 0 2px rgba(255,255,255,.75),0 0 12px 2px rgba(255,255,255,.8)}
+.grid-promo{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.promo{background:linear-gradient(180deg,#FFEDE5 0%,#FFD0C6 100%)}
 .promo .gambar{aspect-ratio:1}
-.diskon{position:absolute;top:12px;left:12px;background:var(--kuning);color:var(--hijau-gelap);font-weight:800;font-size:.78rem;padding:5px 10px;border-radius:999px;z-index:1}
+.diskon{position:absolute;top:10px;right:10px;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-tampil);font-stretch:110%;font-weight:900;font-size:.9rem;color:#fff;background:radial-gradient(circle at 35% 30%,#FF9AA0,var(--koral) 70%);box-shadow:0 6px 14px -4px rgba(255,80,80,.6),0 0 0 3px #fff}
 .harga{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.harga b{font-size:1.15rem;color:var(--hijau)}
-.harga s{font-size:.85rem;color:#8A9A90}
-.promo .kat{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--biru-tua)}
-.promo .badan{gap:6px}
-.catatan{margin-top:22px;font-size:.84rem;color:var(--teks-2)}
+.harga b{font-family:var(--font-tampil);font-stretch:110%;font-weight:900;font-size:1.25rem}
+.harga s{font-size:.85rem;opacity:.65}
+.promo .kat{align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--biru);color:#fff;padding:3px 10px;border-radius:999px}
+.promo h3{font-family:"Inter";font-stretch:100%;font-weight:800;font-size:.98rem}
+.catatan{margin-top:26px;font-size:.86rem;text-align:center}
 .promo.sembunyi{display:none}
 
-/* ===== Keanggotaan ===== */
-.anggota{background:linear-gradient(120deg,var(--hijau-gelap) 0%,#0A4A2A 55%,#05507A 100%);color:#fff;border-radius:28px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);position:relative;overflow:hidden}
-.anggota::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:60px solid rgba(255,255,255,.04);right:-140px;top:-160px}
-.anggota .kepala{margin-bottom:24px}
-.anggota .kepala h2{color:#fff}
-.anggota .kepala p{color:#CFE3D6}
-.anggota .kepala .label{color:var(--kuning)}
-.anggota .kepala .label::before{background:var(--kuning)}
-.untung{list-style:none;display:grid;gap:12px;margin-bottom:30px}
-.untung li{display:flex;gap:12px;align-items:flex-start;color:#E6F2EA}
-.untung svg{width:22px;height:22px;flex:none;color:var(--kuning);margin-top:2px}
-.langkah{display:grid;gap:14px;align-content:center;position:relative}
-.langkah div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
-.langkah .no{width:40px;height:40px;flex:none;border-radius:12px;background:#fff;color:var(--hijau-tua);font-weight:800;display:grid;place-items:center}
-.langkah b{display:block;margin-bottom:2px}
-.langkah small{color:#C7DCCF;font-size:.88rem;display:block;line-height:1.5}
+/* Berita */
+.grid-berita{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.berita .gambar{aspect-ratio:16/11}
+.tanggal{position:absolute;top:12px;left:12px;z-index:1;background:var(--biru);color:var(--pink);padding:6px 12px;text-align:center;line-height:1;transform:rotate(-4deg);box-shadow:0 6px 14px -6px rgba(19,72,155,.7)}
+.tanggal b{display:block;font-family:var(--font-tampil);font-stretch:125%;font-weight:900;font-size:1.4rem}
+.tanggal small{font-size:.7rem;font-weight:800;text-transform:uppercase;color:#FFE2E6}
+.berita .tag{align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#fff;padding:3px 10px;border-radius:999px}
 
-/* ===== Kegiatan ===== */
-.grid-berita{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
-.berita-samping{display:grid;gap:20px}
-.berita .gambar{aspect-ratio:16/10;position:relative}
-.berita-samping .berita{flex-direction:row}
-.berita-samping .berita .gambar{aspect-ratio:auto;width:42%;flex:none}
-.tanggal{position:absolute;top:14px;left:14px;background:#fff;border-radius:12px;padding:6px 12px;text-align:center;line-height:1.1;box-shadow:0 4px 12px rgba(0,0,0,.12)}
-.tanggal b{display:block;font-size:1.25rem;color:var(--hijau)}
-.tanggal small{font-size:.7rem;font-weight:700;color:var(--teks-2);text-transform:uppercase}
-.berita .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--biru-tua)}
-.berita-utama h3{font-size:1.35rem}
-
-/* ===== FAQ ===== */
-.faq{max-width:820px;margin-inline:auto;display:grid;gap:12px}
-.faq details{background:#fff;border:1px solid var(--garis);border-radius:14px;overflow:hidden}
-.faq summary{list-style:none;padding:18px 22px;font-weight:700;color:var(--hijau-tua);display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer}
+/* FAQ */
+.faq{max-width:820px;margin-inline:auto;display:grid;gap:14px}
+.faq details{background:var(--peach);border:2px solid rgba(255,255,255,.85);border-radius:16px;box-shadow:0 10px 22px -18px rgba(140,60,30,.6)}
+.faq summary{list-style:none;padding:18px 22px;font-weight:800;font-size:1.02rem;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";width:12px;height:12px;flex:none;border-right:2.5px solid var(--hijau);border-bottom:2.5px solid var(--hijau);transform:rotate(45deg) translateY(-3px);transition:transform .25s var(--ease)}
-.faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
-.faq details p{padding:0 22px 20px;color:var(--teks-2)}
+.faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--oranye);color:#fff;font-size:1.3rem;font-weight:800;transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 20px;font-weight:600}
 
-/* ===== Kontak ===== */
-.kontak{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:stretch}
+/* Kontak */
+.kontak{display:grid;grid-template-columns:1fr 1.25fr;gap:28px;align-items:stretch}
 .kontak-list{display:grid;gap:14px;align-content:start}
-.kontak-list a,.kontak-list div{display:flex;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--garis);border-radius:16px;background:#fff;transition:border-color .2s,transform .2s var(--ease)}
-@media (hover:hover){.kontak-list a:hover{border-color:var(--hijau);transform:translateX(4px)}}
-.kontak-list .ikon{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;background:#E3F3E9;color:var(--hijau)}
+.kontak-list a,.kontak-list div{display:flex;gap:16px;align-items:center;padding:16px 18px;border-radius:16px;background:#FFF3EA;border:2px solid rgba(255,255,255,.9);box-shadow:0 10px 22px -18px rgba(140,60,30,.6);transition:transform .2s var(--ease)}
+@media (hover:hover){.kontak-list a:hover{transform:translateX(5px)}}
+.kontak-list .ikon{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--biru);color:#fff}
 .kontak-list svg{width:22px;height:22px}
-.kontak-list small{display:block;font-size:.78rem;color:var(--teks-2);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-.kontak-list b{color:var(--hijau-tua);font-size:.98rem;word-break:break-word}
-.peta{border-radius:20px;overflow:hidden;border:1px solid var(--garis);min-height:360px;background:var(--latar)}
+.kontak-list small{display:block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--pink-tua)}
+.kontak-list b{font-size:.98rem;word-break:break-word}
+.peta{border-radius:14px;overflow:hidden;background:#ddd;min-height:360px;border:3px solid rgba(255,255,255,.9);box-shadow:0 18px 34px -18px rgba(0,0,0,.45)}
 .peta iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
 
-/* ===== CTA & Footer ===== */
-.cta{background:var(--biru-tua);color:#fff;background-image:radial-gradient(circle at 10% 120%,rgba(0,156,60,.55),transparent 45%),radial-gradient(circle at 95% -20%,rgba(255,255,255,.18),transparent 40%)}
-.cta .wadah{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:48px;flex-wrap:wrap}
-.cta h2{font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;line-height:1.2;max-width:620px;text-wrap:balance}
-footer{background:var(--hijau-gelap);color:#B5CDBE;font-size:.92rem}
-.kaki{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-block:64px 40px}
-footer h4{color:#fff;font-size:1rem;margin-bottom:16px}
-footer ul{list-style:none;display:grid;gap:10px}
-footer a:hover{color:#fff}
-footer .brand b{color:#fff}
-footer .brand small{color:#9DB8A7}
-footer .brand img{background:#fff}
-.kaki p{margin-top:16px;line-height:1.7}
-.sos{display:flex;gap:10px;margin-top:18px}
-.sos a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:background-color .2s}
-.sos a:hover{background:var(--hijau)}
-.sos svg{width:18px;height:18px}
-.hak{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;font-size:.84rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* CTA */
+.cta{position:relative;overflow:hidden;padding-block:40px 72px}
+.cta-kartu{position:relative;border-radius:28px;padding:clamp(28px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  background:radial-gradient(ellipse at 30% 60%,#FFEDE8 0%,#FFB4AA 45%,#FF7272 100%);border:3px solid rgba(255,255,255,.85);box-shadow:0 20px 40px -20px rgba(200,60,60,.6)}
+.cta h2{font-family:var(--font-tampil);font-stretch:120%;font-weight:900;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.15;max-width:640px;text-wrap:balance}
+.cta .orb{width:70px;height:70px;right:-18px;top:-26px}
 
-/* Tombol WA mengambang */
-.wa-melayang{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -6px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
+/* Footer */
+footer{background:var(--biru);color:#E6ECF8;font-size:.92rem;font-weight:500}
+.kaki{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-block:60px 36px}
+footer h4{color:var(--oranye);font-family:var(--font-tampil);font-stretch:115%;font-weight:900;font-size:1rem;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:9px}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .brand small{color:var(--pink)}
+.kaki p{margin-top:14px;line-height:1.7}
+.sos{display:flex;gap:10px;margin-top:18px}
+.sos a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);transition:background-color .2s}
+.sos a:hover{background:var(--oranye);text-decoration:none}
+.sos svg{width:18px;height:18px}
+.hak{border-top:1px solid rgba(255,255,255,.15);padding-block:20px;font-size:.84rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* WA mengambang */
+.wa-melayang{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px #fff,0 12px 24px -6px rgba(0,0,0,.35);transition:transform .2s var(--ease)}
 .wa-melayang:hover{transform:scale(1.06)}
-.wa-melayang:active{transform:scale(.95)}
 .wa-melayang svg{width:28px;height:28px}
 
 /* Muncul saat scroll */
-.muncul{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.muncul{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .muncul.tampak{opacity:1;transform:none}
+.kartu.muncul.tampak{transition:opacity .7s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
 
 /* ===== Responsif ===== */
+@media (max-width:1180px){
+  .menu a{padding:9px 11px;font-size:.72rem}
+}
 @media (max-width:1024px){
   .grid-unit,.grid-promo{grid-template-columns:repeat(2,1fr)}
+  .grid-berita{grid-template-columns:1fr 1fr}
   .kaki{grid-template-columns:1fr 1fr}
-  .hero-logo{width:min(30vw,300px)}
 }
-@media (max-width:900px){
+@media (max-width:960px){
   .burger{display:flex}
-  .nav .btn-daftar{display:none}
-  .menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:8px 16px 18px;border-bottom:1px solid var(--garis);box-shadow:0 16px 30px -18px rgba(0,0,0,.3);gap:2px;
-    clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .3s var(--ease),visibility 0s .3s}
-  .nav.buka .menu{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path .3s var(--ease)}
-  .menu a{padding:12px 8px;font-size:1rem}
-  .menu a::after{display:none}
-  .menu .btn{margin-top:8px;color:#fff}
-  .tentang,.anggota,.kontak,.grid-berita{grid-template-columns:1fr}
-  .tentang-foto{max-width:520px}
-  .strip .wadah{grid-template-columns:1fr 1fr}
-  .strip div.item:nth-child(2){border-right:0}
-  .strip div.item:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.18)}
-  .hero-logo{display:none}
+  .menu{position:absolute;top:calc(100% - 6px);left:16px;right:16px;flex-direction:column;align-items:stretch;border-radius:24px;padding:10px;gap:2px;
+    clip-path:inset(0 0 100% 0 round 24px);visibility:hidden;transition:clip-path .3s var(--ease),visibility 0s .3s}
+  .nav.buka .menu{clip-path:inset(0 0 0 0 round 24px);visibility:visible;transition:clip-path .3s var(--ease)}
+  .menu a{padding:12px 16px;font-size:.9rem}
+  .nav.buka{background:rgba(255,242,222,.97)}
 }
-@media (min-width:901px){.menu .btn{display:none}}
-@media (max-width:600px){
-  .topbar .info span:nth-child(2){display:none}
-  .topbar .info{min-width:0}
-  .topbar .info>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62vw;display:block}
+@media (min-width:701px){.kartu-peach p,.kartu-koral li{text-align:justify;hyphens:auto}}
+@media (max-width:820px){
+  .kenalan,.baris-papan,.kontak{grid-template-columns:1fr}
+  .kenalan-kanan{max-width:480px;width:100%;margin-inline:auto}
+  .baris-papan .papan{max-width:440px;width:100%;margin-inline:auto}
+}
+@media (max-width:640px){
+  .hero{padding-top:12px}
+  .hero-kartu{aspect-ratio:auto;border-radius:32px;padding:26px 20px 28px 54px;display:flex;flex-direction:column}
+  .hero-kartu > .kata{position:static}
+  .kata-kopma{font-size:25cqw}
+  .kata-um{font-size:36cqw;align-self:flex-end;margin-top:2cqw}
+  .kata-vertikal{left:14px;top:26px;font-size:15px}
+  .hero-teks{position:static;width:auto;margin-top:18px}
+  .hero-teks h1{font-size:17px;margin-bottom:16px}
+  .hero .batang.ke-kanan{top:15%;left:60%}
+  .hero .batang.ke-kiri{bottom:20%;width:14%}
   .brand small{display:none}
-  .strip svg{display:none}
-  .grid-unit{grid-template-columns:1fr}
+  .orb-kiri{display:none}
+  .grid-unit,.grid-berita{grid-template-columns:1fr}
   .grid-promo{grid-template-columns:1fr 1fr;gap:12px}
-  .promo .badan{padding:14px}
-  .promo h3{font-size:.95rem}
-  .nilai{grid-template-columns:1fr}
+  .promo .badan{padding:12px}
+  .promo h3{font-size:.88rem}
+  .diskon{width:46px;height:46px;font-size:.78rem}
+  .nilai{width:calc(50% - 8px)}
+  .nilai small{display:none}
   .kaki{grid-template-columns:1fr}
-  .strip div.item{padding:18px 14px;gap:10px}
-  .strip svg{width:26px;height:26px}
-  .berita-samping .berita{flex-direction:column}
-  .berita-samping .berita .gambar{width:100%;aspect-ratio:16/10}
-  .tentang-foto .lencana{right:10px}
-  .panah{display:none}
+  .filter{border-radius:22px}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}
   .muncul{opacity:1;transform:none}
 }
 </style>
@@ -322,188 +317,189 @@ footer .brand img{background:#fff}
 
 <a href="#utama" class="sr">Lewati ke konten utama</a>
 
-<div class="topbar">
-  <div class="wadah">
-    <div class="info">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Universitas Negeri Malang, Jl. Semarang 5, Malang</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-isi="jam">[Jam buka]</span></span>
-    </div>
-    <div class="sosmed" aria-label="Media sosial">
-      <a data-link="instagram" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-      <a data-link="tiktok" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></a>
-      <a data-link="email" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
-    </div>
-  </div>
-</div>
-
 <header class="nav" id="nav">
   <div class="wadah">
     <a href="#beranda" class="brand" aria-label="KOPMA UM, ke beranda">
-      <img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="48" height="48">
-      <span><b>KOPMA UM</b><small>Koperasi Mahasiswa Universitas Negeri Malang</small></span>
+      <img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="50" height="50">
+      <span><b>KOPMA UM</b><small>Koperasi Mahasiswa</small></span>
     </a>
     <nav aria-label="Menu utama">
       <ul class="menu" id="menu">
         <li><a href="#beranda" class="aktif">Beranda</a></li>
         <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#anggota">Keanggotaan</a></li>
+        <li><a href="#nilai">Nilai</a></li>
         <li><a href="#unit">Unit Usaha</a></li>
         <li><a href="#promo">Promo</a></li>
-        <li><a href="#anggota">Keanggotaan</a></li>
         <li><a href="#kegiatan">Kegiatan</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#kontak">Kontak</a></li>
-        <li><a href="#anggota" class="btn btn-utama">Gabung Anggota</a></li>
       </ul>
     </nav>
-    <a href="#anggota" class="btn btn-utama btn-daftar">Gabung Anggota</a>
     <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
   </div>
 </header>
 
 <main id="utama">
 
-<!-- ===== HERO SLIDER ===== -->
-<section class="hero" id="beranda" aria-roledescription="carousel" aria-label="Sorotan KOPMA UM">
-  <div id="slides"></div>
-  <div class="hero-logo" aria-hidden="true"><img src="assets/logo-kopma-um.webp" alt=""></div>
-  <div class="kontrol">
-    <div class="wadah">
-      <div class="titik" id="titik" role="tablist" aria-label="Pilih slide"></div>
-      <div class="panah">
-        <button id="sebelum" aria-label="Slide sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button>
-        <button id="sesudah" aria-label="Slide berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button>
+<!-- ===== HERO ===== -->
+<section class="hero" id="beranda" aria-label="Beranda">
+  <span class="batang ke-kanan" aria-hidden="true"></span>
+  <span class="batang ke-kiri" aria-hidden="true"></span>
+  <div class="hero-kartu">
+    <span class="kata-vertikal" aria-hidden="true">KOPERASI</span>
+    <span class="kata kata-kopma" aria-hidden="true">KOPMA</span>
+    <span class="kata kata-um" aria-hidden="true">UM</span>
+    <div class="hero-teks">
+      <h1><span class="sr">KOPMA UM, Koperasi Mahasiswa Universitas Negeri Malang. </span>Belanja <span class="p">Hemat,</span> Belajar <span class="o">Usaha,</span><br><i>Dari</i> Mahasiswa <span class="p">untuk</span> <span class="o">Mahasiswa</span></h1>
+      <div class="aksi">
+        <a href="#promo" class="btn btn-biru">Lihat Promo</a>
+        <a href="#anggota" class="btn btn-oranye">Gabung Anggota</a>
+      </div>
+    </div>
+    <span class="orb" style="width:50px;height:50px;left:43%;top:6%" aria-hidden="true"></span>
+    <span class="orb" style="width:96px;height:96px;right:-40px;top:16%;animation-delay:-2s" aria-hidden="true"></span>
+    <span class="orb orb-kiri" style="width:52px;height:52px;left:4%;bottom:6%;animation-delay:-4s;z-index:5" aria-hidden="true"></span>
+    <span class="gumpal biru" style="width:110px;height:150px;left:20%;top:36%" aria-hidden="true"></span>
+    <span class="gumpal biru" style="width:80px;height:80px;right:22%;top:32%" aria-hidden="true"></span>
+    <span class="gumpal pink" style="width:180px;height:180px;right:-70px;top:8%" aria-hidden="true"></span>
+  </div>
+</section>
+
+<!-- ===== KENALAN ===== -->
+<section class="blok" id="tentang">
+  <div class="wadah kenalan">
+    <div class="muncul">
+      <h2 class="judul-besar kecil">Kenalan Yuk!</h2>
+      <div class="kartu-peach">
+        <p>KOPMA UM adalah Koperasi Mahasiswa Universitas Negeri Malang. Kami menyediakan kebutuhan harian dan perkuliahan dengan harga bersahabat, sambil menjadi ruang bagi mahasiswa untuk belajar mengelola usaha secara langsung, mulai dari ritel, keuangan, sampai pemasaran.</p>
+        <p>Sebagai koperasi, setiap anggota adalah pemilik. Keuntungan usaha kembali ke anggota dalam bentuk Sisa Hasil Usaha (SHU), dan keputusan penting diambil bersama lewat Rapat Anggota. Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</p>
+        <span class="gumpal pink" aria-hidden="true"></span>
+        <span class="orb" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="kenalan-kanan muncul">
+      <div class="pita-tumpuk" aria-hidden="true">
+        <span class="pita biru">Tentang</span>
+        <span class="pita peach">Kopma</span>
+      </div>
+      <div class="bingkai takik">
+        <div class="isi-bingkai" id="foto-tentang"></div>
+        <span class="label-bingkai">KOPMA UM</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="strip">
+<!-- ===== KEANGGOTAAN (gaya papan) ===== -->
+<section class="blok blok-anggota" id="anggota">
   <div class="wadah">
-    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-2 11H5z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg><span><b>Harga Mahasiswa</b><small>Kebutuhan kuliah lebih hemat</small></span></div>
-    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12v8H4v-8"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg><span><b>Promo Mingguan</b><small>Diskon khusus anggota</small></span></div>
-    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.3a5 5 0 0 1 6 4.7"/></svg><span><b>Milik Bersama</b><small>Anggota ikut menentukan arah</small></span></div>
-    <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17 9 11l4 4 8-8"/><path d="M14 7h7v7"/></svg><span><b>Belajar Bisnis</b><small>Praktik wirausaha nyata</small></span></div>
-  </div>
-</div>
+    <h2 class="judul-besar muncul">Jadi Anggota</h2>
+    <p class="sub muncul">Terbuka untuk seluruh mahasiswa aktif Universitas Negeri Malang dari semua fakultas dan angkatan.</p>
 
-<!-- ===== TENTANG ===== -->
-<section class="blok" id="tentang">
-  <div class="wadah tentang">
-    <div class="tentang-foto muncul">
-      <div class="bingkai" id="foto-tentang"></div>
-      <div class="lencana">
-        <img src="assets/logo-kopma-um.webp" alt="" width="52" height="52">
-        <span><b>Dari, oleh, dan untuk mahasiswa</b><small>Unit Kegiatan Mahasiswa UM</small></span>
+    <div class="baris-papan">
+      <div class="papan pink muncul">Untung<small>yang kamu dapat</small>
+        <span class="orb biru" style="width:58px;height:58px;left:-22px;top:-30px" aria-hidden="true"></span>
+      </div>
+      <div class="kartu-koral takik kanan-bawah muncul">
+        <ul>
+          <li>Harga anggota dan promo khusus di semua unit usaha.</li>
+          <li>Pembagian Sisa Hasil Usaha (SHU) setiap tahun buku.</li>
+          <li>Pelatihan perkoperasian, kewirausahaan, dan manajemen.</li>
+          <li>Relasi lintas fakultas dan jaringan Kopma se-Indonesia.</li>
+          <li>Hak suara di Rapat Anggota untuk menentukan arah koperasi.</li>
+        </ul>
       </div>
     </div>
-    <div class="tentang-teks muncul">
-      <div class="kepala" style="margin-bottom:20px">
-        <span class="label">Tentang Kami</span>
-        <h2>Koperasi milik mahasiswa, tempat belanja sekaligus belajar usaha</h2>
+
+    <div class="baris-papan">
+      <div class="papan biru muncul">Daftar<small>caranya gampang</small></div>
+      <div class="kartu-koral takik kanan-atas muncul">
+        <ol>
+          <li><b>Isi formulir pendaftaran</b><small>Lewat WhatsApp atau datang langsung ke sekretariat KOPMA UM.</small></li>
+          <li><b>Bayar simpanan pokok &amp; wajib</b><small data-isi="simpanan">[Isi nominal simpanan pokok dan simpanan wajib]</small></li>
+          <li><b>Ikuti pendidikan dasar anggota</b><small>Kenalan dengan koperasi, pengurus, dan teman-teman anggota.</small></li>
+          <li><b>Terima kartu anggota</b><small>Nikmati harga anggota dan hak suara di Rapat Anggota.</small></li>
+        </ol>
+        <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota. Nama: ... NIM: ... Fakultas: ..." class="btn btn-biru">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+          Daftar via WhatsApp
+        </a>
       </div>
-      <p>KOPMA UM adalah Koperasi Mahasiswa Universitas Negeri Malang. Kami menyediakan kebutuhan harian dan perkuliahan dengan harga bersahabat, sambil menjadi ruang bagi mahasiswa untuk belajar mengelola usaha secara langsung.</p>
-      <p>Sebagai koperasi, setiap anggota adalah pemilik. Keuntungan usaha kembali ke anggota dalam bentuk Sisa Hasil Usaha (SHU), dan keputusan penting diambil bersama lewat Rapat Anggota.</p>
-      <div class="nilai">
-        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/></svg></span><span><b>Kekeluargaan</b><small>Usaha dijalankan bersama, untuk kesejahteraan bersama.</small></span></div>
-        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><b>Ekonomi Mahasiswa</b><small>Harga terjangkau untuk kantong mahasiswa.</small></span></div>
-        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l3-8 6 16 3-8h4"/></svg></span><span><b>Kewirausahaan</b><small>Pengurus belajar ritel, keuangan, dan pemasaran.</small></span></div>
-        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span><b>Demokratis</b><small>Satu anggota, satu suara dalam Rapat Anggota.</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NILAI (gaya core value) ===== -->
+<section class="blok gradasi" id="nilai">
+  <div class="wadah">
+    <h2 class="judul-besar muncul">Nilai Kami</h2>
+    <div class="grid-nilai">
+      <div class="nilai muncul">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="18" r="7"/><circle cx="44" cy="18" r="7"/><path d="M6 46c0-8 6-14 14-14 4 0 7 1.4 9.5 3.6M58 46c0-8-6-14-14-14-4 0-7 1.4-9.5 3.6"/><path d="M32 54s-9-5.4-9-11.2A4.8 4.8 0 0 1 32 40a4.8 4.8 0 0 1 9 2.8C41 48.6 32 54 32 54z"/></svg>
+        <b>Kekeluargaan</b><small>Usaha dijalankan bersama, untuk kesejahteraan bersama.</small>
       </div>
-      <a href="#anggota" class="btn btn-utama">Jadi Anggota Sekarang <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="nilai muncul">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="26" cy="16" rx="16" ry="6"/><path d="M10 16v10c0 3.3 7.2 6 16 6s16-2.7 16-6V16"/><path d="M10 26v10c0 3.3 7.2 6 16 6 2 0 4-.1 5.8-.4"/><circle cx="44" cy="44" r="13"/><path d="M44 37v14M40.5 40.5h5.3a2.6 2.6 0 0 1 0 5.2h-3.6a2.6 2.6 0 0 0 0 5.2h5.3"/></svg>
+        <b>Ekonomis</b><small>Harga terjangkau untuk kantong mahasiswa.</small>
+      </div>
+      <div class="nilai muncul">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 44h16M26 52h12"/><path d="M32 8a16 16 0 0 0-9 29.2c1.3 1 2 2.4 2 4V44h14v-2.8c0-1.6.7-3 2-4A16 16 0 0 0 32 8z"/><path d="m24 27 6-6 4 4 6-6"/><path d="M36 19h4v4"/><path d="M32 2v-0M10 12l3 3M54 12l-3 3"/></svg>
+        <b>Wirausaha</b><small>Pengurus belajar ritel, keuangan, dan pemasaran.</small>
+      </div>
+      <div class="nilai muncul">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 34h44v22H10z"/><path d="M18 34 24 26M46 34l-6-8"/><path d="M24 34V8h16v26"/><path d="m27 21 4 4 6-8"/><path d="M24 44h16"/></svg>
+        <b>Demokratis</b><small>Satu anggota, satu suara dalam Rapat Anggota.</small>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== UNIT USAHA ===== -->
-<section class="blok abu" id="unit">
+<section class="blok" id="unit">
   <div class="wadah">
-    <div class="kepala tengah muncul">
-      <span class="label">Unit Usaha</span>
-      <h2>Semua kebutuhan kuliah, di satu tempat</h2>
-      <p>Mampir ke unit usaha KOPMA UM di area kampus. Anggota mendapat harga khusus di setiap unit.</p>
-    </div>
+    <h2 class="judul-besar muncul">Unit Usaha</h2>
+    <p class="sub muncul">Mampir ke unit usaha KOPMA UM di area kampus. Anggota mendapat harga khusus di setiap unit.</p>
     <div class="grid-unit" id="grid-unit"></div>
   </div>
 </section>
 
 <!-- ===== PROMO ===== -->
-<section class="blok" id="promo">
+<section class="blok peach" id="promo">
   <div class="wadah">
-    <div class="kepala muncul">
-      <span class="label">Promo Pekan Ini</span>
-      <h2>Lagi hemat-hematnya, sayang dilewatkan</h2>
-      <p>Pilih kategori, lalu pesan lewat WhatsApp atau ambil langsung di toko.</p>
-    </div>
-    <div class="filter" id="filter" role="group" aria-label="Filter kategori promo"></div>
+    <h2 class="judul-besar muncul">Promo Pekan Ini</h2>
+    <div class="filter muncul" id="filter" role="group" aria-label="Filter kategori promo"></div>
     <div class="grid-promo" id="grid-promo"></div>
-    <p class="catatan" id="catatan-promo">* Harga dan stok dapat berubah. Tunjukkan kartu anggota untuk harga anggota.</p>
-  </div>
-</section>
-
-<!-- ===== KEANGGOTAAN ===== -->
-<section class="blok abu" id="anggota">
-  <div class="wadah">
-    <div class="anggota muncul">
-      <div>
-        <div class="kepala">
-          <span class="label">Keanggotaan</span>
-          <h2>Jadi anggota, jadi pemilik</h2>
-          <p>Terbuka untuk seluruh mahasiswa aktif Universitas Negeri Malang dari semua fakultas dan angkatan.</p>
-        </div>
-        <ul class="untung">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Harga anggota dan promo khusus di semua unit usaha</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Pembagian Sisa Hasil Usaha (SHU) setiap tahun buku</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Pelatihan perkoperasian, kewirausahaan, dan manajemen</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg> Relasi lintas fakultas dan jaringan Kopma se-Indonesia</li>
-        </ul>
-        <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota. Nama: ... NIM: ... Fakultas: ..." class="btn btn-kuning">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
-          Daftar via WhatsApp
-        </a>
-      </div>
-      <div class="langkah">
-        <div><span class="no">1</span><span><b>Isi formulir pendaftaran</b><small>Lewat WhatsApp atau datang langsung ke sekretariat KOPMA UM.</small></span></div>
-        <div><span class="no">2</span><span><b>Bayar simpanan pokok &amp; wajib</b><small><span data-isi="simpanan">[Isi nominal simpanan pokok dan simpanan wajib]</span></small></span></div>
-        <div><span class="no">3</span><span><b>Ikuti pendidikan dasar anggota</b><small>Kenalan dengan koperasi, pengurus, dan teman-teman anggota.</small></span></div>
-        <div><span class="no">4</span><span><b>Terima kartu anggota</b><small>Nikmati harga anggota dan hak suara di Rapat Anggota.</small></span></div>
-      </div>
-    </div>
+    <p class="catatan">* Harga dan stok dapat berubah. Tunjukkan kartu anggota untuk harga anggota.</p>
   </div>
 </section>
 
 <!-- ===== KEGIATAN ===== -->
 <section class="blok" id="kegiatan">
   <div class="wadah">
-    <div class="kepala muncul">
-      <span class="label">Kabar &amp; Kegiatan</span>
-      <h2>Yang sedang terjadi di KOPMA UM</h2>
-    </div>
+    <h2 class="judul-besar muncul">Kabar Kegiatan</h2>
     <div class="grid-berita" id="grid-berita"></div>
   </div>
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="blok abu" id="faq">
+<section class="blok gradasi" id="faq">
   <div class="wadah">
-    <div class="kepala tengah muncul">
-      <span class="label">Tanya Jawab</span>
-      <h2>Pertanyaan yang sering muncul</h2>
-    </div>
+    <h2 class="judul-besar muncul">Tanya Jawab</h2>
     <div class="faq" id="daftar-faq"></div>
   </div>
 </section>
 
 <!-- ===== KONTAK ===== -->
-<section class="blok" id="kontak">
+<section class="blok peach" id="kontak">
   <div class="wadah">
-    <div class="kepala muncul">
-      <span class="label">Kontak</span>
-      <h2>Mampir, chat, atau follow kami</h2>
-    </div>
+    <h2 class="judul-besar muncul">Mampir Yuk</h2>
     <div class="kontak">
       <div class="kontak-list muncul">
         <a href="#" data-wa="Halo KOPMA UM, saya mau tanya."><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></span><span><small>WhatsApp</small><b data-isi="wa-tampil">[Nomor WhatsApp]</b></span></a>
         <a data-link="instagram" href="#"><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span><span><small>Instagram</small><b data-isi="ig-tampil">[@akun_instagram]</b></span></a>
         <a data-link="email" href="#"><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>Email</small><b data-isi="email-tampil">[email@kopma]</b></span></a>
+        <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><small>Jam buka</small><b data-isi="jam">[Jam buka]</b></span></div>
         <div><span class="ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Alamat</small><b data-isi="alamat">[Gedung/lokasi sekretariat], Universitas Negeri Malang, Jl. Semarang No. 5, Malang</b></span></div>
       </div>
       <div class="peta muncul">
@@ -515,8 +511,11 @@ footer .brand img{background:#fff}
 
 <section class="cta" aria-label="Ajakan bergabung">
   <div class="wadah">
-    <h2>Belanja hemat sambil belajar usaha? Gabung KOPMA UM sekarang.</h2>
-    <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota." class="btn btn-kuning">Daftar Jadi Anggota</a>
+    <div class="cta-kartu muncul">
+      <h2>Belanja hemat sambil belajar usaha? Gabung KOPMA UM sekarang.</h2>
+      <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota." class="btn btn-biru">Daftar Jadi Anggota</a>
+      <span class="orb" aria-hidden="true"></span>
+    </div>
   </div>
 </section>
 
@@ -525,7 +524,7 @@ footer .brand img{background:#fff}
 <footer>
   <div class="wadah kaki">
     <div>
-      <a href="#beranda" class="brand"><img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="48" height="48"><span><b>KOPMA UM</b><small>Koperasi Mahasiswa UM</small></span></a>
+      <a href="#beranda" class="brand"><img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="50" height="50"><span><b>KOPMA UM</b><small>Koperasi Mahasiswa</small></span></a>
       <p>Koperasi Mahasiswa Universitas Negeri Malang. Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</p>
       <div class="sos">
         <a data-link="instagram" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
@@ -543,7 +542,7 @@ footer .brand img{background:#fff}
     </div>
     <div>
       <h4>Jam Layanan</h4>
-      <ul><li data-isi="jam">[Jam buka]</li><li data-isi="alamat-singkat">Area kampus Universitas Negeri Malang</li></ul>
+      <ul><li data-isi="jam">[Jam buka]</li><li>Area kampus Universitas Negeri Malang</li></ul>
     </div>
   </div>
   <div class="wadah hak">
@@ -576,13 +575,8 @@ const KONTAK = {
   simpanan: "[Isi nominal simpanan pokok dan simpanan wajib]"
 };
 
-const SLIDES = [
-  { label:"Koperasi Mahasiswa UM", judul:"Belanja hemat, <em>belajar</em> berwirausaha.", teks:"Kebutuhan kuliah dan harian dengan harga mahasiswa, dikelola langsung oleh mahasiswa Universitas Negeri Malang.", tombol:["Lihat Promo","#promo"], tombol2:["Tentang Kami","#tentang"], foto:"" },
-  { label:"Promo Pekan Ini", judul:"Diskon khusus <em>anggota</em> setiap minggu.", teks:"Alat tulis, camilan, minuman, sampai merchandise kampus. Cek promonya sebelum kehabisan.", tombol:["Cek Promo","#promo"], tombol2:["Unit Usaha","#unit"], foto:"" },
-  { label:"Pendaftaran Anggota", judul:"Jadi anggota, jadi <em>pemilik</em>.", teks:"Dapat harga anggota, SHU tahunan, dan pengalaman organisasi yang nyata. Terbuka untuk semua mahasiswa UM.", tombol:["Gabung Sekarang","#anggota"], tombol2:["Tanya Dulu","#kontak"], foto:"" }
-];
-
-const FOTO_TENTANG = "";  // foto pengurus/toko untuk bagian Tentang
+// Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
+const FOTO_TENTANG = "";
 
 // Unit usaha: SESUAIKAN dengan unit yang benar-benar dimiliki KOPMA UM
 const UNIT = [
@@ -622,9 +616,11 @@ const FAQ = [
 const $ = s => document.querySelector(s);
 const rupiah = n => "Rp" + n.toLocaleString("id-ID");
 const ikonFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>';
+const kosong = () => `<div class="foto-kosong">${ikonFoto}Foto menyusul</div>`;
 const gambar = (src, alt) => src
-  ? `<img class="foto-isi" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\\'foto-kosong\\'>${ikonFoto.replace(/"/g,"&quot;")}Foto menyusul</div>'">`
-  : `<div class="foto-kosong">${ikonFoto}Foto menyusul</div>`;
+  ? `<img class="foto-isi" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML=kosongHTML">`
+  : kosong();
+window.kosongHTML = kosong();
 const waLink = pesan => KONTAK.wa ? `https://wa.me/${KONTAK.wa}?text=${encodeURIComponent(pesan)}` : "#kontak";
 
 // Kontak & tautan
@@ -642,51 +638,14 @@ const isiTeks = { jam: KONTAK.jam, alamat: KONTAK.alamat, simpanan: KONTAK.simpa
 document.querySelectorAll("[data-isi]").forEach(el => { if (isiTeks[el.dataset.isi]) el.textContent = isiTeks[el.dataset.isi]; });
 $("#tahun").textContent = new Date().getFullYear();
 
-// Hero slider
-const wadahSlide = $("#slides"), wadahTitik = $("#titik");
-SLIDES.forEach((s, i) => {
-  const el = document.createElement("div");
-  el.className = "slide" + (i === 0 ? " aktif" : "");
-  el.setAttribute("role", "group");
-  el.setAttribute("aria-roledescription", "slide");
-  el.setAttribute("aria-label", `${i + 1} dari ${SLIDES.length}`);
-  const Tag = i === 0 ? "h1" : "h2";
-  el.innerHTML = `<div class="latar ${s.foto ? "" : "kosong"}" ${s.foto ? `style="background-image:url('${s.foto}')"` : ""}></div>
-    <div class="wadah"><div class="isi">
-      <span class="label">${s.label}</span>
-      <${Tag}>${s.judul}</${Tag}>
-      <p>${s.teks}</p>
-      <div class="aksi"><a href="${s.tombol[1]}" class="btn btn-kuning">${s.tombol[0]}</a><a href="${s.tombol2[1]}" class="btn btn-garis">${s.tombol2[0]}</a></div>
-    </div></div>`;
-  if (i !== 0) el.setAttribute("aria-hidden", "true");
-  wadahSlide.appendChild(el);
-  const b = document.createElement("button");
-  b.setAttribute("aria-label", `Slide ${i + 1}`);
-  b.setAttribute("aria-current", i === 0 ? "true" : "false");
-  b.onclick = () => { ke(i); mulai(); };
-  wadahTitik.appendChild(b);
-});
-let sekarang = 0, timer;
-const semuaSlide = [...document.querySelectorAll(".slide")], semuaTitik = [...wadahTitik.children];
-function ke(i) {
-  sekarang = (i + SLIDES.length) % SLIDES.length;
-  semuaSlide.forEach((s, j) => { s.classList.toggle("aktif", j === sekarang); s.setAttribute("aria-hidden", j === sekarang ? "false" : "true"); s.inert = j !== sekarang; });
-  semuaTitik.forEach((t, j) => t.setAttribute("aria-current", j === sekarang ? "true" : "false"));
-}
-const kurangGerak = matchMedia("(prefers-reduced-motion: reduce)").matches;
-function mulai() { clearInterval(timer); if (!kurangGerak) timer = setInterval(() => ke(sekarang + 1), 6500); }
-$("#sebelum").onclick = () => { ke(sekarang - 1); mulai(); };
-$("#sesudah").onclick = () => { ke(sekarang + 1); mulai(); };
-$(".hero").addEventListener("mouseenter", () => clearInterval(timer));
-$(".hero").addEventListener("mouseleave", mulai);
-ke(0); mulai();
-
-// Tentang
-$("#foto-tentang").innerHTML = gambar(FOTO_TENTANG, "Pengurus dan toko KOPMA UM");
+// Kenalan: foto atau logo besar
+$("#foto-tentang").innerHTML = FOTO_TENTANG
+  ? `<img class="foto-isi" src="${FOTO_TENTANG}" alt="Pengurus dan toko KOPMA UM">`
+  : `<img class="logo-besar" src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM">`;
 
 // Unit usaha
-const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-$("#grid-unit").innerHTML = UNIT.map(u => `<article class="kartu muncul">
+const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+$("#grid-unit").innerHTML = UNIT.map(u => `<article class="kartu takik kanan-bawah muncul">
   <div class="gambar">${gambar(u.foto, u.nama)}</div>
   <div class="badan"><h3>${u.nama}</h3><p>${u.teks}</p><span class="meta">${ikonLokasi}${u.lokasi}</span></div></article>`).join("");
 
@@ -708,10 +667,9 @@ $("#filter").addEventListener("click", e => {
 
 // Berita
 const fmtTgl = s => { const d = new Date(s + "T00:00:00"); return { h: d.getDate(), b: d.toLocaleString("id-ID", { month: "short" }), lengkap: d.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) }; };
-const kartuBerita = (b, utama) => { const t = fmtTgl(b.tanggal); return `<article class="kartu berita ${utama ? "berita-utama" : ""} muncul">
+$("#grid-berita").innerHTML = BERITA.map(b => { const t = fmtTgl(b.tanggal); return `<article class="kartu berita muncul">
   <div class="gambar"><span class="tanggal"><b>${t.h}</b><small>${t.b}</small></span>${gambar(b.foto, b.judul)}</div>
-  <div class="badan"><span class="tag">${b.tag}</span><h3>${b.judul}</h3><p>${b.ringkas}</p><span class="meta"><time datetime="${b.tanggal}">${t.lengkap}</time></span></div></article>`; };
-$("#grid-berita").innerHTML = kartuBerita(BERITA[0], true) + `<div class="berita-samping">${BERITA.slice(1).map(b => kartuBerita(b)).join("")}</div>`;
+  <div class="badan"><span class="tag">${b.tag}</span><h3>${b.judul}</h3><p>${b.ringkas}</p><span class="meta"><time datetime="${b.tanggal}">${t.lengkap}</time></span></div></article>`; }).join("");
 
 // FAQ
 $("#daftar-faq").innerHTML = FAQ.map((f, i) => `<details class="muncul" ${i === 0 ? "open" : ""}><summary>${f.t}</summary><p>${f.j}</p></details>`).join("");
@@ -721,7 +679,7 @@ const nav = $("#nav"), burger = $("#burger");
 addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
 burger.onclick = () => { const b = nav.classList.toggle("buka"); burger.setAttribute("aria-expanded", b); burger.setAttribute("aria-label", b ? "Tutup menu" : "Buka menu"); };
 document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("buka"); burger.setAttribute("aria-expanded", "false"); }));
-const linkMenu = [...document.querySelectorAll('.menu a:not(.btn)')];
+const linkMenu = [...document.querySelectorAll(".menu a")];
 const pantauSection = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) linkMenu.forEach(a => a.classList.toggle("aktif", a.getAttribute("href") === "#" + e.target.id));
 }), { rootMargin: "-45% 0px -50% 0px" });
