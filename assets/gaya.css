@@ -568,3 +568,9 @@ a.simpul:hover .ubin-ikon{transform:translateY(-4px)}
   .hari small{display:none}
   .hari b{font-size:.9rem}
 }
+
+/* Visi & Misi (Beranda) */
+.blok-visi{padding-top:clamp(24px,4vw,48px)}
+.teks-visi{font-size:clamp(1.02rem,1.6vw,1.12rem);font-weight:700;line-height:1.55}
+@media (min-width:701px){.teks-visi{text-align:justify;hyphens:auto}}
+@media (max-width:640px){.kartu-koral.takik{padding-right:44px}}

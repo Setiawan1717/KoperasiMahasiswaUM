@@ -46,6 +46,9 @@ ada("#grid-berita", el => el.innerHTML = BERITA.map(b => { const t = fmtTgl(b.ta
 
 ada("#daftar-faq", el => el.innerHTML = FAQ.map((f, i) => `<details class="muncul" ${i === 0 ? "open" : ""}><summary>${f.t}</summary><p>${f.j}</p></details>`).join(""));
 
+ada("#teks-visi", el => el.textContent = VISI_MISI.visi);
+ada("#daftar-misi", el => el.innerHTML = VISI_MISI.misi.map(m => `<li>${esc(m)}</li>`).join(""));
+
 /* ---------- PROFIL ---------- */
 ada("#foto-profil", el => el.innerHTML = PROFIL.foto
   ? `<img class="foto-isi" src="${PROFIL.foto}" alt="Foto bersama pengurus KOPMA UM">`

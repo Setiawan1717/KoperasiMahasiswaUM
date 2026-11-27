@@ -8,7 +8,7 @@ Teks hero (judul besar dan tagline) diedit langsung di `index.html`, bagian `<!-
 
 ## Struktur
 Setiap menu adalah halaman sendiri:
-- `index.html` — Beranda (hero, Kenalan Yuk!, Nilai Kami)
+- `index.html` — Beranda (hero, Kenalan Yuk!, Visi & Misi, Nilai Kami)
 - `profil.html` — Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
 - `struktur.html` — hero maskot Adit, organigram (Ketua + 5 bidang), kartu ketua dan kartu bidang
 - `bidang.html` — detail satu bidang, dibuka dari tombol KLIK (mis. `bidang.html?b=kominfo`)
@@ -27,6 +27,7 @@ File bersama:
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
 - `PESAN_WA` — kalimat otomatis untuk setiap tombol WhatsApp (tanya, daftar anggota, tanya unit, booking sewa). Kalimat khusus tiap unit usaha ada di kolom `pesanWA` pada `UNIT`
+- `VISI_MISI` — visi dan daftar misi di Beranda
 - `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
 - `UNIT` — tiap unit usaha: ringkasan, deskripsi, layanan, lokasi, jam buka, foto
 - `BERITA`, `FAQ` — kegiatan dan tanya jawab
