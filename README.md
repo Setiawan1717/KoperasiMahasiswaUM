@@ -1,8 +1,8 @@
 # KOPMA UM — Website Promosi
 
-Website promosi Koperasi Mahasiswa Universitas Negeri Malang. Satu halaman statis (HTML + CSS + JS tanpa framework).
+Website promosi Koperasi Mahasiswa Universitas Negeri Malang. Website statis (HTML + CSS + JS tanpa framework).
 
-Gaya visual: latar krem, navbar pill oranye, tipografi poster biru (Anton + Archivo Expanded), kartu peach/koral dengan sudut bertakik, bola kaca, dan pita miring. Warna diatur di `:root` pada bagian `<style>`.
+Gaya visual: latar krem, navbar pill oranye, tipografi poster biru (Anton + Archivo Expanded), kartu peach/koral dengan sudut bertakik, bola kaca, dan pita miring. Warna diatur di `:root` pada `assets/gaya.css`.
 
 Teks hero (judul besar dan tagline) diedit langsung di HTML, bagian `<!-- ===== HERO ===== -->`.
 
