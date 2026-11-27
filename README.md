@@ -44,3 +44,10 @@ Settings → Pages → Source: *Deploy from a branch* → pilih branch dan folde
 
 ## Setelah mengubah CSS atau JS
 Setiap halaman memuat `assets/gaya.css`, `assets/data.js`, dan `assets/app.js` dengan penanda versi, misalnya `assets/data.js?v=20261127-2`. Setiap kali file-file itu diubah, ganti angka versinya di semua file `.html` (cari `?v=`) supaya browser pengunjung langsung mengambil versi terbaru, bukan versi lama dari cache.
+
+## Kalender sewa (Persewaan Kopma)
+Halaman `unit-detail.html?u=persewaan` menampilkan kalender ketersediaan per barang. Datanya dibaca langsung dari database Kopma Hub (Supabase `kopma-um`), sumber yang sama dengan halaman publik `https://setiawan1717.github.io/KOPMAUM/#sewa`:
+- daftar barang, jumlah unit, dan harga dari tabel `sewa_barang` (yang aktif),
+- jadwal dari fungsi `jadwal_sewa_publik` (tanpa nama/nomor penyewa).
+
+Jadi barang, harga, dan booking cukup diatur di Kopma Hub; kalender di sini ikut berubah otomatis (diperbarui tiap menit). Urutan tombol barang diatur di `SEWA.urutan` (`assets/data.js`).
