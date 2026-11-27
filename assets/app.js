@@ -193,7 +193,10 @@ function kalenderSewa(wadah) {
   const tglPanjang = ds => { const [y, m, d] = ds.split("-").map(Number); return `${d} ${BULAN[m - 1]} ${y}`; };
   const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const t0 = hariIni();
-  const st = { barang: [], jadwal: [], pilih: null, bulan: t0.slice(0, 7), tanggal: null, error: "", siap: false };
+  // daftar dasar: semua barang di SEWA.urutan selalu tampil, walau belum terdaftar/belum ada booking di Kopma Hub
+  const dasar = () => SEWA.urutan.map((nama, i) => ({ id: "lokal-" + i, nama, spek: "", unit: null, harga24: null, harga2: null, batas_hari: null }));
+  const st = { barang: dasar(), jadwal: [], pilih: null, bulan: t0.slice(0, 7), tanggal: null, error: "", tersambung: false };
+  st.pilih = st.barang[0]?.nama || null;
 
   const urut = b => { const i = SEWA.urutan.findIndex(n => n.toLowerCase() === b.nama.toLowerCase()); return i < 0 ? 99 : i; };
   async function muat() {
@@ -204,16 +207,20 @@ function kalenderSewa(wadah) {
         fetch(`${SEWA.supabaseUrl}/rest/v1/rpc/jadwal_sewa_publik`, { method: "POST", headers: h, body: "{}" })
       ]);
       if (!rb.ok || !rj.ok) throw new Error(`server ${rb.ok ? rj.status : rb.status}`);
-      st.barang = (await rb.json()).sort((a, b) => urut(a) - urut(b) || a.nama.localeCompare(b.nama));
+      const dariHub = await rb.json();
+      const sama = n => x => x.nama.trim().toLowerCase() === n.trim().toLowerCase();
+      // barang di SEWA.urutan memakai data Kopma Hub kalau ada; barang lain dari Hub ditambahkan di belakang
+      st.barang = [...dasar().map(b => dariHub.find(sama(b.nama)) || b),
+                   ...dariHub.filter(x => !SEWA.urutan.some(n => sama(n)(x))).sort((a, b) => a.nama.localeCompare(b.nama))];
       st.jadwal = await rj.json();
-      st.error = "";
-      if (!st.barang.find(b => b.id === st.pilih)) st.pilih = st.barang[0]?.id || null;
-    } catch (e) { if (!st.siap) st.error = "Jadwal sewa belum bisa dimuat. Coba muat ulang halaman, atau cek langsung di Kopma Hub."; }
-    st.siap = true;
+      st.error = ""; st.tersambung = true;
+    } catch (e) { if (!st.tersambung) st.error = "Jadwal booking dari Kopma Hub belum bisa dimuat, jadi semua tanggal ditampilkan tersedia. Pastikan lagi lewat WhatsApp sebelum menyewa."; }
+    if (!st.barang.find(b => b.nama === st.pilih)) st.pilih = st.barang[0]?.nama || null;
     gambar();
   }
 
   function sisa(b, ds) {
+    if (b.unit == null) return Infinity;   // belum terdaftar di Kopma Hub: anggap tersedia
     const t = hariIni();
     return b.unit - st.jadwal.filter(x => x.barang_id === b.id && AKTIF.includes(x.status) && (
       (ds >= x.ambil && ds < x.kembali) ||
@@ -223,22 +230,22 @@ function kalenderSewa(wadah) {
   const rp = n => "Rp" + Number(n || 0).toLocaleString("id-ID");
 
   function gambar() {
-    if (st.error) { wadah.innerHTML = `<div class="kal-pesan galat">${st.error} <a href="${SEWA.halamanHub}" target="_blank" rel="noopener">Buka jadwal di Kopma Hub</a></div>`; return; }
-    if (!st.barang.length) { wadah.innerHTML = `<div class="kal-pesan">Belum ada barang sewa yang aktif.</div>`; return; }
-    const b = st.barang.find(x => x.id === st.pilih);
+    if (!st.barang.length) { wadah.innerHTML = `<div class="kal-pesan">Belum ada barang sewa.</div>`; return; }
+    const b = st.barang.find(x => x.nama === st.pilih) || st.barang[0];
     const [y, m] = st.bulan.split("-").map(Number);
     const mulai = (new Date(y, m - 1, 1).getDay() + 6) % 7, jml = new Date(y, m, 0).getDate();
     const t = hariIni(), sel = [];
     for (let i = 0; i < mulai; i++) sel.push('<span class="hari kosong" aria-hidden="true"></span>');
     for (let d = 1; d <= jml; d++) {
       const ds = `${y}-${pad(m)}-${pad(d)}`, s = sisa(b, ds), lewat = ds < t, penuh = s <= 0;
-      const label = penuh ? "Penuh" : "Tersedia";
+      const label = lewat ? "Lewat" : penuh ? "Penuh" : "Tersedia";
       sel.push(`<button type="button" class="hari ${penuh ? "penuh" : "ada"} ${lewat ? "lewat" : ""} ${ds === t ? "kini" : ""} ${ds === st.tanggal ? "dipilih" : ""}" data-tgl="${ds}" ${lewat || penuh ? "disabled" : ""} aria-pressed="${ds === st.tanggal}" aria-label="${tglPanjang(ds)}: ${label}"><b>${d}</b><small>${label}</small></button>`);
     }
     const bisaMundur = st.bulan > t.slice(0, 7);
     const pesan = `Halo KOPMA UM, saya mau sewa ${b.nama}${st.tanggal ? ` untuk tanggal ${tglPanjang(st.tanggal)}` : ""}. Apakah masih tersedia?`;
     wadah.innerHTML = `
-      <div class="chip-sewa" role="group" aria-label="Pilih barang">${st.barang.map(x => `<button type="button" data-barang="${x.id}" aria-pressed="${x.id === b.id}">${esc(x.nama)}</button>`).join("")}</div>
+      <div class="chip-sewa" role="group" aria-label="Pilih barang">${st.barang.map(x => `<button type="button" data-barang="${esc(x.nama)}" aria-pressed="${x.nama === b.nama}">${esc(x.nama)}</button>`).join("")}</div>
+      ${st.error ? `<div class="kal-pesan galat kecil">${st.error} <a href="${SEWA.halamanHub}" target="_blank" rel="noopener">Cek di Kopma Hub</a></div>` : ""}
       <div class="kal-grid">
         <div class="kal-kartu">
           <div class="kal-kepala">
@@ -253,15 +260,15 @@ function kalenderSewa(wadah) {
           <span class="label-unit">Barang</span>
           <h3>${esc(b.nama)}</h3>
           ${b.spek ? `<p>${esc(b.spek)}</p>` : ""}
-          <dl>
+          ${b.unit == null ? `<p class="kal-tgl">Harga dan jumlah unit: tanyakan lewat WhatsApp.</p>` : `<dl>
             <dt>Jumlah unit</dt><dd>${b.unit} unit</dd>
             <dt>Sewa 24 jam</dt><dd>${rp(b.harga24)}</dd>
             <dt>2 hari ke atas</dt><dd>${rp(b.harga2)} / hari</dd>
             <dt>Batas sewa</dt><dd>${b.batas_hari} hari</dd>
-          </dl>
+          </dl>`}
           <p class="kal-tgl">${st.tanggal ? `Tanggal dipilih: <b>${tglPanjang(st.tanggal)}</b>` : "Klik tanggal yang tersedia untuk memilih."}</p>
           <a class="btn btn-biru" href="#" data-wa="${esc(pesan)}">${ikonWA} Booking via WhatsApp</a>
-          <p class="kal-catatan">Jadwal diambil langsung dari Kopma Hub dan diperbarui otomatis. Tanggal merah sudah penuh.</p>
+          <p class="kal-catatan">${st.tersambung ? "Jadwal diambil langsung dari Kopma Hub dan diperbarui otomatis. Tanggal merah sudah penuh." : st.error ? "Belum tersambung ke Kopma Hub; sistem akan mencoba lagi tiap menit." : "Memeriksa jadwal di Kopma Hub…"}</p>
         </div>
       </div>`;
     pasangWA(wadah);
@@ -276,6 +283,7 @@ function kalenderSewa(wadah) {
       st.bulan = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; gambar();
     }
   });
+  gambar();   // tampilkan kalender langsung, lalu perbarui setelah data Kopma Hub masuk
   muat();
   setInterval(() => { if (document.visibilityState === "visible") muat(); }, 60000);
 }
