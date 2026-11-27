@@ -4,11 +4,20 @@ Website promosi Koperasi Mahasiswa Universitas Negeri Malang. Website statis (HT
 
 Gaya visual: latar krem, navbar pill oranye, tipografi poster biru (Anton + Archivo Expanded), kartu peach/koral dengan sudut bertakik, bola kaca, dan pita miring. Warna diatur di `:root` pada `assets/gaya.css`.
 
-Teks hero (judul besar dan tagline) diedit langsung di HTML, bagian `<!-- ===== HERO ===== -->`.
+Teks hero (judul besar dan tagline) diedit langsung di `index.html`, bagian `<!-- ===== HERO ===== -->`. Header dan footer ada di setiap file HTML; kalau menambah menu, ubah di semua halaman.
 
 ## Struktur
-- `index.html` — halaman Beranda
-- `profil.html` — halaman Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
+Setiap menu adalah halaman sendiri:
+- `index.html` — Beranda (hero, Kenalan Yuk!, Nilai Kami)
+- `profil.html` — Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
+- `struktur.html` — hero maskot Adit, organigram (Ketua + 5 bidang), kartu ketua dan kartu bidang
+- `bidang.html` — detail satu bidang, dibuka dari tombol KLIK (mis. `bidang.html?b=kominfo`)
+- `unit.html` — unit usaha
+- `promo.html` — promo dengan filter kategori
+- `kegiatan.html` — kabar kegiatan
+- `kontak.html` — kontak, jam buka, peta, dan tanya jawab
+
+File bersama:
 - `assets/gaya.css` — semua tampilan (warna di `:root`), dipakai bersama semua halaman
 - `assets/data.js` — **semua isi yang bisa diedit** (kontak, unit, promo, kegiatan, FAQ, profil, proker)
 - `assets/app.js` — logika, tidak perlu diubah
@@ -17,10 +26,13 @@ Teks hero (judul besar dan tagline) diedit langsung di HTML, bagian `<!-- ===== 
 ## Cara mengedit isi
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
-- `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = logo besar)
+- `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
 - `UNIT`, `PROMO`, `BERITA`, `FAQ` — daftar unit usaha, promo, kegiatan, tanya jawab
 - `PROFIL` — foto bersama, paragraf profil, makna logo, dan makna warna (halaman Profil)
 - `PROKER` — kartu carousel program kerja unggulan
+- `STRUKTUR` — periode, nama & foto Ketua, serta tiap bidang (kepala bidang, foto, ringkasan, tugas)
+
+Maskot **Adit** ada di `assets/adit.svg` (gambar vektor, bisa dibuka/diedit di Figma, Illustrator, atau Inkscape).
 
 Taruh foto di folder `assets/`, lalu isi kolom `foto`, misalnya `foto: "assets/toko.jpg"`. Kalau kosong, tampil kotak "Foto menyusul".
 

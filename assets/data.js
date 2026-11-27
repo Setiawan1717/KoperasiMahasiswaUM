@@ -84,3 +84,30 @@ const PROKER = [
   { nama:"[Contoh] Pelatihan Manajemen Ritel", teks:"Pelatihan pengelolaan toko, stok, keuangan sederhana, dan pemasaran digital untuk pengurus dan anggota yang ingin mendalami dunia usaha." },
   { nama:"[Contoh] Rapat Anggota Tahunan", teks:"Forum tertinggi koperasi untuk laporan pertanggungjawaban pengurus, pengesahan rencana kerja, dan penetapan pembagian Sisa Hasil Usaha (SHU)." }
 ];
+
+/* ===================== STRUKTUR ORGANISASI (struktur.html & bidang.html) =====================
+   - "foto": path foto pengurus, mis. "assets/pengurus/ketua.jpg". Kosong = kotak "Foto menyusul".
+   - "instagram": link IG pribadi (opsional). Kalau diisi, nama di kartu bisa diklik.
+   - "ikon": pilih salah satu: ketua, keuangan, administrasi, kominfo, psda, usaha
+   - Teks bertanda [Draf] adalah contoh tugas bidang — CEK ke pengurus sebelum publikasi. */
+const STRUKTUR = {
+  periode: "2026",
+  ketua: { jabatan:"Ketua", nama:"[Nama Ketua]", foto:"", instagram:"", ikon:"ketua" },
+  bidang: [
+    { id:"keuangan", nama:"Bidang Keuangan", ikon:"keuangan", kepala:"[Nama Kepala Bidang]", foto:"", instagram:"",
+      ringkas:"[Draf] Mengelola arus kas, pencatatan, dan laporan keuangan koperasi secara tertib dan transparan.",
+      tugas:["[Draf] Mencatat pemasukan dan pengeluaran seluruh unit usaha.","[Draf] Mengelola simpanan pokok dan simpanan wajib anggota.","[Draf] Menyusun laporan keuangan dan perhitungan SHU untuk Rapat Anggota."] },
+    { id:"administrasi", nama:"Bidang Administrasi Umum", ikon:"administrasi", kepala:"[Nama Kepala Bidang]", foto:"", instagram:"",
+      ringkas:"[Draf] Mengurus surat-menyurat, arsip, data anggota, dan inventaris koperasi.",
+      tugas:["[Draf] Mengelola surat masuk, surat keluar, dan arsip organisasi.","[Draf] Memperbarui database dan kartu anggota.","[Draf] Mendata dan merawat inventaris sekretariat."] },
+    { id:"kominfo", nama:"Bidang Kominfo", ikon:"kominfo", kepala:"[Nama Kepala Bidang]", foto:"", instagram:"",
+      ringkas:"[Draf] Menjadi pusat komunikasi dan informasi KOPMA UM di media sosial dan kampus.",
+      tugas:["[Draf] Mengelola Instagram, TikTok, dan website KOPMA UM.","[Draf] Membuat desain, foto, dan video publikasi promo serta kegiatan.","[Draf] Menjalin komunikasi dengan organisasi dan Kopma kampus lain."] },
+    { id:"psda", nama:"Bidang Pengembangan Sumber Daya Anggota", ikon:"psda", kepala:"[Nama Kepala Bidang]", foto:"", instagram:"",
+      ringkas:"[Draf] Mengembangkan kapasitas dan kebersamaan anggota melalui pendidikan dan pelatihan.",
+      tugas:["[Draf] Menyelenggarakan pendidikan dasar perkoperasian untuk anggota baru.","[Draf] Mengadakan pelatihan kewirausahaan dan manajemen.","[Draf] Menjaga keakraban anggota lewat kegiatan internal."] },
+    { id:"usaha", nama:"Bidang Usaha", ikon:"usaha", kepala:"[Nama Kepala Bidang]", foto:"", instagram:"",
+      ringkas:"[Draf] Menjalankan dan mengembangkan unit-unit usaha KOPMA UM agar melayani anggota dengan baik.",
+      tugas:["[Draf] Mengatur operasional toko, stok barang, dan jadwal jaga.","[Draf] Merancang promo dan produk baru bersama Bidang Kominfo.","[Draf] Menjajaki peluang usaha dan kerja sama baru."] }
+  ]
+};
