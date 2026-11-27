@@ -4,7 +4,7 @@
      atau URL gambar. Kalau kosong, tampil kotak "Foto menyusul".
    - Semua teks bertanda [ ... ] adalah placeholder yang wajib diganti.
    ===================================================================== */
-const KONTAK = {
+let KONTAK = {
   wa: "62881025725575",         // nomor WhatsApp KOPMA UM (format 62..., tanpa + dan spasi)
   waTampil: "+62 881-0257-25575",
   instagram: "",                // contoh: "https://instagram.com/akun_kopma"
@@ -19,7 +19,7 @@ const KONTAK = {
 
 /* ===================== VISI & MISI (Beranda) =====================
    [Draf] = contoh tulisan. GANTI dengan visi dan misi resmi KOPMA UM. */
-const VISI_MISI = {
+let VISI_MISI = {
   visi: "[Draf] Menjadi koperasi mahasiswa yang mandiri, profesional, dan terpercaya sebagai wadah kesejahteraan serta pembelajaran wirausaha bagi mahasiswa Universitas Negeri Malang.",
   misi: [
     "[Draf] Menyediakan kebutuhan mahasiswa dengan harga terjangkau dan pelayanan yang ramah.",
@@ -31,14 +31,14 @@ const VISI_MISI = {
 };
 
 // Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
-const FOTO_TENTANG = "";
+let FOTO_TENTANG = "";
 
 /* ===================== KALIMAT PESAN WHATSAPP =====================
    Semua tombol WhatsApp di website memakai kalimat di bawah ini.
    - Tulis \n untuk pindah baris.
    - {unit}, {barang}, {tanggal} akan diganti otomatis sesuai halaman.
    Bagian setelah titik dua dibiarkan kosong agar pengunjung tinggal mengisi. */
-const PESAN_WA = {
+let PESAN_WA = {
   tanya:
     "Halo Admin KOPMA UM 👋\n\n" +
     "Saya ingin bertanya tentang KOPMA UM.\n\n" +
@@ -88,7 +88,7 @@ const SEWA = {
 // - "ikon": mart, sewa, print
 // - "foto": foto utama unit, mis. "assets/unit/kopma-mart.jpg". Kosong = kotak "Foto menyusul".
 // - Teks bertanda [Draf] dan [ ... ] adalah contoh — GANTI dengan info asli dari pengurus.
-const UNIT = [
+let UNIT = [
   { id:"kopma-mart", nama:"Kopma Mart", ikon:"mart", foto:"",
     ringkas:"Minimarket kampus untuk kebutuhan harian, camilan, minuman, dan perlengkapan kuliah dengan harga mahasiswa.",
     deskripsi:[
@@ -134,13 +134,13 @@ const UNIT = [
     lokasi:"[Lokasi Kopma Print]", jam:"[Jam buka Kopma Print]" }
 ];
 // Kegiatan: CONTOH — ganti dengan kegiatan/berita asli
-const BERITA = [
+let BERITA = [
   { judul:"[Contoh] Pendidikan Dasar Anggota Baru", tag:"Kegiatan", tanggal:"2026-11-10", ringkas:"Pengenalan nilai koperasi, unit usaha, dan kepengurusan bagi anggota baru KOPMA UM.", foto:"" },
   { judul:"[Contoh] Bazar Wirausaha Mahasiswa", tag:"Event", tanggal:"2026-10-24", ringkas:"Lapak produk UMKM mahasiswa di area kampus.", foto:"" },
   { judul:"[Contoh] Rapat Anggota Tahunan", tag:"Organisasi", tanggal:"2026-09-15", ringkas:"Laporan pertanggungjawaban pengurus dan pembagian SHU.", foto:"" }
 ];
 
-const FAQ = [
+let FAQ = [
   { t:"Siapa saja yang boleh jadi anggota KOPMA UM?", j:"Mahasiswa aktif Universitas Negeri Malang dari semua fakultas dan angkatan." },
   { t:"Apa bedanya belanja sebagai anggota dan bukan anggota?", j:"Semua orang boleh belanja di unit usaha KOPMA UM. Anggota mendapat harga anggota, promo khusus, dan pembagian SHU di akhir tahun buku." },
   { t:"Apa itu SHU?", j:"Sisa Hasil Usaha adalah keuntungan koperasi selama satu tahun buku yang dibagikan kembali ke anggota sesuai keputusan Rapat Anggota." },
@@ -151,7 +151,7 @@ const FAQ = [
 /* ===================== HALAMAN PROFIL (profil.html) =====================
    Teks bertanda [Draf] ditulis sebagai contoh. CEK dan GANTI dengan makna
    resmi dari pengurus KOPMA UM sebelum website dipublikasikan. */
-const PROFIL = {
+let PROFIL = {
   foto: "",   // foto bersama pengurus, mis. "assets/pengurus.jpg"
   paragraf: [
     "<b>KOPMA UM</b> (Koperasi Mahasiswa Universitas Negeri Malang) adalah koperasi yang dimiliki dan dikelola oleh mahasiswa. Sebagai badan usaha sekaligus organisasi kemahasiswaan, KOPMA UM menjalankan dua peran: <b>melayani kebutuhan</b> anggota dan civitas akademika dengan harga bersahabat, serta <b>menjadi ruang belajar</b> berkoperasi dan berwirausaha secara nyata.",
@@ -171,7 +171,7 @@ const PROFIL = {
 };
 
 // Program kerja unggulan (carousel di profil.html): CONTOH — ganti dengan proker asli
-const PROKER = [
+let PROKER = [
   { nama:"[Contoh] Pendidikan Dasar Perkoperasian", teks:"Program pengenalan nilai, prinsip, dan praktik koperasi bagi anggota baru, mulai dari hak dan kewajiban anggota sampai cara kerja unit usaha KOPMA UM." },
   { nama:"[Contoh] Bazar Wirausaha Mahasiswa", teks:"Lapak terbuka bagi mahasiswa yang punya usaha untuk memasarkan produknya di area kampus, sekaligus ajang belajar menjual dan melayani pembeli." },
   { nama:"[Contoh] Pelatihan Manajemen Ritel", teks:"Pelatihan pengelolaan toko, stok, keuangan sederhana, dan pemasaran digital untuk pengurus dan anggota yang ingin mendalami dunia usaha." },
@@ -183,7 +183,7 @@ const PROKER = [
    - "instagram": link IG pribadi (opsional). Kalau diisi, nama di kartu bisa diklik.
    - "ikon": pilih salah satu: ketua, keuangan, administrasi, kominfo, psda, usaha
    - Teks bertanda [Draf] adalah contoh tugas bidang — CEK ke pengurus sebelum publikasi. */
-const STRUKTUR = {
+let STRUKTUR = {
   periode: "2026",
   ketua: { jabatan:"Ketua", nama:"[Nama Ketua]", foto:"", instagram:"", ikon:"ketua" },
   bidang: [

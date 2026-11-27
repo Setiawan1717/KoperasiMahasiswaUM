@@ -2,6 +2,16 @@
    Dipakai bersama oleh index.html dan profil.html. Setiap bagian hanya
    dijalankan kalau elemennya ada di halaman. */
 const $ = s => document.querySelector(s);
+
+/* ---------- Navbar: scroll, burger (langsung jalan, tidak menunggu isi) ---------- */
+const nav = $("#nav"), burger = $("#burger");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
+burger.onclick = () => { const b = nav.classList.toggle("buka"); burger.setAttribute("aria-expanded", b); burger.setAttribute("aria-label", b ? "Tutup menu" : "Buka menu"); };
+document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("buka"); burger.setAttribute("aria-expanded", "false"); }));
+
+// Isi halaman dibuat setelah isi terbaru dari halaman admin dimuat (lihat assets/konten.js)
+muatKontenSitus().then(jalankanSitus);
+function jalankanSitus() {
 const ada = (sel, fn) => { const el = $(sel); if (el) fn(el); };
 const ikonFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>';
 const kosong = (teks = "Foto menyusul") => `<div class="foto-kosong">${ikonFoto}${teks}</div>`;
@@ -293,11 +303,7 @@ function kalenderSewa(wadah) {
   setInterval(() => { if (document.visibilityState === "visible") muat(); }, 60000);
 }
 
-/* ---------- Navbar: scroll, burger, menu aktif ---------- */
-const nav = $("#nav"), burger = $("#burger");
-addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
-burger.onclick = () => { const b = nav.classList.toggle("buka"); burger.setAttribute("aria-expanded", b); burger.setAttribute("aria-label", b ? "Tutup menu" : "Buka menu"); };
-document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("buka"); burger.setAttribute("aria-expanded", "false"); }));
+/* ---------- Menu aktif (bagian halaman) ---------- */
 const linkSeksi = [...document.querySelectorAll('.menu a[href^="#"]')];
 if (linkSeksi.length) {
   const pantauSection = new IntersectionObserver(es => es.forEach(e => {
@@ -310,3 +316,4 @@ if (linkSeksi.length) {
 /* ---------- Animasi muncul saat scroll ---------- */
 const pantauMuncul = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("tampak"); pantauMuncul.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll(".muncul").forEach(el => pantauMuncul.observe(el));
+}

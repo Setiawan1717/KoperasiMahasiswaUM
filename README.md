@@ -21,6 +21,8 @@ File bersama:
 - `assets/gaya.css` — semua tampilan (warna di `:root`), dipakai bersama semua halaman
 - `assets/data.js` — **semua isi yang bisa diedit** (kontak, unit, kegiatan, FAQ, profil, proker, struktur)
 - `assets/app.js` — logika, tidak perlu diubah
+- `assets/konten.js` — memuat isi terbaru dari halaman admin (database) sebelum halaman ditampilkan
+- `admin/` — halaman admin (lihat bagian *Halaman admin* di bawah)
 - `assets/` — logo dan foto
 
 ## Cara mengedit isi
@@ -53,3 +55,16 @@ Halaman `unit-detail.html?u=persewaan` menampilkan kalender ketersediaan per bar
 - jadwal dari fungsi `jadwal_sewa_publik` (tanpa nama/nomor penyewa).
 
 Jadi barang, harga, dan booking cukup diatur di Kopma Hub; kalender di sini ikut berubah otomatis (diperbarui tiap menit). Urutan tombol barang diatur di `SEWA.urutan` (`assets/data.js`).
+
+## Halaman admin (`/admin`)
+Buka `https://setiawan1717.github.io/KoperasiMahasiswaUM/admin/`, masukkan sandi admin, lalu ubah isi website tanpa membuka kode:
+Kontak, Visi & Misi, Foto Kenalan, Unit Usaha, Kegiatan, Tanya Jawab, Profil, Program Kerja, Struktur, dan kalimat Pesan WhatsApp.
+
+- Klik **Simpan perubahan** (atau Ctrl+S). Website langsung memakai isi baru saat dibuka ulang.
+- **Riwayat** menyimpan 50 versi sebelumnya; versi lama bisa dibuka lalu disimpan ulang. Ada juga tombol untuk kembali ke isi bawaan dari kode.
+- Isi disimpan di database Supabase `kopma-um` (tabel `situs_konten`), terpisah dari tabel Kopma Hub. Sandi disimpan dalam bentuk hash di tabel `situs_admin` dan dicek di server, **tidak ada di kode**.
+- Isi di `assets/data.js` tetap menjadi isi bawaan: dipakai kalau database tidak bisa dihubungi atau bagian itu belum pernah disimpan dari admin.
+- Teks dari admin dibersihkan otomatis sebelum tampil (tag HTML selain `<b>`, `<i>`, `<br>` dinetralkan; kolom foto/tautan hanya menerima `https://` atau `assets/`).
+- Mengganti sandi admin: jalankan di Supabase SQL Editor
+  `update public.situs_admin set sandi_hash = extensions.crypt('SANDI_BARU', extensions.gen_salt('bf', 10)) where id = 1;`
+- Foto: tempel link gambar langsung (https://...) atau unggah file ke folder `assets/` di repo lalu tulis path-nya, mis. `assets/unit/kopma-mart.jpg`.
