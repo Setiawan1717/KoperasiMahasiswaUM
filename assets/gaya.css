@@ -106,6 +106,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
 /* ===== Section umum ===== */
 section.blok{position:relative;padding-block:clamp(56px,8vw,96px)}
+section.blok.halaman-atas{padding-top:clamp(28px,4vw,48px)}
 .blok.peach{background:linear-gradient(180deg,#FFE7DC 0%,#FFD3CA 100%);--bg-takik:#FFDDD3}
 .blok.gradasi{background:linear-gradient(180deg,var(--krem) 0%,#FFE8DA 100%)}
 
@@ -382,3 +383,5 @@ footer .brand small{color:var(--pink)}
   .panah-proker{width:40px;height:40px}
   .proker .orb{left:-24px;top:-30px}
 }
+
+.kartu-peach .btn{margin-top:20px}

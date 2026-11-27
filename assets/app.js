@@ -16,13 +16,13 @@ const waLink = pesan => KONTAK.wa ? `https://wa.me/${KONTAK.wa}?text=${encodeURI
 document.querySelectorAll("[data-wa]").forEach(a => {
   a.href = waLink(a.dataset.wa);
   if (KONTAK.wa) { a.target = "_blank"; a.rel = "noopener"; }
-  else if (!$("#kontak")) a.href = "index.html#kontak";
+  else if (!$("#kontak")) a.href = "kontak.html";
 });
 const tautan = { instagram: KONTAK.instagram, tiktok: KONTAK.tiktok, email: KONTAK.email ? "mailto:" + KONTAK.email : "" };
 document.querySelectorAll("[data-link]").forEach(a => {
   const url = tautan[a.dataset.link];
   if (url) { a.href = url; if (!url.startsWith("mailto")) { a.target = "_blank"; a.rel = "noopener"; } }
-  else a.href = $("#kontak") ? "#kontak" : "index.html#kontak";
+  else a.href = $("#kontak") ? "#kontak" : "kontak.html";
 });
 const isiTeks = { jam: KONTAK.jam, alamat: KONTAK.alamat, simpanan: KONTAK.simpanan, "wa-tampil": KONTAK.waTampil, "ig-tampil": KONTAK.igTampil, "email-tampil": KONTAK.emailTampil };
 document.querySelectorAll("[data-isi]").forEach(el => { if (isiTeks[el.dataset.isi]) el.textContent = isiTeks[el.dataset.isi]; });

@@ -4,11 +4,19 @@ Website promosi Koperasi Mahasiswa Universitas Negeri Malang. Website statis (HT
 
 Gaya visual: latar krem, navbar pill oranye, tipografi poster biru (Anton + Archivo Expanded), kartu peach/koral dengan sudut bertakik, bola kaca, dan pita miring. Warna diatur di `:root` pada `assets/gaya.css`.
 
-Teks hero (judul besar dan tagline) diedit langsung di HTML, bagian `<!-- ===== HERO ===== -->`.
+Teks hero (judul besar dan tagline) diedit langsung di `index.html`, bagian `<!-- ===== HERO ===== -->`. Header dan footer ada di setiap file HTML; kalau menambah menu, ubah di semua halaman.
 
 ## Struktur
-- `index.html` — halaman Beranda
-- `profil.html` — halaman Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
+Setiap menu adalah halaman sendiri:
+- `index.html` — Beranda (hero, Kenalan Yuk!, Nilai Kami)
+- `profil.html` — Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
+- `keanggotaan.html` — keuntungan, cara daftar, dan tanya jawab
+- `unit.html` — unit usaha
+- `promo.html` — promo dengan filter kategori
+- `kegiatan.html` — kabar kegiatan
+- `kontak.html` — kontak, jam buka, dan peta
+
+File bersama:
 - `assets/gaya.css` — semua tampilan (warna di `:root`), dipakai bersama semua halaman
 - `assets/data.js` — **semua isi yang bisa diedit** (kontak, unit, promo, kegiatan, FAQ, profil, proker)
 - `assets/app.js` — logika, tidak perlu diubah
