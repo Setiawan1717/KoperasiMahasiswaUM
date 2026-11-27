@@ -10,11 +10,12 @@ Teks hero (judul besar dan tagline) diedit langsung di `index.html`, bagian `<!-
 Setiap menu adalah halaman sendiri:
 - `index.html` — Beranda (hero, Kenalan Yuk!, Nilai Kami)
 - `profil.html` — Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
-- `keanggotaan.html` — keuntungan, cara daftar, dan tanya jawab
+- `struktur.html` — hero maskot Adit, organigram (Ketua + 5 bidang), kartu ketua dan kartu bidang
+- `bidang.html` — detail satu bidang, dibuka dari tombol KLIK (mis. `bidang.html?b=kominfo`)
 - `unit.html` — unit usaha
 - `promo.html` — promo dengan filter kategori
 - `kegiatan.html` — kabar kegiatan
-- `kontak.html` — kontak, jam buka, dan peta
+- `kontak.html` — kontak, jam buka, peta, dan tanya jawab
 
 File bersama:
 - `assets/gaya.css` — semua tampilan (warna di `:root`), dipakai bersama semua halaman
@@ -25,10 +26,13 @@ File bersama:
 ## Cara mengedit isi
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
-- `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = logo besar)
+- `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
 - `UNIT`, `PROMO`, `BERITA`, `FAQ` — daftar unit usaha, promo, kegiatan, tanya jawab
 - `PROFIL` — foto bersama, paragraf profil, makna logo, dan makna warna (halaman Profil)
 - `PROKER` — kartu carousel program kerja unggulan
+- `STRUKTUR` — periode, nama & foto Ketua, serta tiap bidang (kepala bidang, foto, ringkasan, tugas)
+
+Maskot **Adit** ada di `assets/adit.svg` (gambar vektor, bisa dibuka/diedit di Figma, Illustrator, atau Inkscape).
 
 Taruh foto di folder `assets/`, lalu isi kolom `foto`, misalnya `foto: "assets/toko.jpg"`. Kalau kosong, tampil kotak "Foto menyusul".
 

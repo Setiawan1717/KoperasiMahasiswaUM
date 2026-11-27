@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" role="img" aria-labelledby="adit-judul">
+  <title id="adit-judul">Adit, maskot KOPMA UM</title>
+  <defs>
+    <radialGradient id="kepala" cx="40%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#C8F5D4"/>
+      <stop offset=".55" stop-color="#6FD68E"/>
+      <stop offset="1" stop-color="#1FA352"/>
+    </radialGradient>
+    <linearGradient id="daunHijau" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7BE39A"/>
+      <stop offset="1" stop-color="#009C3C"/>
+    </linearGradient>
+    <linearGradient id="daunBiru" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FD6FA"/>
+      <stop offset="1" stop-color="#0078C0"/>
+    </linearGradient>
+    <linearGradient id="jaket" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22336E"/>
+      <stop offset="1" stop-color="#141F4A"/>
+    </linearGradient>
+    <radialGradient id="tangan" cx="35%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#B8F0C8"/>
+      <stop offset="1" stop-color="#2DB866"/>
+    </radialGradient>
+  </defs>
+
+  <!-- bayangan -->
+  <ellipse cx="150" cy="330" rx="78" ry="8" fill="#13489B" opacity=".18"/>
+
+  <!-- kaki -->
+  <rect x="116" y="292" width="26" height="34" rx="10" fill="#1B2A5C"/>
+  <rect x="158" y="292" width="26" height="34" rx="10" fill="#1B2A5C"/>
+  <ellipse cx="127" cy="327" rx="20" ry="9" fill="#fff"/>
+  <ellipse cx="173" cy="327" rx="20" ry="9" fill="#fff"/>
+  <path d="M110 326h34M156 326h34" stroke="#FF8091" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- lengan kiri (bawah) -->
+  <path d="M94 222c-20 10-36 30-42 52" stroke="url(#jaket)" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <path d="M70 252l-12 22" stroke="#FF8091" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="50" cy="282" r="15" fill="url(#tangan)"/>
+
+  <!-- lengan kanan (melambai) -->
+  <path d="M206 222c20-6 38-24 46-48" stroke="url(#jaket)" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <path d="M236 196l12-14" stroke="#FF8091" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="256" cy="164" r="15" fill="url(#tangan)"/>
+  <path d="M268 146c6 4 9 10 9 16M274 138c9 6 13 15 13 24" stroke="#F9B867" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+  <!-- badan / jaket -->
+  <path d="M90 214c40-14 80-14 120 0l14 82c-48 16-100 16-148 0z" fill="url(#jaket)"/>
+  <path d="M84 258c44 12 88 12 132 0l3 16c-46 12-92 12-138 0z" fill="#FF8091"/>
+  <path d="M83 266c44 11 90 11 134 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".9"/>
+  <path d="M150 214v92" stroke="#0C1640" stroke-width="2.5"/>
+  <path d="M124 208l26 26 26-26" fill="#fff"/>
+  <path d="M124 208l26 26 26-26" stroke="#E6ECF8" stroke-width="2" fill="none"/>
+  <!-- emblem dada -->
+  <circle cx="122" cy="242" r="11" fill="#fff"/>
+  <path d="M115 245c4-9 12-12 16-10" stroke="#0090D8" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M116 249c5-1 10-4 13-8" stroke="#009C3C" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- papan nama -->
+  <rect x="160" y="234" width="38" height="17" rx="3" fill="#fff"/>
+  <text x="179" y="246.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="10.5" fill="#13489B">ADIT</text>
+
+  <!-- daun di kepala -->
+  <path d="M150 72c-4-12-4-20 0-30" stroke="#1E8E48" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M148 48C122 14 72 8 52 26c22 34 64 44 96 22z" fill="url(#daunHijau)"/>
+  <path d="M146 46C118 34 92 28 66 28" stroke="#E3FBEA" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/>
+  <path d="M152 46c18-36 64-48 88-34-14 36-54 52-88 34z" fill="url(#daunBiru)"/>
+  <path d="M154 44c22-16 46-24 74-26" stroke="#E5F6FF" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/>
+
+  <!-- kepala -->
+  <ellipse cx="150" cy="140" rx="94" ry="82" fill="url(#kepala)"/>
+  <ellipse cx="114" cy="92" rx="26" ry="13" fill="#fff" opacity=".45" transform="rotate(-24 114 92)"/>
+
+  <!-- pipi -->
+  <ellipse cx="88" cy="166" rx="16" ry="10" fill="#FFB8C6" opacity=".9"/>
+  <ellipse cx="212" cy="166" rx="16" ry="10" fill="#FFB8C6" opacity=".9"/>
+
+  <!-- alis -->
+  <path d="M100 108c10-8 24-8 34-2" stroke="#13489B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M166 106c10-6 24-6 34 2" stroke="#13489B" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+  <!-- mata -->
+  <ellipse cx="118" cy="140" rx="20" ry="24" fill="#fff"/>
+  <ellipse cx="182" cy="140" rx="20" ry="24" fill="#fff"/>
+  <circle cx="121" cy="144" r="14" fill="#13489B"/>
+  <circle cx="185" cy="144" r="14" fill="#13489B"/>
+  <circle cx="121" cy="144" r="7" fill="#0A2456"/>
+  <circle cx="185" cy="144" r="7" fill="#0A2456"/>
+  <circle cx="126" cy="137" r="5" fill="#fff"/>
+  <circle cx="190" cy="137" r="5" fill="#fff"/>
+  <circle cx="116" cy="151" r="2.5" fill="#fff" opacity=".9"/>
+  <circle cx="180" cy="151" r="2.5" fill="#fff" opacity=".9"/>
+
+  <!-- mulut -->
+  <path d="M130 176c6 18 34 18 40 0z" fill="#7A1F3D"/>
+  <path d="M138 186c6-5 18-5 24 0-6 5-18 5-24 0z" fill="#FF8091"/>
+  <path d="M132 176h36" stroke="#7A1F3D" stroke-width="3" stroke-linecap="round"/>
+</svg>

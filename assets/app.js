@@ -29,9 +29,12 @@ document.querySelectorAll("[data-isi]").forEach(el => { if (isiTeks[el.dataset.i
 ada("#tahun", el => el.textContent = new Date().getFullYear());
 
 /* ---------- BERANDA ---------- */
-ada("#foto-tentang", el => el.innerHTML = FOTO_TENTANG
-  ? `<img class="foto-isi" src="${FOTO_TENTANG}" alt="Pengurus dan toko KOPMA UM">`
-  : `<img class="logo-besar" src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM">`);
+ada("#foto-tentang", el => {
+  el.innerHTML = FOTO_TENTANG
+    ? `<img class="foto-isi" src="${FOTO_TENTANG}" alt="Pengurus dan toko KOPMA UM">`
+    : `<img class="maskot" src="assets/adit.svg" alt="Adit, maskot KOPMA UM">`;
+  ada("#label-bingkai", l => l.textContent = FOTO_TENTANG ? "KOPMA UM" : "ADIT");
+});
 
 const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 ada("#grid-unit", el => el.innerHTML = UNIT.map(u => `<article class="kartu takik kanan-bawah muncul">
@@ -94,6 +97,63 @@ ada("#proker", wadah => {
   wadah.addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
   wadah.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) ke(k + (dx < 0 ? 1 : -1)); x0 = null; });
   ke(0);
+});
+
+/* ---------- STRUKTUR ---------- */
+const IKON = {
+  ketua:'<path d="M14 46 10 20l14 12 8-18 8 18 14-12-4 26z"/><path d="M14 52h36"/><circle cx="32" cy="34" r="4"/>',
+  keuangan:'<ellipse cx="26" cy="18" rx="15" ry="6"/><path d="M11 18v10c0 3.3 6.7 6 15 6s15-2.7 15-6V18"/><path d="M11 28v10c0 3.3 6.7 6 15 6 1.6 0 3.2-.1 4.6-.3"/><circle cx="44" cy="44" r="12"/><path d="M44 37.5v13M40.8 40.8h4.9a2.4 2.4 0 0 1 0 4.8h-3.4a2.4 2.4 0 0 0 0 4.8h4.9"/>',
+  administrasi:'<rect x="14" y="10" width="36" height="46" rx="5"/><path d="M24 10V6h16v4"/><path d="M22 24h20M22 32h20M22 40h12"/><path d="m36 46 4 4 8-9"/>',
+  kominfo:'<path d="M10 28v10h8l20 12V16L18 28z"/><path d="M18 38l4 14h6l-3-12"/><path d="M46 24c4 3 4 15 0 18M52 18c8 6 8 24 0 30"/>',
+  psda:'<circle cx="22" cy="22" r="7"/><circle cx="42" cy="22" r="7"/><path d="M8 50c0-8 6-14 14-14 3 0 6 .8 8 2.4M56 50c0-8-6-14-14-14-3 0-6 .8-8 2.4"/><path d="M32 54V40"/><path d="M32 46c-6 0-9-4-9-9 6 0 9 4 9 9zM32 44c0-6 3-9 9-9 0 6-3 9-9 9z"/>',
+  usaha:'<path d="M8 24 13 10h38l5 14"/><path d="M8 24c0 4 3 7 8 7s8-3 8-7c0 4 3 7 8 7s8-3 8-7c0 4 3 7 8 7s8-3 8-7"/><path d="M12 31v23h40V31"/><path d="M26 54V40h12v14"/>'
+};
+const ikon = k => `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON[k] || IKON.ketua}</svg>`;
+const fotoOrang = (src, nama) => src ? `<img class="foto-isi" src="${src}" alt="Foto ${nama}" loading="lazy" onerror="this.outerHTML=kosongHTML">` : kosong();
+const namaTautan = (o, nama) => o.instagram ? `<a href="${o.instagram}" target="_blank" rel="noopener">${nama}</a>` : nama;
+
+document.querySelectorAll("[data-periode]").forEach(el => el.textContent = STRUKTUR.periode);
+ada("#organigram", el => {
+  const k = STRUKTUR.ketua;
+  el.innerHTML = `<div class="simpul akar muncul"><span class="ubin-ikon">${ikon(k.ikon)}</span><b>${k.jabatan}</b></div>
+    <div class="cabang">${STRUKTUR.bidang.map(b => `<a class="simpul muncul" href="bidang.html?b=${b.id}"><span class="ubin-ikon">${ikon(b.ikon)}</span><b>${b.nama}</b></a>`).join("")}</div>`;
+});
+ada("#kartu-ketua", el => {
+  const k = STRUKTUR.ketua;
+  el.innerHTML = `<article class="kartu-pimpinan muncul">
+    <div class="kepala-pimpinan"><h3>${k.jabatan}</h3><span class="bulat-ikon">${ikon(k.ikon)}</span></div>
+    <div class="foto-pimpinan">${fotoOrang(k.foto, k.nama)}<span class="nama-kaca">${namaTautan(k, k.nama)}</span></div></article>`;
+});
+ada("#daftar-bidang", el => el.innerHTML = STRUKTUR.bidang.map(b => `<article class="kartu-bidang muncul">
+  <div class="foto-bidang">${fotoOrang(b.foto, b.kepala)}<span class="lencana-ikon">${ikon(b.ikon)}</span></div>
+  <div class="isi-bidang">
+    <span class="pil-nama">${namaTautan(b, b.kepala)}</span>
+    <span class="jabatan">Kepala Bidang</span>
+    <h3>${b.nama}</h3>
+    <p>${b.ringkas}</p>
+    <a class="btn btn-biru btn-kecil" href="bidang.html?b=${b.id}">Klik <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div></article>`).join(""));
+
+ada("#detail-bidang", el => {
+  const id = new URLSearchParams(location.search).get("b");
+  const i = Math.max(0, STRUKTUR.bidang.findIndex(b => b.id === id));
+  const b = STRUKTUR.bidang[i], n = STRUKTUR.bidang.length;
+  const sblm = STRUKTUR.bidang[(i - 1 + n) % n], ssdh = STRUKTUR.bidang[(i + 1) % n];
+  document.title = `${b.nama} | KOPMA UM`;
+  el.innerHTML = `<h1 class="judul-bidang muncul"><small>Bidang</small>${b.nama.replace(/^Bidang\s+/i, "")}</h1>
+    <div class="lingkar-ikon muncul">${ikon(b.ikon)}</div>
+    <p class="ringkas-bidang muncul">${b.ringkas}</p>
+    <h2 class="sub-bidang muncul">Tugas utama:</h2>
+    <ol class="tugas-bidang">${b.tugas.map(t => `<li class="muncul">${t}</li>`).join("")}</ol>
+    <article class="kartu-bidang tunggal muncul">
+      <div class="foto-bidang">${fotoOrang(b.foto, b.kepala)}<span class="lencana-ikon">${ikon(b.ikon)}</span></div>
+      <div class="isi-bidang"><span class="pil-nama">${namaTautan(b, b.kepala)}</span><span class="jabatan">Kepala Bidang</span><h3>${b.nama}</h3></div>
+    </article>
+    <nav class="nav-bidang" aria-label="Bidang lain">
+      <a class="btn btn-putih" href="bidang.html?b=${sblm.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>${sblm.nama.replace(/^Bidang\s+/i, "")}</a>
+      <a class="btn btn-biru" href="struktur.html">Semua Struktur</a>
+      <a class="btn btn-putih" href="bidang.html?b=${ssdh.id}">${ssdh.nama.replace(/^Bidang\s+/i, "")}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>`;
 });
 
 /* ---------- Navbar: scroll, burger, menu aktif ---------- */
