@@ -13,13 +13,12 @@ Setiap menu adalah halaman sendiri:
 - `struktur.html` — hero maskot Adit, organigram (Ketua + 5 bidang), kartu ketua dan kartu bidang
 - `bidang.html` — detail satu bidang, dibuka dari tombol KLIK (mis. `bidang.html?b=kominfo`)
 - `unit.html` — unit usaha
-- `promo.html` — promo dengan filter kategori
 - `kegiatan.html` — kabar kegiatan
 - `kontak.html` — kontak, jam buka, peta, dan tanya jawab
 
 File bersama:
 - `assets/gaya.css` — semua tampilan (warna di `:root`), dipakai bersama semua halaman
-- `assets/data.js` — **semua isi yang bisa diedit** (kontak, unit, promo, kegiatan, FAQ, profil, proker)
+- `assets/data.js` — **semua isi yang bisa diedit** (kontak, unit, kegiatan, FAQ, profil, proker, struktur)
 - `assets/app.js` — logika, tidak perlu diubah
 - `assets/` — logo dan foto
 
@@ -27,7 +26,7 @@ File bersama:
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
 - `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
-- `UNIT`, `PROMO`, `BERITA`, `FAQ` — daftar unit usaha, promo, kegiatan, tanya jawab
+- `UNIT`, `BERITA`, `FAQ` — daftar unit usaha, kegiatan, tanya jawab
 - `PROFIL` — foto bersama, paragraf profil, makna logo, dan makna warna (halaman Profil)
 - `PROKER` — kartu carousel program kerja unggulan
 - `STRUKTUR` — periode, nama & foto Ketua, serta tiap bidang (kepala bidang, foto, ringkasan, tugas)

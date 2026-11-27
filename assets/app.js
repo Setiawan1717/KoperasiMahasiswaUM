@@ -3,7 +3,6 @@
    dijalankan kalau elemennya ada di halaman. */
 const $ = s => document.querySelector(s);
 const ada = (sel, fn) => { const el = $(sel); if (el) fn(el); };
-const rupiah = n => "Rp" + n.toLocaleString("id-ID");
 const ikonFoto = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>';
 const kosong = (teks = "Foto menyusul") => `<div class="foto-kosong">${ikonFoto}${teks}</div>`;
 window.kosongHTML = kosong();
@@ -40,24 +39,6 @@ const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 ada("#grid-unit", el => el.innerHTML = UNIT.map(u => `<article class="kartu takik kanan-bawah muncul">
   <div class="gambar">${gambar(u.foto, u.nama)}</div>
   <div class="badan"><h3>${u.nama}</h3><p>${u.teks}</p><span class="meta">${ikonLokasi}${u.lokasi}</span></div></article>`).join(""));
-
-ada("#grid-promo", grid => {
-  const filter = $("#filter");
-  const kategori = ["Semua", ...new Set(PROMO.map(p => p.kategori))];
-  filter.innerHTML = kategori.map((k, i) => `<button type="button" aria-pressed="${i === 0}" data-kat="${k}">${k}</button>`).join("");
-  grid.innerHTML = PROMO.map(p => {
-    const persen = p.hargaAwal ? Math.round((1 - p.harga / p.hargaAwal) * 100) : 0;
-    return `<article class="kartu promo muncul" data-kat="${p.kategori}">
-      <div class="gambar">${persen ? `<span class="diskon">-${persen}%</span>` : ""}${gambar(p.foto, p.nama)}</div>
-      <div class="badan"><span class="kat">${p.kategori}</span><h3>${p.nama}</h3>
-      <div class="harga"><b>${rupiah(p.harga)}</b>${p.hargaAwal ? `<s>${rupiah(p.hargaAwal)}</s>` : ""}</div></div></article>`;
-  }).join("");
-  filter.addEventListener("click", e => {
-    const b = e.target.closest("button"); if (!b) return;
-    filter.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
-    document.querySelectorAll(".promo").forEach(k => k.classList.toggle("sembunyi", b.dataset.kat !== "Semua" && k.dataset.kat !== b.dataset.kat));
-  });
-});
 
 const fmtTgl = s => { const d = new Date(s + "T00:00:00"); return { h: d.getDate(), b: d.toLocaleString("id-ID", { month: "short" }), lengkap: d.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) }; };
 ada("#grid-berita", el => el.innerHTML = BERITA.map(b => { const t = fmtTgl(b.tanggal); return `<article class="kartu berita muncul">

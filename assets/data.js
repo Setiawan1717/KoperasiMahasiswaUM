@@ -28,18 +28,6 @@ const UNIT = [
   { nama:"Merchandise UM", teks:"Kaos, jaket, totebag, dan suvenir khas Universitas Negeri Malang.", lokasi:"[Lokasi unit]", foto:"" }
 ];
 
-// Promo: CONTOH — ganti nama, harga, dan foto sesuai promo asli
-const PROMO = [
-  { nama:"[Contoh] Buku Tulis 38 Lembar (pak isi 10)", kategori:"ATK", harga:32000, hargaAwal:38000, foto:"" },
-  { nama:"[Contoh] Pulpen Gel Hitam", kategori:"ATK", harga:3500, hargaAwal:4500, foto:"" },
-  { nama:"[Contoh] Air Mineral 600 ml", kategori:"Minuman", harga:3000, hargaAwal:4000, foto:"" },
-  { nama:"[Contoh] Kopi Susu Botol", kategori:"Minuman", harga:7000, hargaAwal:9000, foto:"" },
-  { nama:"[Contoh] Roti Isi Cokelat", kategori:"Makanan", harga:5000, hargaAwal:6500, foto:"" },
-  { nama:"[Contoh] Mi Instan Goreng", kategori:"Makanan", harga:3000, hargaAwal:3500, foto:"" },
-  { nama:"[Contoh] Kaos Logo UM", kategori:"Merchandise", harga:75000, hargaAwal:90000, foto:"" },
-  { nama:"[Contoh] Totebag Kanvas KOPMA", kategori:"Merchandise", harga:35000, hargaAwal:45000, foto:"" }
-];
-
 // Kegiatan: CONTOH — ganti dengan kegiatan/berita asli
 const BERITA = [
   { judul:"[Contoh] Pendidikan Dasar Anggota Baru", tag:"Kegiatan", tanggal:"2026-11-10", ringkas:"Pengenalan nilai koperasi, unit usaha, dan kepengurusan bagi anggota baru KOPMA UM.", foto:"" },
