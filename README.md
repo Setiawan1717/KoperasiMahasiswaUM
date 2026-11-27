@@ -12,7 +12,8 @@ Setiap menu adalah halaman sendiri:
 - `profil.html` — Profil (tentang, filosofi logo, filosofi warna, program kerja unggulan)
 - `struktur.html` — hero maskot Adit, organigram (Ketua + 5 bidang), kartu ketua dan kartu bidang
 - `bidang.html` — detail satu bidang, dibuka dari tombol KLIK (mis. `bidang.html?b=kominfo`)
-- `unit.html` — unit usaha
+- `unit.html` — daftar unit usaha (Kopma Mart, Persewaan Kopma, Kopma Print)
+- `unit-detail.html` — penjelasan satu unit, dibuka dari tombol Selengkapnya (mis. `unit-detail.html?u=kopma-print`)
 - `kegiatan.html` — kabar kegiatan
 - `kontak.html` — kontak, jam buka, peta, dan tanya jawab
 
@@ -26,7 +27,8 @@ File bersama:
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
 - `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
-- `UNIT`, `BERITA`, `FAQ` — daftar unit usaha, kegiatan, tanya jawab
+- `UNIT` — tiap unit usaha: ringkasan, deskripsi, layanan, lokasi, jam buka, foto
+- `BERITA`, `FAQ` — kegiatan dan tanya jawab
 - `PROFIL` — foto bersama, paragraf profil, makna logo, dan makna warna (halaman Profil)
 - `PROKER` — kartu carousel program kerja unggulan
 - `STRUKTUR` — periode, nama & foto Ketua, serta tiap bidang (kepala bidang, foto, ringkasan, tugas)

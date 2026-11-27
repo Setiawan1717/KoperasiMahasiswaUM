@@ -20,14 +20,48 @@ const KONTAK = {
 // Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
 const FOTO_TENTANG = "";
 
-// Unit usaha: SESUAIKAN dengan unit yang benar-benar dimiliki KOPMA UM
+// Unit usaha (unit.html) + halaman detail (unit-detail.html?u=<id>)
+// - "ikon": mart, sewa, print
+// - "foto": foto utama unit, mis. "assets/unit/kopma-mart.jpg". Kosong = kotak "Foto menyusul".
+// - Teks bertanda [Draf] dan [ ... ] adalah contoh — GANTI dengan info asli dari pengurus.
 const UNIT = [
-  { nama:"Toko Kopma", teks:"Kebutuhan harian, camilan, dan minuman dengan harga mahasiswa.", lokasi:"[Lokasi unit]", foto:"" },
-  { nama:"ATK & Fotokopi", teks:"Alat tulis, print, fotokopi, jilid, dan perlengkapan tugas kuliah.", lokasi:"[Lokasi unit]", foto:"" },
-  { nama:"Kantin Kopma", teks:"Tempat makan dan nongkrong dengan menu ramah kantong.", lokasi:"[Lokasi unit]", foto:"" },
-  { nama:"Merchandise UM", teks:"Kaos, jaket, totebag, dan suvenir khas Universitas Negeri Malang.", lokasi:"[Lokasi unit]", foto:"" }
+  { id:"kopma-mart", nama:"Kopma Mart", ikon:"mart", foto:"",
+    ringkas:"Minimarket kampus untuk kebutuhan harian, camilan, minuman, dan perlengkapan kuliah dengan harga mahasiswa.",
+    deskripsi:[
+      "[Draf] Kopma Mart adalah minimarket milik KOPMA UM yang menyediakan kebutuhan sehari-hari mahasiswa di area kampus, mulai dari makanan ringan, minuman, kebutuhan pribadi, sampai alat tulis.",
+      "[Draf] Semua orang boleh berbelanja di Kopma Mart. Anggota KOPMA UM mendapat harga anggota, dan setiap belanja anggota ikut dihitung dalam pembagian Sisa Hasil Usaha (SHU)."
+    ],
+    layanan:[
+      { nama:"Makanan & Minuman", teks:"[Draf] Camilan, roti, mi instan, minuman dingin, dan kopi." },
+      { nama:"Kebutuhan Harian", teks:"[Draf] Perlengkapan mandi, tisu, dan kebutuhan pribadi lainnya." },
+      { nama:"Alat Tulis", teks:"[Draf] Buku, pulpen, map, dan perlengkapan tugas kuliah." }
+    ],
+    lokasi:"[Lokasi Kopma Mart]", jam:"[Jam buka Kopma Mart]" },
+  { id:"persewaan", nama:"Persewaan Kopma", ikon:"sewa", foto:"",
+    ringkas:"Sewa perlengkapan untuk acara dan kegiatan mahasiswa dengan harga terjangkau.",
+    deskripsi:[
+      "[Draf] Persewaan Kopma melayani penyewaan perlengkapan untuk kegiatan organisasi, kepanitiaan, dan acara mahasiswa di lingkungan Universitas Negeri Malang.",
+      "[Draf] Pemesanan bisa dilakukan lewat WhatsApp. Sebutkan barang, jumlah, dan tanggal pemakaian agar ketersediaannya bisa dicek lebih dulu."
+    ],
+    layanan:[
+      { nama:"[Barang sewa 1]", teks:"[Isi barang yang disewakan, mis. perlengkapan acara]" },
+      { nama:"[Barang sewa 2]", teks:"[Isi barang yang disewakan]" },
+      { nama:"[Barang sewa 3]", teks:"[Isi barang yang disewakan]" }
+    ],
+    lokasi:"[Lokasi Persewaan Kopma]", jam:"[Jam layanan Persewaan Kopma]" },
+  { id:"kopma-print", nama:"Kopma Print", ikon:"print", foto:"",
+    ringkas:"Print, fotokopi, scan, dan jilid untuk tugas kuliah, makalah, sampai skripsi.",
+    deskripsi:[
+      "[Draf] Kopma Print membantu mahasiswa menyelesaikan kebutuhan cetak dokumen dengan cepat dan murah, langsung di area kampus.",
+      "[Draf] File bisa dikirim lewat WhatsApp atau dibawa langsung dalam flashdisk. Untuk pesanan dalam jumlah banyak, sebaiknya kirim file lebih awal."
+    ],
+    layanan:[
+      { nama:"Print", teks:"[Draf] Cetak hitam-putih dan berwarna." },
+      { nama:"Fotokopi & Scan", teks:"[Draf] Fotokopi dokumen dan scan ke PDF." },
+      { nama:"Jilid", teks:"[Draf] Jilid makalah, laporan, dan skripsi." }
+    ],
+    lokasi:"[Lokasi Kopma Print]", jam:"[Jam buka Kopma Print]" }
 ];
-
 // Kegiatan: CONTOH — ganti dengan kegiatan/berita asli
 const BERITA = [
   { judul:"[Contoh] Pendidikan Dasar Anggota Baru", tag:"Kegiatan", tanggal:"2026-11-10", ringkas:"Pengenalan nilai koperasi, unit usaha, dan kepengurusan bagi anggota baru KOPMA UM.", foto:"" },
