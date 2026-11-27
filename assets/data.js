@@ -5,8 +5,8 @@
    - Semua teks bertanda [ ... ] adalah placeholder yang wajib diganti.
    ===================================================================== */
 const KONTAK = {
-  wa: "",                       // contoh: "6281234567890" (tanpa + dan spasi)
-  waTampil: "[Nomor WhatsApp]",
+  wa: "62881025725575",         // nomor WhatsApp KOPMA UM (format 62..., tanpa + dan spasi)
+  waTampil: "+62 881-0257-25575",
   instagram: "",                // contoh: "https://instagram.com/akun_kopma"
   igTampil: "[@akun_instagram]",
   tiktok: "",                   // contoh: "https://tiktok.com/@akun_kopma"
@@ -19,6 +19,44 @@ const KONTAK = {
 
 // Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
 const FOTO_TENTANG = "";
+
+/* ===================== KALIMAT PESAN WHATSAPP =====================
+   Semua tombol WhatsApp di website memakai kalimat di bawah ini.
+   - Tulis \n untuk pindah baris.
+   - {unit}, {barang}, {tanggal} akan diganti otomatis sesuai halaman.
+   Bagian setelah titik dua dibiarkan kosong agar pengunjung tinggal mengisi. */
+const PESAN_WA = {
+  tanya:
+    "Halo Admin KOPMA UM 👋\n\n" +
+    "Saya ingin bertanya tentang KOPMA UM.\n\n" +
+    "Nama: \n" +
+    "Pertanyaan: \n\n" +
+    "Terima kasih 🙏",
+  daftar:
+    "Halo Admin KOPMA UM 👋\n\n" +
+    "Saya ingin mendaftar menjadi anggota KOPMA UM. Berikut data saya:\n\n" +
+    "Nama lengkap: \n" +
+    "NIM: \n" +
+    "Fakultas / Prodi: \n" +
+    "Angkatan: \n\n" +
+    "Mohon info langkah pendaftaran dan besar simpanan pokok serta simpanan wajibnya. Terima kasih 🙏",
+  unit:
+    "Halo Admin {unit} KOPMA UM 👋\n\n" +
+    "Saya ingin bertanya tentang layanan {unit}.\n\n" +
+    "Nama: \n" +
+    "Pertanyaan: \n\n" +
+    "Terima kasih 🙏",
+  sewa:
+    "Halo Admin Persewaan KOPMA UM 👋\n\n" +
+    "Saya ingin booking sewa barang:\n\n" +
+    "Barang: {barang}\n" +
+    "Tanggal ambil: {tanggal}\n" +
+    "Lama sewa (hari): \n" +
+    "Jumlah unit: \n" +
+    "Nama penyewa: \n" +
+    "Organisasi / acara: \n\n" +
+    "Mohon konfirmasi ketersediaan dan total biayanya. Terima kasih 🙏"
+};
 
 /* ===================== KALENDER SEWA (terhubung ke Kopma Hub) =====================
    Kalender di halaman Persewaan Kopma membaca data yang SAMA dengan halaman publik
@@ -49,6 +87,7 @@ const UNIT = [
       { nama:"Kebutuhan Harian", teks:"[Draf] Perlengkapan mandi, tisu, dan kebutuhan pribadi lainnya." },
       { nama:"Alat Tulis", teks:"[Draf] Buku, pulpen, map, dan perlengkapan tugas kuliah." }
     ],
+    pesanWA:"Halo Admin Kopma Mart 👋\n\nSaya ingin menanyakan ketersediaan barang di Kopma Mart:\n\nNama barang: \nJumlah: \n\nApakah barang tersebut tersedia? Terima kasih 🙏",
     lokasi:"[Lokasi Kopma Mart]", jam:"[Jam buka Kopma Mart]" },
   { id:"persewaan", nama:"Persewaan Kopma", ikon:"sewa", foto:"",
     ringkas:"Sewa perlengkapan untuk acara dan kegiatan mahasiswa dengan harga terjangkau.",
@@ -65,6 +104,7 @@ const UNIT = [
       { nama:"Meja Lipat", teks:"[Draf] Meja lipat untuk stand, registrasi, dan bazar." },
       { nama:"X Banner", teks:"[Draf] Stand X banner untuk publikasi acara." }
     ],
+    pesanWA:"Halo Admin Persewaan KOPMA UM 👋\n\nSaya ingin bertanya tentang sewa barang:\n\nBarang yang ingin disewa: \nTanggal pemakaian: \nKeperluan / acara: \n\nMohon info ketersediaan dan harganya. Terima kasih 🙏",
     lokasi:"[Lokasi Persewaan Kopma]", jam:"[Jam layanan Persewaan Kopma]" },
   { id:"kopma-print", nama:"Kopma Print", ikon:"print", foto:"",
     ringkas:"Print, fotokopi, scan, dan jilid untuk tugas kuliah, makalah, sampai skripsi.",
@@ -77,6 +117,7 @@ const UNIT = [
       { nama:"Fotokopi & Scan", teks:"[Draf] Fotokopi dokumen dan scan ke PDF." },
       { nama:"Jilid", teks:"[Draf] Jilid makalah, laporan, dan skripsi." }
     ],
+    pesanWA:"Halo Admin Kopma Print 👋\n\nSaya ingin memakai layanan Kopma Print:\n\nJenis layanan (print / fotokopi / scan / jilid): \nJumlah halaman / rangkap: \nHitam-putih atau berwarna: \nRencana diambil (hari & jam): \n\nFile akan saya kirim setelah pesan ini. Terima kasih 🙏",
     lokasi:"[Lokasi Kopma Print]", jam:"[Jam buka Kopma Print]" }
 ];
 // Kegiatan: CONTOH — ganti dengan kegiatan/berita asli

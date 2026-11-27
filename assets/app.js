@@ -9,7 +9,10 @@ window.kosongHTML = kosong();
 const gambar = (src, alt) => src
   ? `<img class="foto-isi" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML=kosongHTML">`
   : kosong();
-const waLink = pesan => KONTAK.wa ? `https://wa.me/${KONTAK.wa}?text=${encodeURIComponent(pesan)}` : "#kontak";
+const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+// data-wa berisi kunci kalimat di PESAN_WA (mis. "daftar") atau kalimat langsung
+const isiPesan = (kunci, isi = {}) => (PESAN_WA[kunci] ?? kunci).replace(/\{(\w+)\}/g, (_, k) => isi[k] ?? "");
+const waLink = pesan => KONTAK.wa ? `https://wa.me/${KONTAK.wa}?text=${encodeURIComponent(isiPesan(pesan))}` : "#kontak";
 
 // Kontak & tautan
 document.querySelectorAll("[data-wa]").forEach(a => {
@@ -163,7 +166,7 @@ ada("#detail-unit", el => {
           <span>${ikonLokasiKecil}<span><small>Lokasi</small><b>${u.lokasi}</b></span></span>
           <span>${ikonJam}<span><small>Jam buka</small><b>${u.jam}</b></span></span>
         </div>
-        <a href="#" class="btn btn-biru" data-wa="Halo KOPMA UM, saya mau tanya tentang ${u.nama}.">${ikonWA} Tanya via WhatsApp</a>
+        <a href="#" class="btn btn-biru" data-wa="${esc(u.pesanWA || isiPesan("unit", { unit: u.nama }))}">${ikonWA} Tanya via WhatsApp</a>
       </div>
       <div class="bingkai-foto muncul"><div class="isi">${gambar(u.foto, u.nama)}</div><span class="lencana-ikon besar">${ikon(u.ikon)}</span><span class="orb ungu" aria-hidden="true"></span></div>
     </div>
@@ -191,7 +194,6 @@ function kalenderSewa(wadah) {
   const pad = n => String(n).padStart(2, "0");
   const hariIni = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(new Date());
   const tglPanjang = ds => { const [y, m, d] = ds.split("-").map(Number); return `${d} ${BULAN[m - 1]} ${y}`; };
-  const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const t0 = hariIni();
   // daftar dasar: semua barang di SEWA.urutan selalu tampil, walau belum terdaftar/belum ada booking di Kopma Hub
   const dasar = () => SEWA.urutan.map((nama, i) => ({ id: "lokal-" + i, nama, spek: "", unit: null, harga24: null, harga2: null, batas_hari: null }));
@@ -242,7 +244,7 @@ function kalenderSewa(wadah) {
       sel.push(`<button type="button" class="hari ${penuh ? "penuh" : "ada"} ${lewat ? "lewat" : ""} ${ds === t ? "kini" : ""} ${ds === st.tanggal ? "dipilih" : ""}" data-tgl="${ds}" ${lewat || penuh ? "disabled" : ""} aria-pressed="${ds === st.tanggal}" aria-label="${tglPanjang(ds)}: ${label}"><b>${d}</b><small>${label}</small></button>`);
     }
     const bisaMundur = st.bulan > t.slice(0, 7);
-    const pesan = `Halo KOPMA UM, saya mau sewa ${b.nama}${st.tanggal ? ` untuk tanggal ${tglPanjang(st.tanggal)}` : ""}. Apakah masih tersedia?`;
+    const pesan = isiPesan("sewa", { barang: b.nama, tanggal: st.tanggal ? tglPanjang(st.tanggal) : "" });
     wadah.innerHTML = `
       <div class="chip-sewa" role="group" aria-label="Pilih barang">${st.barang.map(x => `<button type="button" data-barang="${esc(x.nama)}" aria-pressed="${x.nama === b.nama}">${esc(x.nama)}</button>`).join("")}</div>
       ${st.error ? `<div class="kal-pesan galat kecil">${st.error} <a href="${SEWA.halamanHub}" target="_blank" rel="noopener">Cek di Kopma Hub</a></div>` : ""}

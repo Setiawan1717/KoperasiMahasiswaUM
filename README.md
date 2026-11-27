@@ -26,6 +26,7 @@ File bersama:
 ## Cara mengedit isi
 Buka `assets/data.js`:
 - `KONTAK` — nomor WhatsApp (format `628xxx`), Instagram, TikTok, email, jam buka, alamat, nominal simpanan
+- `PESAN_WA` — kalimat otomatis untuk setiap tombol WhatsApp (tanya, daftar anggota, tanya unit, booking sewa). Kalimat khusus tiap unit usaha ada di kolom `pesanWA` pada `UNIT`
 - `FOTO_TENTANG` — foto di bingkai bagian "Kenalan Yuk!" (kosong = maskot Adit)
 - `UNIT` — tiap unit usaha: ringkasan, deskripsi, layanan, lokasi, jam buka, foto
 - `BERITA`, `FAQ` — kegiatan dan tanya jawab
