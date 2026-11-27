@@ -17,6 +17,19 @@ const KONTAK = {
   simpanan: "[Isi nominal simpanan pokok dan simpanan wajib]"
 };
 
+/* ===================== VISI & MISI (Beranda) =====================
+   [Draf] = contoh tulisan. GANTI dengan visi dan misi resmi KOPMA UM. */
+const VISI_MISI = {
+  visi: "[Draf] Menjadi koperasi mahasiswa yang mandiri, profesional, dan terpercaya sebagai wadah kesejahteraan serta pembelajaran wirausaha bagi mahasiswa Universitas Negeri Malang.",
+  misi: [
+    "[Draf] Menyediakan kebutuhan mahasiswa dengan harga terjangkau dan pelayanan yang ramah.",
+    "[Draf] Mengembangkan unit usaha secara profesional, transparan, dan berkelanjutan.",
+    "[Draf] Meningkatkan kesejahteraan anggota melalui pembagian Sisa Hasil Usaha (SHU) yang adil.",
+    "[Draf] Menjadi ruang belajar perkoperasian dan kewirausahaan bagi anggota.",
+    "[Draf] Menjalin kerja sama dengan civitas akademika dan koperasi mahasiswa lain."
+  ]
+};
+
 // Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
 const FOTO_TENTANG = "";
 
