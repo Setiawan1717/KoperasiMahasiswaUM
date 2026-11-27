@@ -170,13 +170,115 @@ ada("#detail-unit", el => {
     <div class="isi-unit muncul">${u.deskripsi.map(p => `<p>${p}</p>`).join("")}</div>
     <h2 class="judul-sorot muncul">Layanan <span class="sorot oranye">Kami</span></h2>
     <div class="grid-layanan">${u.layanan.map((l, j) => `<div class="layanan muncul"><span class="no">${j + 1}</span><h3>${l.nama}</h3><p>${l.teks}</p></div>`).join("")}</div>
+    ${u.kalender ? `<section class="kalender-sewa" id="kalender-sewa" aria-labelledby="judul-kalender">
+      <h2 class="judul-sorot" id="judul-kalender">Cek <span class="sorot biru">Jadwal Sewa</span></h2>
+      <p class="sub">Pilih barang, lalu lihat tanggal yang masih tersedia. Jadwal ini tersambung langsung dengan Kopma Hub.</p>
+      <div id="isi-kalender" aria-live="polite"><div class="kal-pesan">Memuat jadwal sewa…</div></div>
+    </section>` : ""}
     <nav class="nav-bidang" aria-label="Unit usaha lain">
       <a class="btn btn-putih" href="unit-detail.html?u=${sblm.id}">${ikonPanahKiri}${sblm.nama}</a>
       <a class="btn btn-biru" href="unit.html">Semua Unit Usaha</a>
       <a class="btn btn-putih" href="unit-detail.html?u=${ssdh.id}">${ssdh.nama}${ikonPanah}</a>
     </nav>`;
   pasangWA(el);
+  if (u.kalender) kalenderSewa($("#isi-kalender"));
 });
+
+/* ---------- Kalender sewa (data dari Kopma Hub / Supabase) ---------- */
+function kalenderSewa(wadah) {
+  const BULAN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  const AKTIF = ["Menunggu", "Dikonfirmasi", "Diambil"];
+  const pad = n => String(n).padStart(2, "0");
+  const hariIni = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Jakarta" }).format(new Date());
+  const tglPanjang = ds => { const [y, m, d] = ds.split("-").map(Number); return `${d} ${BULAN[m - 1]} ${y}`; };
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const t0 = hariIni();
+  const st = { barang: [], jadwal: [], pilih: null, bulan: t0.slice(0, 7), tanggal: null, error: "", siap: false };
+
+  const urut = b => { const i = SEWA.urutan.findIndex(n => n.toLowerCase() === b.nama.toLowerCase()); return i < 0 ? 99 : i; };
+  async function muat() {
+    try {
+      const h = { apikey: SEWA.supabaseKey, "Content-Type": "application/json" };
+      const [rb, rj] = await Promise.all([
+        fetch(`${SEWA.supabaseUrl}/rest/v1/sewa_barang?select=id,nama,spek,unit,harga24,harga2,batas_hari&aktif=eq.true&order=nama`, { headers: h }),
+        fetch(`${SEWA.supabaseUrl}/rest/v1/rpc/jadwal_sewa_publik`, { method: "POST", headers: h, body: "{}" })
+      ]);
+      if (!rb.ok || !rj.ok) throw new Error(`server ${rb.ok ? rj.status : rb.status}`);
+      st.barang = (await rb.json()).sort((a, b) => urut(a) - urut(b) || a.nama.localeCompare(b.nama));
+      st.jadwal = await rj.json();
+      st.error = "";
+      if (!st.barang.find(b => b.id === st.pilih)) st.pilih = st.barang[0]?.id || null;
+    } catch (e) { if (!st.siap) st.error = "Jadwal sewa belum bisa dimuat. Coba muat ulang halaman, atau cek langsung di Kopma Hub."; }
+    st.siap = true;
+    gambar();
+  }
+
+  function sisa(b, ds) {
+    const t = hariIni();
+    return b.unit - st.jadwal.filter(x => x.barang_id === b.id && AKTIF.includes(x.status) && (
+      (ds >= x.ambil && ds < x.kembali) ||
+      (x.status === "Diambil" && x.kembali < t && ds >= x.kembali && ds <= t)   // terlambat kembali tetap memakai unit
+    )).reduce((a, x) => a + x.unit, 0);
+  }
+  const rp = n => "Rp" + Number(n || 0).toLocaleString("id-ID");
+
+  function gambar() {
+    if (st.error) { wadah.innerHTML = `<div class="kal-pesan galat">${st.error} <a href="${SEWA.halamanHub}" target="_blank" rel="noopener">Buka jadwal di Kopma Hub</a></div>`; return; }
+    if (!st.barang.length) { wadah.innerHTML = `<div class="kal-pesan">Belum ada barang sewa yang aktif.</div>`; return; }
+    const b = st.barang.find(x => x.id === st.pilih);
+    const [y, m] = st.bulan.split("-").map(Number);
+    const mulai = (new Date(y, m - 1, 1).getDay() + 6) % 7, jml = new Date(y, m, 0).getDate();
+    const t = hariIni(), sel = [];
+    for (let i = 0; i < mulai; i++) sel.push('<span class="hari kosong" aria-hidden="true"></span>');
+    for (let d = 1; d <= jml; d++) {
+      const ds = `${y}-${pad(m)}-${pad(d)}`, s = sisa(b, ds), lewat = ds < t, penuh = s <= 0;
+      const label = penuh ? "Penuh" : "Tersedia";
+      sel.push(`<button type="button" class="hari ${penuh ? "penuh" : "ada"} ${lewat ? "lewat" : ""} ${ds === t ? "kini" : ""} ${ds === st.tanggal ? "dipilih" : ""}" data-tgl="${ds}" ${lewat || penuh ? "disabled" : ""} aria-pressed="${ds === st.tanggal}" aria-label="${tglPanjang(ds)}: ${label}"><b>${d}</b><small>${label}</small></button>`);
+    }
+    const bisaMundur = st.bulan > t.slice(0, 7);
+    const pesan = `Halo KOPMA UM, saya mau sewa ${b.nama}${st.tanggal ? ` untuk tanggal ${tglPanjang(st.tanggal)}` : ""}. Apakah masih tersedia?`;
+    wadah.innerHTML = `
+      <div class="chip-sewa" role="group" aria-label="Pilih barang">${st.barang.map(x => `<button type="button" data-barang="${x.id}" aria-pressed="${x.id === b.id}">${esc(x.nama)}</button>`).join("")}</div>
+      <div class="kal-grid">
+        <div class="kal-kartu">
+          <div class="kal-kepala">
+            <button type="button" class="kal-panah" data-geser="-1" ${bisaMundur ? "" : "disabled"} aria-label="Bulan sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m15 18-6-6 6-6"/></svg></button>
+            <h3>${BULAN[m - 1]} ${y}</h3>
+            <button type="button" class="kal-panah" data-geser="1" aria-label="Bulan berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <div class="kal">${["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"].map(h => `<span class="nama-hari">${h}</span>`).join("")}${sel.join("")}</div>
+          <div class="kal-legenda"><span><i class="ada"></i>Tersedia</span><span><i class="penuh"></i>Penuh</span><span><i class="dipilih"></i>Tanggal dipilih</span></div>
+        </div>
+        <div class="kal-info">
+          <span class="label-unit">Barang</span>
+          <h3>${esc(b.nama)}</h3>
+          ${b.spek ? `<p>${esc(b.spek)}</p>` : ""}
+          <dl>
+            <dt>Jumlah unit</dt><dd>${b.unit} unit</dd>
+            <dt>Sewa 24 jam</dt><dd>${rp(b.harga24)}</dd>
+            <dt>2 hari ke atas</dt><dd>${rp(b.harga2)} / hari</dd>
+            <dt>Batas sewa</dt><dd>${b.batas_hari} hari</dd>
+          </dl>
+          <p class="kal-tgl">${st.tanggal ? `Tanggal dipilih: <b>${tglPanjang(st.tanggal)}</b>` : "Klik tanggal yang tersedia untuk memilih."}</p>
+          <a class="btn btn-biru" href="#" data-wa="${esc(pesan)}">${ikonWA} Booking via WhatsApp</a>
+          <p class="kal-catatan">Jadwal diambil langsung dari Kopma Hub dan diperbarui otomatis. Tanggal merah sudah penuh.</p>
+        </div>
+      </div>`;
+    pasangWA(wadah);
+  }
+
+  wadah.addEventListener("click", e => {
+    const tb = e.target.closest("[data-barang]"), tg = e.target.closest("[data-tgl]"), gs = e.target.closest("[data-geser]");
+    if (tb) { st.pilih = tb.dataset.barang; st.tanggal = null; gambar(); }
+    else if (tg && !tg.disabled) { st.tanggal = st.tanggal === tg.dataset.tgl ? null : tg.dataset.tgl; gambar(); }
+    else if (gs && !gs.disabled) {
+      const [y, m] = st.bulan.split("-").map(Number), d = new Date(y, m - 1 + Number(gs.dataset.geser), 1);
+      st.bulan = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; gambar();
+    }
+  });
+  muat();
+  setInterval(() => { if (document.visibilityState === "visible") muat(); }, 60000);
+}
 
 /* ---------- Navbar: scroll, burger, menu aktif ---------- */
 const nav = $("#nav"), burger = $("#burger");

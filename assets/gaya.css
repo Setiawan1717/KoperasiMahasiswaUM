@@ -513,3 +513,57 @@ a.simpul:hover .ubin-ikon{transform:translateY(-4px)}
   .grid-unit,.grid-layanan{grid-template-columns:1fr}
   .grid-layanan{gap:28px}
 }
+
+/* =====================================================================
+   KALENDER SEWA (Persewaan Kopma)
+   ===================================================================== */
+.kalender-sewa{margin-top:clamp(56px,7vw,88px)}
+.kal-pesan{text-align:center;padding:28px;border-radius:16px;background:#FFF3EA;border:2px dashed var(--peach-2);font-weight:700}
+.kal-pesan.galat{background:#FFE6E4;border-color:var(--koral)}
+.kal-pesan a{text-decoration:underline}
+.chip-sewa{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;width:max-content;max-width:100%;margin:0 auto 28px;background:var(--oranye);padding:6px;border-radius:999px;box-shadow:0 6px 16px -8px rgba(242,145,61,.7)}
+.chip-sewa button{padding:9px 18px;border-radius:999px;font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.02em;color:#fff;transition:background-color .2s,color .2s,box-shadow .2s}
+@media (hover:hover){.chip-sewa button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.22)}}
+.chip-sewa button[aria-pressed="true"]{background:#FFE9CF;color:var(--biru);box-shadow:0 0 0 2px rgba(255,255,255,.75),0 0 12px 2px rgba(255,255,255,.8)}
+.kal-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:24px;align-items:start;width:min(1000px,100%);margin-inline:auto}
+.kal-kartu,.kal-info{background:rgba(255,255,255,.65);border:3px solid #fff;border-radius:24px;padding:clamp(16px,2.4vw,24px);box-shadow:0 20px 40px -26px rgba(120,60,40,.55)}
+.kal-kepala{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.kal-kepala h3{font-family:var(--font-tampil);font-stretch:120%;font-weight:900;font-size:1.25rem;text-transform:uppercase}
+.kal-panah{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#FFE9CF;color:var(--biru);transition:transform .16s var(--ease)}
+.kal-panah:active{transform:scale(.92)}
+.kal-panah:disabled{opacity:.35;cursor:not-allowed}
+.kal-panah svg{width:20px;height:20px}
+.kal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.nama-hari{text-align:center;font-size:.72rem;font-weight:800;text-transform:uppercase;opacity:.7;padding-bottom:4px}
+.hari{aspect-ratio:1/.92;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:2px solid transparent;transition:transform .15s var(--ease),background-color .2s}
+.hari b{font-size:1rem;line-height:1}
+.hari small{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.hari.ada{background:#E3F6E8;border-color:#7FD19A;color:#0F6B33}
+@media (hover:hover){.hari.ada:not(:disabled):not(.dipilih):hover{transform:translateY(-2px);background:#CFF0D9}}
+.hari.penuh{background:#FFE1DE;border-color:var(--koral);color:#B3262A;cursor:not-allowed}
+.hari.lewat{opacity:.38;cursor:not-allowed}
+.hari.kini{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--oranye)}
+.hari.dipilih{background:var(--biru);border-color:var(--biru);color:#fff}
+.hari.kosong{visibility:hidden}
+.kal-legenda{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:.8rem;font-weight:700}
+.kal-legenda span{display:inline-flex;align-items:center;gap:6px}
+.kal-legenda i{width:16px;height:16px;border-radius:5px;border:2px solid}
+.kal-legenda i.ada{background:#E3F6E8;border-color:#7FD19A}
+.kal-legenda i.penuh{background:#FFE1DE;border-color:var(--koral)}
+.kal-legenda i.dipilih{background:var(--biru);border-color:var(--biru)}
+.kal-info h3{font-family:var(--font-tampil);font-stretch:120%;font-weight:900;font-size:1.6rem;text-transform:uppercase;margin:12px 0 6px}
+.kal-info>p{font-size:.92rem}
+.kal-info dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:16px 0;font-size:.95rem}
+.kal-info dt{opacity:.75}
+.kal-info dd{font-weight:800;text-align:right}
+.kal-tgl{background:#FFF3EA;border-radius:12px;padding:10px 12px;margin-bottom:14px}
+.kal-info .btn{width:100%}
+.kal-catatan{font-size:.78rem;opacity:.8;margin-top:12px}
+@media (max-width:820px){.kal-grid{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .chip-sewa{border-radius:22px}
+  .kal{gap:4px}
+  .hari{border-radius:9px;aspect-ratio:1}
+  .hari small{display:none}
+  .hari b{font-size:.9rem}
+}

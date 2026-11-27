@@ -20,6 +20,19 @@ const KONTAK = {
 // Foto untuk bingkai di bagian "Kenalan Yuk!". Kosong = tampil logo besar.
 const FOTO_TENTANG = "";
 
+/* ===================== KALENDER SEWA (terhubung ke Kopma Hub) =====================
+   Kalender di halaman Persewaan Kopma membaca data yang SAMA dengan halaman publik
+   Kopma Hub (database Supabase kopma-um): daftar barang dari tabel sewa_barang dan
+   jadwal dari fungsi jadwal_sewa_publik (tanpa nama/nomor penyewa).
+   Barang, unit, harga, dan booking diatur dari Kopma Hub — tidak perlu diubah di sini.
+   Kunci di bawah adalah kunci PUBLIK (publishable); akses tetap dijaga aturan RLS. */
+const SEWA = {
+  supabaseUrl: "https://uggwjrbialdivyegydia.supabase.co",
+  supabaseKey: "sb_publishable_0vUFj-TLhkV-6VPs7wYZ0Q__QUn_u3G",
+  halamanHub: "https://setiawan1717.github.io/KOPMAUM/#sewa",
+  urutan: ["Mic", "Sound", "Proyektor", "Layar", "Meja Lipat", "X Banner"]   // urutan tombol barang
+};
+
 // Unit usaha (unit.html) + halaman detail (unit-detail.html?u=<id>)
 // - "ikon": mart, sewa, print
 // - "foto": foto utama unit, mis. "assets/unit/kopma-mart.jpg". Kosong = kotak "Foto menyusul".
@@ -43,10 +56,14 @@ const UNIT = [
       "[Draf] Persewaan Kopma melayani penyewaan perlengkapan untuk kegiatan organisasi, kepanitiaan, dan acara mahasiswa di lingkungan Universitas Negeri Malang.",
       "[Draf] Pemesanan bisa dilakukan lewat WhatsApp. Sebutkan barang, jumlah, dan tanggal pemakaian agar ketersediaannya bisa dicek lebih dulu."
     ],
+    kalender:true,   // tampilkan kalender ketersediaan (data langsung dari Kopma Hub)
     layanan:[
-      { nama:"[Barang sewa 1]", teks:"[Isi barang yang disewakan, mis. perlengkapan acara]" },
-      { nama:"[Barang sewa 2]", teks:"[Isi barang yang disewakan]" },
-      { nama:"[Barang sewa 3]", teks:"[Isi barang yang disewakan]" }
+      { nama:"Mic", teks:"[Draf] Mic untuk acara, seminar, dan kegiatan organisasi." },
+      { nama:"Sound", teks:"[Draf] Sound system untuk acara indoor maupun outdoor." },
+      { nama:"Proyektor", teks:"[Draf] Proyektor untuk presentasi, rapat, dan nobar." },
+      { nama:"Layar", teks:"[Draf] Layar proyektor, pasangan pas untuk proyektor." },
+      { nama:"Meja Lipat", teks:"[Draf] Meja lipat untuk stand, registrasi, dan bazar." },
+      { nama:"X Banner", teks:"[Draf] Stand X banner untuk publikasi acara." }
     ],
     lokasi:"[Lokasi Persewaan Kopma]", jam:"[Jam layanan Persewaan Kopma]" },
   { id:"kopma-print", nama:"Kopma Print", ikon:"print", foto:"",
