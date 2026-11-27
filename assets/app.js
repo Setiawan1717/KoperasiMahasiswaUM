@@ -35,10 +35,6 @@ ada("#foto-tentang", el => {
   ada("#label-bingkai", l => l.textContent = FOTO_TENTANG ? "KOPMA UM" : "ADIT");
 });
 
-const ikonLokasi = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-ada("#grid-unit", el => el.innerHTML = UNIT.map(u => `<article class="kartu takik kanan-bawah muncul">
-  <div class="gambar">${gambar(u.foto, u.nama)}</div>
-  <div class="badan"><h3>${u.nama}</h3><p>${u.teks}</p><span class="meta">${ikonLokasi}${u.lokasi}</span></div></article>`).join(""));
 
 const fmtTgl = s => { const d = new Date(s + "T00:00:00"); return { h: d.getDate(), b: d.toLocaleString("id-ID", { month: "short" }), lengkap: d.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) }; };
 ada("#grid-berita", el => el.innerHTML = BERITA.map(b => { const t = fmtTgl(b.tanggal); return `<article class="kartu berita muncul">
@@ -87,6 +83,9 @@ const IKON = {
   administrasi:'<rect x="14" y="10" width="36" height="46" rx="5"/><path d="M24 10V6h16v4"/><path d="M22 24h20M22 32h20M22 40h12"/><path d="m36 46 4 4 8-9"/>',
   kominfo:'<path d="M10 28v10h8l20 12V16L18 28z"/><path d="M18 38l4 14h6l-3-12"/><path d="M46 24c4 3 4 15 0 18M52 18c8 6 8 24 0 30"/>',
   psda:'<circle cx="22" cy="22" r="7"/><circle cx="42" cy="22" r="7"/><path d="M8 50c0-8 6-14 14-14 3 0 6 .8 8 2.4M56 50c0-8-6-14-14-14-3 0-6 .8-8 2.4"/><path d="M32 54V40"/><path d="M32 46c-6 0-9-4-9-9 6 0 9 4 9 9zM32 44c0-6 3-9 9-9 0 6-3 9-9 9z"/>',
+  mart:'<path d="M8 14h6l6 28h28l6-20H18"/><circle cx="24" cy="50" r="4"/><circle cx="44" cy="50" r="4"/><path d="M26 28h20M28 35h16"/>',
+  sewa:'<path d="M32 8 6 44h52z"/><path d="M32 8v36M22 44l10-18 10 18"/><path d="M6 44v10M58 44v10M4 54h56"/>',
+  print:'<path d="M18 24V8h28v16"/><rect x="8" y="24" width="48" height="22" rx="5"/><path d="M18 38h28v18H18z"/><path d="M24 45h16M24 50h10"/><circle cx="47" cy="31" r="2"/>',
   usaha:'<path d="M8 24 13 10h38l5 14"/><path d="M8 24c0 4 3 7 8 7s8-3 8-7c0 4 3 7 8 7s8-3 8-7c0 4 3 7 8 7s8-3 8-7"/><path d="M12 31v23h40V31"/><path d="M26 54V40h12v14"/>'
 };
 const ikon = k => `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IKON[k] || IKON.ketua}</svg>`;
@@ -135,6 +134,48 @@ ada("#detail-bidang", el => {
       <a class="btn btn-biru" href="struktur.html">Semua Struktur</a>
       <a class="btn btn-putih" href="bidang.html?b=${ssdh.id}">${ssdh.nama.replace(/^Bidang\s+/i, "")}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </nav>`;
+});
+
+/* ---------- UNIT USAHA ---------- */
+const ikonPanah = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ikonPanahKiri = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+const ikonWA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>';
+const ikonLokasiKecil = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+const ikonJam = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+const pasangWA = el => el.querySelectorAll("[data-wa]").forEach(a => { a.href = waLink(a.dataset.wa); if (KONTAK.wa) { a.target = "_blank"; a.rel = "noopener"; } else a.href = "kontak.html"; });
+
+ada("#grid-unit", el => el.innerHTML = UNIT.map(u => `<article class="kartu kartu-unit takik kanan-bawah muncul">
+  <a class="gambar" href="unit-detail.html?u=${u.id}" tabindex="-1" aria-hidden="true">${gambar(u.foto, u.nama)}<span class="lencana-ikon">${ikon(u.ikon)}</span></a>
+  <div class="badan"><h3><a href="unit-detail.html?u=${u.id}">${u.nama}</a></h3><p>${u.ringkas}</p>
+  <a class="btn btn-biru btn-kecil" href="unit-detail.html?u=${u.id}">Selengkapnya ${ikonPanah}</a></div></article>`).join(""));
+
+ada("#detail-unit", el => {
+  const id = new URLSearchParams(location.search).get("u");
+  const i = Math.max(0, UNIT.findIndex(u => u.id === id));
+  const u = UNIT[i], n = UNIT.length, sblm = UNIT[(i - 1 + n) % n], ssdh = UNIT[(i + 1) % n];
+  document.title = `${u.nama} | KOPMA UM`;
+  el.innerHTML = `<div class="unit-atas">
+      <div class="muncul">
+        <span class="label-unit">Unit Usaha</span>
+        <h1 class="judul-unit">${u.nama}</h1>
+        <p class="ringkas-unit">${u.ringkas}</p>
+        <div class="info-unit">
+          <span>${ikonLokasiKecil}<span><small>Lokasi</small><b>${u.lokasi}</b></span></span>
+          <span>${ikonJam}<span><small>Jam buka</small><b>${u.jam}</b></span></span>
+        </div>
+        <a href="#" class="btn btn-biru" data-wa="Halo KOPMA UM, saya mau tanya tentang ${u.nama}.">${ikonWA} Tanya via WhatsApp</a>
+      </div>
+      <div class="bingkai-foto muncul"><div class="isi">${gambar(u.foto, u.nama)}</div><span class="lencana-ikon besar">${ikon(u.ikon)}</span><span class="orb ungu" aria-hidden="true"></span></div>
+    </div>
+    <div class="isi-unit muncul">${u.deskripsi.map(p => `<p>${p}</p>`).join("")}</div>
+    <h2 class="judul-sorot muncul">Layanan <span class="sorot oranye">Kami</span></h2>
+    <div class="grid-layanan">${u.layanan.map((l, j) => `<div class="layanan muncul"><span class="no">${j + 1}</span><h3>${l.nama}</h3><p>${l.teks}</p></div>`).join("")}</div>
+    <nav class="nav-bidang" aria-label="Unit usaha lain">
+      <a class="btn btn-putih" href="unit-detail.html?u=${sblm.id}">${ikonPanahKiri}${sblm.nama}</a>
+      <a class="btn btn-biru" href="unit.html">Semua Unit Usaha</a>
+      <a class="btn btn-putih" href="unit-detail.html?u=${ssdh.id}">${ssdh.nama}${ikonPanah}</a>
+    </nav>`;
+  pasangWA(el);
 });
 
 /* ---------- Navbar: scroll, burger, menu aktif ---------- */

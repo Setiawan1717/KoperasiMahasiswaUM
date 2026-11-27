@@ -159,7 +159,7 @@ section.blok.halaman-atas{padding-top:clamp(28px,4vw,48px)}
 .foto-isi{width:100%;height:100%;object-fit:cover}
 
 /* ===== Kartu umum (unit, berita) ===== */
-.grid-unit{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.grid-unit{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .kartu{--t:46px;position:relative;background:var(--peach);border-radius:20px;border:2px solid rgba(255,255,255,.8);display:flex;flex-direction:column;box-shadow:0 12px 26px -18px rgba(140,60,30,.55);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 @media (hover:hover){.kartu:hover{transform:translateY(-5px);box-shadow:0 20px 34px -18px rgba(140,60,30,.6)}}
 .kartu .gambar{aspect-ratio:4/3;overflow:hidden;position:relative;margin:10px 10px 0;border-radius:14px}
@@ -234,7 +234,6 @@ footer .brand small{color:var(--pink)}
   .menu a{padding:9px 11px;font-size:.72rem}
 }
 @media (max-width:1024px){
-  .grid-unit{grid-template-columns:repeat(2,1fr)}
   .grid-berita{grid-template-columns:1fr 1fr}
   .kaki{grid-template-columns:1fr 1fr}
 }
@@ -471,4 +470,46 @@ a.simpul:hover .ubin-ikon{transform:translateY(-4px)}
   .cabang .simpul b{font-size:.9rem}
   .kartu-bidang{grid-template-columns:1fr}
   .foto-bidang{aspect-ratio:4/3.4}
+}
+
+/* =====================================================================
+   UNIT USAHA & DETAIL UNIT
+   ===================================================================== */
+.kartu-unit .gambar{display:block}
+.kartu-unit .lencana-ikon{z-index:2;background:linear-gradient(180deg,#2E5FB5,#7FA4DE);border-color:#fff;box-shadow:0 8px 16px -8px rgba(19,72,155,.6)}
+.kartu-unit h3{font-size:1.3rem}
+.kartu-unit h3 a:hover{text-decoration:underline}
+.kartu-unit .btn-kecil{align-self:flex-start;margin-top:auto}
+.kartu-unit .badan{gap:10px;padding:18px 20px 24px}
+
+.unit-atas{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,5vw,64px);align-items:center}
+.label-unit{display:inline-block;background:var(--biru);color:var(--pink);font-family:var(--font-tampil);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1rem;padding:4px 12px;transform:rotate(-3deg)}
+.judul-unit{font-family:var(--font-tampil);font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:1;font-size:clamp(2.2rem,5.6vw,4.2rem);margin:14px 0 16px;color:var(--biru);
+  text-shadow:1.5px 1.5px 0 var(--oranye),-1.5px -1.5px 0 var(--oranye),1.5px -1.5px 0 var(--oranye),-1.5px 1.5px 0 var(--oranye),0 8px 16px rgba(19,72,155,.18)}
+.ringkas-unit{font-size:clamp(1.05rem,1.8vw,1.25rem);font-weight:700;line-height:1.5;max-width:46ch}
+.info-unit{display:grid;gap:10px;margin:22px 0 24px}
+.info-unit>span{display:flex;align-items:center;gap:12px;background:#FFF3EA;border:2px solid rgba(255,255,255,.9);border-radius:14px;padding:10px 14px;box-shadow:0 10px 22px -18px rgba(140,60,30,.6)}
+.info-unit svg{width:36px;height:36px;flex:none;padding:8px;border-radius:50%;background:var(--biru);color:#fff}
+.info-unit small{display:block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--pink-tua)}
+.info-unit b{font-size:.95rem}
+.unit-atas .bingkai-foto{width:100%}
+.unit-atas .bingkai-foto .isi{aspect-ratio:4/3.2}
+.unit-atas .bingkai-foto .orb{left:auto;right:-4%;bottom:auto;top:-6%}
+.lencana-ikon.besar{z-index:3;top:auto;bottom:-22px;left:24px;width:76px;height:76px;border-radius:22px;background:linear-gradient(180deg,#2E5FB5,#7FA4DE);border:3px solid #fff;box-shadow:0 12px 22px -10px rgba(19,72,155,.6)}
+.isi-unit{width:min(860px,100%);margin:clamp(48px,6vw,72px) auto clamp(48px,6vw,72px);font-size:1.08rem;line-height:1.65}
+.isi-unit p+p{margin-top:14px}
+.grid-layanan{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:min(960px,100%);margin-inline:auto}
+.layanan{position:relative;background:linear-gradient(180deg,#FFD8D0 0%,#FF9C95 100%);border:2px solid rgba(255,255,255,.85);border-radius:16px;padding:26px 22px 24px;box-shadow:0 12px 22px -12px rgba(180,60,50,.55)}
+.layanan .no{position:absolute;top:-16px;left:20px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--biru);color:#fff;font-weight:800;box-shadow:0 0 0 3px #fff}
+.layanan h3{font-family:var(--font-tampil);font-stretch:115%;font-weight:900;font-size:1.1rem;text-transform:uppercase;margin-bottom:6px}
+.layanan p{font-size:.95rem;line-height:1.5}
+@media (min-width:701px){.isi-unit p{text-align:justify;hyphens:auto}}
+@media (max-width:900px){
+  .grid-unit{grid-template-columns:repeat(2,1fr)}
+  .unit-atas{grid-template-columns:1fr}
+  .unit-atas .bingkai-foto{max-width:560px;justify-self:center}
+}
+@media (max-width:640px){
+  .grid-unit,.grid-layanan{grid-template-columns:1fr}
+  .grid-layanan{gap:28px}
 }
