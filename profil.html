@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil | KOPMA UM</title>
+<meta name="description" content="Profil KOPMA UM: tentang koperasi, filosofi logo dan warna, serta program kerja unggulan Koperasi Mahasiswa Universitas Negeri Malang.">
+<meta property="og:title" content="KOPMA UM | Koperasi Mahasiswa Universitas Negeri Malang">
+<meta property="og:description" content="Belanja hemat, promo mingguan, dan belajar berwirausaha bareng Koperasi Mahasiswa UM.">
+<meta property="og:image" content="assets/logo-kopma-um.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFF6E6">
+<link rel="icon" href="assets/logo-kopma-um.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,700..900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/gaya.css">
+</head>
+<body>
+
+<a href="#utama" class="sr">Lewati ke konten utama</a>
+
+<header class="nav" id="nav">
+  <div class="wadah">
+    <a href="index.html" class="brand" aria-label="KOPMA UM, ke beranda">
+      <img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="50" height="50">
+      <span><b>KOPMA UM</b><small>Koperasi Mahasiswa</small></span>
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html" class="aktif" aria-current="page">Profil</a></li>
+        <li><a href="index.html#anggota">Keanggotaan</a></li>
+        <li><a href="index.html#unit">Unit Usaha</a></li>
+        <li><a href="index.html#promo">Promo</a></li>
+        <li><a href="index.html#kegiatan">Kegiatan</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+  </div>
+</header>
+
+<main id="utama">
+
+<!-- ===== TENTANG KOPMA (gaya Filosofi Kabinet) ===== -->
+<section class="blok profil-atas" id="profil">
+  <div class="wadah">
+    <h1 class="judul-sorot muncul">Profil <span class="sorot biru">KOPMA</span></h1>
+    <div class="bingkai-foto muncul">
+      <div class="isi" id="foto-profil"></div>
+      <span class="orb ungu" aria-hidden="true"></span>
+      <span class="batang pudar-kanan" aria-hidden="true"></span>
+    </div>
+    <div class="teks-profil muncul" id="teks-profil"></div>
+  </div>
+  <span class="batang ke-kiri" aria-hidden="true"></span>
+</section>
+
+<!-- ===== FILOSOFI LOGO ===== -->
+<section class="blok gradasi" id="logo" style="--bg-takik:#FFF3E3">
+  <div class="wadah">
+    <h2 class="judul-sorot muncul">Filosofi <span class="sorot pink">Logo</span></h2>
+    <div class="kartu-logo takik muncul">
+      <div class="ubin-logo"><img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM"></div>
+      <p id="logo-ringkas"></p>
+    </div>
+    <ul class="daftar-makna" id="makna-logo"></ul>
+  </div>
+</section>
+
+<!-- ===== FILOSOFI WARNA ===== -->
+<section class="blok peach" id="warna">
+  <div class="wadah">
+    <h2 class="judul-sorot muncul">Filosofi <span class="sorot oranye">Warna</span></h2>
+    <div id="daftar-warna"></div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM KERJA UNGGULAN ===== -->
+<section class="blok blok-proker" id="proker" aria-roledescription="carousel" aria-label="Program kerja unggulan">
+  <span class="batang biru-kanan" aria-hidden="true"></span>
+  <span class="bulat" style="width:48px;height:48px;right:6%;top:42%" aria-hidden="true"></span>
+  <div class="wadah">
+    <h2 class="judul-sorot dua-baris muncul">Program Kerja <span class="sorot pink">Unggulan</span></h2>
+    <div class="proker muncul">
+      <span class="orb ungu" aria-hidden="true"></span>
+      <div class="jendela-proker"><div class="pita-proker" id="proker-pita" aria-live="polite"></div></div>
+      <span class="bulat" aria-hidden="true"></span>
+      <button type="button" class="panah-proker" id="proker-sebelum" aria-label="Program sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button type="button" class="panah-proker" id="proker-sesudah" aria-label="Program berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      <div class="titik-proker" id="proker-titik"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-label="Ajakan bergabung">
+  <div class="wadah">
+    <div class="cta-kartu muncul">
+      <h2>Mau ikut menjalankan program-program ini? Gabung KOPMA UM.</h2>
+      <a href="#" data-wa="Halo KOPMA UM, saya ingin mendaftar jadi anggota." class="btn btn-biru">Daftar Jadi Anggota</a>
+      <span class="orb" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wadah kaki">
+    <div>
+      <a href="index.html" class="brand"><img src="assets/logo-kopma-um.webp" alt="Logo KOPMA UM" width="50" height="50"><span><b>KOPMA UM</b><small>Koperasi Mahasiswa</small></span></a>
+      <p>Koperasi Mahasiswa Universitas Negeri Malang. Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</p>
+      <div class="sos">
+        <a data-link="instagram" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a data-link="tiktok" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></a>
+        <a href="#" data-wa="Halo KOPMA UM" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Jelajahi</h4>
+      <ul><li><a href="profil.html">Profil</a></li><li><a href="index.html#unit">Unit Usaha</a></li><li><a href="index.html#promo">Promo</a></li><li><a href="index.html#kegiatan">Kegiatan</a></li></ul>
+    </div>
+    <div>
+      <h4>Anggota</h4>
+      <ul><li><a href="index.html#anggota">Cara Daftar</a></li><li><a href="index.html#anggota">Keuntungan</a></li><li><a href="index.html#faq">Tanya Jawab</a></li><li><a href="index.html#kontak">Hubungi Kami</a></li></ul>
+    </div>
+    <div>
+      <h4>Jam Layanan</h4>
+      <ul><li data-isi="jam">[Jam buka]</li><li>Area kampus Universitas Negeri Malang</li></ul>
+    </div>
+  </div>
+  <div class="wadah hak">
+    <span>&copy; <span id="tahun"></span> KOPMA Universitas Negeri Malang</span>
+    <span>Dari mahasiswa, oleh mahasiswa, untuk mahasiswa.</span>
+  </div>
+</footer>
+
+<a href="#" class="wa-melayang" data-wa="Halo KOPMA UM, saya mau tanya." aria-label="Chat WhatsApp KOPMA UM">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.4z"/></svg>
+</a>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
